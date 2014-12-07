@@ -1,6 +1,10 @@
 <?php
 
-namespace Mhor\MediaInfo\Type;
+namespace Mhor\MediaInfo\Factory;
+
+use Mhor\MediaInfo\Type\Audio;
+use Mhor\MediaInfo\Type\General;
+use Mhor\MediaInfo\Type\Image;
 
 class TypeFactory
 {
