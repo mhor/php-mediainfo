@@ -1,0 +1,26 @@
+{
+    "name": "mhor/php-mediainfo",
+    "description": "Simple class to parse mediainfo command",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mhor",
+            "email": "maxime.horcholle@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/process": "~2.3",
+        "symfony/filesystem": "~2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable"
+    },
+    "autoload": {
+        "psr-4": { "Mhor\\MediaInfo\\" : "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "v0.1.x-dev"
+        }
+    }
+}
