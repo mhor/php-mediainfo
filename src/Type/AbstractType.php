@@ -7,23 +7,28 @@ abstract class AbstractType
     /**
      * @var array
      */
-    protected $attributes;
+    protected $attributes = array();
 
     /**
      * @param $attribute
+     * @param string|object $value
      * @return string
      */
-    public function get($attribute)
+    public function set($attribute, $value)
     {
-        $this->attributes[$attribute];
+        $this->attributes[$attribute] = $value;
     }
 
     /**
      * @param $attribute
-     * @param $value
+     *
+     * @return string|object|null
      */
-    public function set($attribute, $value)
+    public function get($attribute)
     {
-        return $this->attributes[$attribute] = $value;
+        if (isset($this->attributes[$attribute])) {
+            return $this->attributes[$attribute];
+        }
+        return null;
     }
 } 

@@ -56,6 +56,10 @@ class MediaInfoContainerBuilder
     {
         $this->mediaInfoContainer;
         foreach ($attributes as $attribute => $value) {
+            if ($attribute[0] === '@') {
+                continue;
+            }
+
             $attribute = $this->formatAttribute($attribute);
             $trackType->set(
                 $attribute,
