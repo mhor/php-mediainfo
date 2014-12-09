@@ -42,7 +42,6 @@ class GenericAttributeFactory
                 return new \DateTime($value);
             default:
                 return $value;
-                break;
         }
     }
 } 
