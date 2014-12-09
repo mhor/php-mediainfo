@@ -1,8 +1,8 @@
 <?php
 
-
 namespace Mhor\MediaInfo\Factory;
 
+use Mhor\MediaInfo\Attribute\AbstractAttribute;
 use Mhor\MediaInfo\Attribute\Cover;
 use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Attribute\Mode;
@@ -11,6 +11,11 @@ use Mhor\MediaInfo\Attribute\Size;
 
 class GenericAttributeFactory
 {
+    /**
+     * @param $attribute
+     * @param $value
+     * @return \DateTime|AbstractAttribute
+     */
     public static function create($attribute, $value)
     {
         switch ($attribute) {

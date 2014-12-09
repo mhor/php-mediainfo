@@ -24,7 +24,7 @@ class MediaInfoCommandRunner
     /**
      * @var array
      */
-    protected $arguments = array('--OUTPUT=XML',  '-f');
+    protected $arguments = array('--OUTPUT=XML', '-f');
 
     /**
      * @param string $filePath
@@ -62,7 +62,6 @@ class MediaInfoCommandRunner
         $process->run();
 
         if (!$process->isSuccessful()) {
-
             throw new \RuntimeException($process->getErrorOutput());
         }
         return $process->getOutput();

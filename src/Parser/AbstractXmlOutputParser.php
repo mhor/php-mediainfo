@@ -4,9 +4,13 @@ namespace Mhor\MediaInfo\Parser;
 
 abstract class AbstractXmlOutputParser implements OutputParserInterface
 {
-    protected function transformXmlToArray($xmlstring)
+    /**
+     * @param string $xmlString
+     * @return mixed
+     */
+    protected function transformXmlToArray($xmlString)
     {
-        $xml = simplexml_load_string($xmlstring);
+        $xml = simplexml_load_string($xmlString);
         $json = json_encode($xml);
         return json_decode($json, TRUE);
     }

@@ -7,7 +7,7 @@ use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 
 class MediaInfo
 {
-    public function getInformations($filePath)
+    public function getInfo($filePath)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $output = $mediaInfoCommandBuilder->buildMediaCommandBuilder($filePath)->run();

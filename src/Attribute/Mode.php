@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Mode
+class Mode extends AbstractAttribute
 {
     /**
      * @var string
