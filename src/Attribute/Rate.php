@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Rate
+class Rate extends AbstractAttribute
 {
     /**
      * @var int
@@ -17,7 +17,8 @@ class Rate
     /**
      * @param array $value
      */
-    public function __construct(array $value) {
+    public function __construct(array $value)
+    {
         $this->absoluteValue = $value[0];
         $this->textValue = $value[1];
     }

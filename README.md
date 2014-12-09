@@ -33,7 +33,7 @@ To use this class install it through [Composer](https://getcomposer.org/), add:
 use Mhor\MediaInfo\MediaInfo;
 //...
 $mediaInfo = new MediaInfo();
-$mediaInfo->getInformations('music.mp3');
+$mediaInfo->getInfo('music.mp3');
 //...
 ```
 

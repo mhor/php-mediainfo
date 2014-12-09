@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Duration
+class Duration extends AbstractAttribute
 {
     /**
      * @var int
@@ -18,7 +18,7 @@ class Duration
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getMilliseconds()
     {

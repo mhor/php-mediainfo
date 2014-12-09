@@ -2,13 +2,16 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Cover
+class Cover extends AbstractAttribute
 {
     /**
      * @var string
      */
     private $binaryCover;
 
+    /**
+     * @param string $value
+     */
     public function __construct($value)
     {
         $this->binaryCover = $value;

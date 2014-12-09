@@ -33,9 +33,14 @@ class MediaInfoContainerBuilder
         return $this->mediaInfoContainer;
     }
 
-    public function setVersion($version) {
+    /**
+     * @param string $version
+     */
+    public function setVersion($version)
+    {
         $this->mediaInfoContainer->setVersion($version);
     }
+
     /**
      * @param $typeName
      * @param array $attributes
@@ -68,6 +73,10 @@ class MediaInfoContainerBuilder
         }
     }
 
+    /**
+     * @param string $attribute
+     * @return string
+     */
     private function formatAttribute($attribute)
     {
         return str_replace(' ', '_', strtolower($attribute));

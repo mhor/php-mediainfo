@@ -2,10 +2,18 @@
 
 namespace Mhor\MediaInfo\Factory;
 
+use Mhor\MediaInfo\Attribute\AbstractAttribute;
 use Mhor\MediaInfo\Type\MediaInfoContainer;
 
 class AttributeFactory
 {
+    /**
+     * @param $attributeTypeClass
+     * @param $attribute
+     * @param $value
+     * @return \DateTime|AbstractAttribute
+     * @throws \Exception
+     */
     public static function create($attributeTypeClass, $attribute, $value)
     {
         switch ($attributeTypeClass) {
