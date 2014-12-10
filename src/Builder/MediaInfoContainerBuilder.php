@@ -2,10 +2,10 @@
 
 namespace Mhor\MediaInfo\Builder;
 
+use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Factory\AttributeFactory;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Type\AbstractType;
-use Mhor\MediaInfo\Type\MediaInfoContainer;
 
 class MediaInfoContainerBuilder
 {
@@ -55,9 +55,9 @@ class MediaInfoContainerBuilder
 
     /**
      * @param AbstractType $trackType
-     * @param array $attributes
+     * @param array        $attributes
      */
-    public function addAttributes(AbstractType $trackType, $attributes)
+    private function addAttributes(AbstractType $trackType, $attributes)
     {
         $this->mediaInfoContainer;
         foreach ($attributes as $attribute => $value) {
@@ -74,11 +74,11 @@ class MediaInfoContainerBuilder
     }
 
     /**
-     * @param string $attribute
+     * @param  string $attribute
      * @return string
      */
     private function formatAttribute($attribute)
     {
         return str_replace(' ', '_', strtolower($attribute));
     }
-} 
+}

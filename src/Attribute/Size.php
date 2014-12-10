@@ -24,4 +24,4 @@ class Size extends AbstractAttribute
     {
         return $this->bit;
     }
-} 
+}

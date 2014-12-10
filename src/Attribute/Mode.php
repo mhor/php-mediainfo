@@ -35,4 +35,4 @@ class Mode extends AbstractAttribute
     {
         return $this->shortName;
     }
-} 
+}

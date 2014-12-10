@@ -3,13 +3,13 @@
 namespace Mhor\MediaInfo\Factory;
 
 use Mhor\MediaInfo\Attribute\AbstractAttribute;
-use Mhor\MediaInfo\Type\MediaInfoContainer;
+use Mhor\MediaInfo\Container\MediaInfoContainer;
 
 class AttributeFactory
 {
     /**
-     * @param $attributeTypeClass
-     * @param $attribute
+     * @param  string                      $attributeTypeClass
+     * @param  string                      $attribute
      * @param $value
      * @return \DateTime|AbstractAttribute
      * @throws \Exception
@@ -23,11 +23,10 @@ class AttributeFactory
                 return AudioAttributeFactory::create($attribute, $value);
             case MediaInfoContainer::IMAGE_CLASS:
                 return ImageAttributeFactory::create($attribute, $value);
-                break;
             case MediaInfoContainer::GENERAL_CLASS:
                 return GeneralAttributeFactory::create($attribute, $value);
             default:
                 throw new \Exception('Type doesn\'t exist');
         }
     }
-} 
+}

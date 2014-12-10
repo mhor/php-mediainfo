@@ -15,4 +15,4 @@ class VideoAttributeFactory
     {
         return GenericAttributeFactory::create($attribute, $value);
     }
-} 
+}

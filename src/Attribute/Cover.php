@@ -24,4 +24,4 @@ class Cover extends AbstractAttribute
     {
         return $this->binaryCover;
     }
-} 
+}

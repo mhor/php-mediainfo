@@ -3,33 +3,40 @@
 namespace Mhor\MediaInfo\Parser;
 
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
-use Mhor\MediaInfo\Type\MediaInfoContainer;
+use Mhor\MediaInfo\Container\MediaInfoContainer;
 
 class MediaInfoOutputParser extends AbstractXmlOutputParser
 {
+    /**
+     * @var array
+     */
+    private $parsedOutput;
 
     /**
-     * @param $output
-     * @return MediaInfoContainer
+     * @param string $output
      */
     public function parse($output)
     {
-        return $this->getMediaInfoContainer($this->transformXmlToArray($output));
+        $this->parsedOutput = $this->transformXmlToArray($output);
     }
 
     /**
-     * @param array $output
+     * @throws \Exception
      * @return MediaInfoContainer
      */
-    public function getMediaInfoContainer(array $output)
+    public function getMediaInfoContainer()
     {
-        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
-        $mediaInfoContainerBuilder->setVersion($output['@attributes']['version']);
+        if ($this->parsedOutput === null) {
+            throw new \Exception('You must run `parse` before running `getMediaInfoContainer`');
+        }
 
-        foreach ($output['File']['track'] as $trackType) {
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+        $mediaInfoContainerBuilder->setVersion($this->parsedOutput['@attributes']['version']);
+
+        foreach ($this->parsedOutput['File']['track'] as $trackType) {
             $mediaInfoContainerBuilder->addTrackType($trackType['@attributes']['type'], $trackType);
         }
 
         return $mediaInfoContainerBuilder->build();
     }
-} 
+}

@@ -13,7 +13,9 @@
         "symfony/filesystem": "~2.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "squizlabs/php_codesniffer": "@stable",
+        "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
         "psr-4": { "Mhor\\MediaInfo\\" : "src/" }
