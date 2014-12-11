@@ -15,4 +15,4 @@ class AudioAttributeFactory
     {
         return GenericAttributeFactory::create($attribute, $value);
     }
-} 
+}

@@ -15,4 +15,4 @@ class ImageAttributeFactory
     {
         return GenericAttributeFactory::create($attribute, $value);
     }
-} 
+}

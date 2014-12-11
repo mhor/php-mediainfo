@@ -15,4 +15,4 @@ class GeneralAttributeFactory
     {
         return GenericAttributeFactory::create($attribute, $value);
     }
-} 
+}

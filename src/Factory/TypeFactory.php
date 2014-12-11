@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Type\AbstractType;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
 use Mhor\MediaInfo\Type\Image;
+use Mhor\MediaInfo\Type\Video;
 
 class TypeFactory
 {
@@ -29,10 +30,9 @@ class TypeFactory
             case self::GENERAL:
                 return new General();
             case self::VIDEO:
-                return new Image();
+                return new Video();
             default:
                 throw new \Exception('Type doesn\'t exist');
         }
     }
-
-} 
+}

@@ -24,4 +24,4 @@ class Duration extends AbstractAttribute
     {
         return $this->milliseconds;
     }
-} 
+}

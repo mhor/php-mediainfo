@@ -10,9 +10,11 @@ class MediaInfo
     public function getInfo($filePath)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $output = $mediaInfoCommandBuilder->buildMediaCommandBuilder($filePath)->run();
+        $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath)->run();
 
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        return $mediaInfoOutputParser->parse($output);
+        $mediaInfoOutputParser->parse($output);
+
+        return $mediaInfoOutputParser->getMediaInfoContainer();
     }
-} 
+}

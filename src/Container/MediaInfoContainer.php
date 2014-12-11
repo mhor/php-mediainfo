@@ -1,6 +1,12 @@
 <?php
 
-namespace Mhor\MediaInfo\Type;
+namespace Mhor\MediaInfo\Container;
+
+use Mhor\MediaInfo\Type\AbstractType;
+use Mhor\MediaInfo\Type\Audio;
+use Mhor\MediaInfo\Type\General;
+use Mhor\MediaInfo\Type\Image;
+use Mhor\MediaInfo\Type\Video;
 
 class MediaInfoContainer
 {
@@ -20,17 +26,17 @@ class MediaInfoContainer
     private $general;
 
     /**
-     * @var array
+     * @var Audio[]
      */
     private $audios = array();
 
     /**
-     * @var array
+     * @var Video[]
      */
     private $videos = array();
 
     /**
-     * @var array
+     * @var Image[]
      */
     private $images = array();
 
@@ -43,7 +49,7 @@ class MediaInfoContainer
     }
 
     /**
-     * @return array
+     * @return Audio[]
      */
     public function getAudios()
     {
@@ -51,7 +57,7 @@ class MediaInfoContainer
     }
 
     /**
-     * @return array
+     * @return Image[]
      */
     public function getImages()
     {
@@ -75,7 +81,7 @@ class MediaInfoContainer
     }
 
     /**
-     * @return array
+     * @return Video[]
      */
     public function getVideos()
     {
@@ -91,7 +97,7 @@ class MediaInfoContainer
     }
 
     /**
-     * @param AbstractType $trackType
+     * @param  AbstractType $trackType
      * @throws \Exception
      */
     public function add(AbstractType $trackType)
@@ -137,4 +143,4 @@ class MediaInfoContainer
     {
         $this->images[] = $image;
     }
-} 
+}

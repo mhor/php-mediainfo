@@ -27,8 +27,10 @@ class GenericAttributeFactory
             case 'channel_s_';
             case 'bit_rate';
             case 'sampling_rate';
+
                 return new Rate($value);
             case 'cover_data';
+
                 return new Cover($value);
             case 'overall_bit_rate_mode':
             case 'overall_bit_rate':
@@ -39,9 +41,10 @@ class GenericAttributeFactory
                 return new Mode($value);
             case 'file_last_modification_date';
             case 'file_last_modification_date__local_';
+
                 return new \DateTime($value);
             default:
                 return $value;
         }
     }
-} 
+}
