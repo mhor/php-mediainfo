@@ -23,7 +23,7 @@ class TypeFactory
     public function create($type)
     {
         switch ($type) {
-            case self::AUDIO :
+            case self::AUDIO:
                 return new Audio();
             case self::IMAGE:
                 return new Image();
