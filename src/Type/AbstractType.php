@@ -11,7 +11,7 @@ abstract class AbstractType
 
     /**
      * @param $attribute
-     * @param  string|object $value
+     * @param string|object $value
      * @return string
      */
     public function set($attribute, $value)
