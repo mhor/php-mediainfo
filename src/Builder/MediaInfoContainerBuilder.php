@@ -68,7 +68,7 @@ class MediaInfoContainerBuilder
             $attribute = $this->formatAttribute($attribute);
             $trackType->set(
                 $attribute,
-                AttributeFactory::create(get_class($trackType), $attribute, $value)
+                AttributeFactory::create($attribute, $value)
             );
         }
     }

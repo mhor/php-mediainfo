@@ -11,10 +11,22 @@ class Size extends AbstractAttribute
 
     /**
      * @param array $sizes
+     *
+     * @return Size
      */
-    public function __construct(array $sizes)
+    public static function create($sizes)
     {
-        $this->bit = $sizes[0];
+        $size = new Size();
+        $size->setBit($sizes[0]);
+        return $size;
+    }
+
+    /**
+     * @param int $bit
+     */
+    public function setBit($bit)
+    {
+        $this->bit = $bit;
     }
 
     /**
@@ -23,5 +35,16 @@ class Size extends AbstractAttribute
     public function getBit()
     {
         return $this->bit;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getMembersFields()
+    {
+        return array(
+            'file_size',
+            'stream_size',
+        );
     }
 }

@@ -11,8 +11,19 @@ class Cover extends AbstractAttribute
 
     /**
      * @param string $value
+     * @return Cover
      */
-    public function __construct($value)
+    public static function create($value)
+    {
+        $cover = new Cover();
+        $cover->setBinaryCover($value);
+        return $cover;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBinaryCover($value)
     {
         $this->binaryCover = $value;
     }
@@ -23,5 +34,13 @@ class Cover extends AbstractAttribute
     public function getBinaryCover()
     {
         return $this->binaryCover;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getMembersFields()
+    {
+        return array('cover_data');
     }
 }

@@ -16,10 +16,58 @@ class Rate extends AbstractAttribute
 
     /**
      * @param array $value
+     *
+     * @return Rate
      */
-    public function __construct(array $value)
+    public static function create($value)
     {
-        $this->absoluteValue = $value[0];
-        $this->textValue = $value[1];
+        $rate = new Rate();
+        $rate->setAbsoluteValue($value[0]);
+        $rate->setTextValue($value[1]);
+        return $rate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAbsoluteValue()
+    {
+        return $this->absoluteValue;
+    }
+
+    /**
+     * @param int $absoluteValue
+     */
+    public function setAbsoluteValue($absoluteValue)
+    {
+        $this->absoluteValue = $absoluteValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTextValue()
+    {
+        return $this->textValue;
+    }
+
+    /**
+     * @param string $textValue
+     */
+    public function setTextValue($textValue)
+    {
+        $this->textValue = $textValue;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getMembersFields()
+    {
+        return array(
+            'channel_s_',
+            'bit_rate',
+            'sampling_rate',
+        );
     }
 }
