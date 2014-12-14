@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\test\Parser;
+namespace Mhor\MediaInfo\Test\Parser;
 
 use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 
@@ -42,6 +42,9 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
 
         $audios = $mediaInfoContainer->getAudios();
         $this->assertEquals(20, count($audios[0]->get()));
-        $this->assertEquals(33, count($mediaInfoContainer->getGeneral()->get()));
+        $this->assertEquals(20974464, $audios[0]->get('samples_count'));
+        $this->assertEquals(null, $audios[0]->get('test'));
+
+        $this->assertEquals(34, count($mediaInfoContainer->getGeneral()->get()));
     }
 }

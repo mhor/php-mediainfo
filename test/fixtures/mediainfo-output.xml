@@ -53,6 +53,7 @@
             <Track_name_Total>2</Track_name_Total>
             <Performer>Track Artist</Performer>
             <Recorded_date>2014</Recorded_date>
+            <Cover_Data>sample_binary_cover</Cover_Data>
             <File_last_modification_date>UTC 2014-12-06 16:43:30</File_last_modification_date>
             <File_last_modification_date__local_>2014-12-06 17:43:30</File_last_modification_date__local_>
         </track>
