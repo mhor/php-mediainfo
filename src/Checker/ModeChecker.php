@@ -13,6 +13,9 @@ class ModeChecker extends AbstractAttributeChecker
      */
     public function create($rateMode)
     {
+        if (!isset($rateMode[1])) {
+            $rateMode[1] = $rateMode[0];
+        }
         $mode = new Mode($rateMode[0], $rateMode[1]);
         return $mode;
     }
@@ -31,6 +34,18 @@ class ModeChecker extends AbstractAttributeChecker
             'format',
             'kind_of_stream',
             'writing_library',
+            'id',
+            'format_settings_sbr',
+            'channel_positions',
+            'default',
+            'forced',
+            'delay_origin',
+            'scan_type',
+            'interlacement',
+            'scan_type',
+            'frame_rate_mode',
+            'format_settings_cabac',
+            'unique_id',
         );
     }
 }

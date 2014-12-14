@@ -20,7 +20,7 @@ class DateTimeChecker extends AbstractAttributeChecker
     {
         return array(
             'file_last_modification_date',
-            'file_last_modification_date__local_'
+            'file_last_modification_date_local'
         );
     }
 }
