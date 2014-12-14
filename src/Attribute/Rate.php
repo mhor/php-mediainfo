@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Rate extends AbstractAttribute
+class Rate implements AttributeInterface
 {
     /**
      * @var int
@@ -15,16 +15,15 @@ class Rate extends AbstractAttribute
     private $textValue;
 
     /**
-     * @param array $value
+     * @param $absoluteValue
+     * @param $textValue
      *
      * @return Rate
      */
-    public static function create($value)
+    public function __construct($absoluteValue, $textValue)
     {
-        $rate = new Rate();
-        $rate->setAbsoluteValue($value[0]);
-        $rate->setTextValue($value[1]);
-        return $rate;
+        $this->absoluteValue = $absoluteValue;
+        $this->textValue = $textValue;
     }
 
     /**
@@ -36,38 +35,10 @@ class Rate extends AbstractAttribute
     }
 
     /**
-     * @param int $absoluteValue
-     */
-    public function setAbsoluteValue($absoluteValue)
-    {
-        $this->absoluteValue = $absoluteValue;
-    }
-
-    /**
      * @return string
      */
     public function getTextValue()
     {
         return $this->textValue;
-    }
-
-    /**
-     * @param string $textValue
-     */
-    public function setTextValue($textValue)
-    {
-        $this->textValue = $textValue;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getMembersFields()
-    {
-        return array(
-            'channel_s_',
-            'bit_rate',
-            'sampling_rate',
-        );
     }
 }

@@ -2,31 +2,21 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Size extends AbstractAttribute
+class Size implements AttributeInterface
 {
     /**
      * @var int
      */
-    protected $bit;
+    private $bit;
 
     /**
-     * @param array $sizes
+     * @param int $size
      *
      * @return Size
      */
-    public static function create($sizes)
+    public function __construct($size)
     {
-        $size = new Size();
-        $size->setBit($sizes[0]);
-        return $size;
-    }
-
-    /**
-     * @param int $bit
-     */
-    public function setBit($bit)
-    {
-        $this->bit = $bit;
+        $this->bit = $size;
     }
 
     /**
@@ -35,16 +25,5 @@ class Size extends AbstractAttribute
     public function getBit()
     {
         return $this->bit;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getMembersFields()
-    {
-        return array(
-            'file_size',
-            'stream_size',
-        );
     }
 }

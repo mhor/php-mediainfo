@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Cover extends AbstractAttribute
+class Cover implements AttributeInterface
 {
     /**
      * @var string
@@ -10,22 +10,11 @@ class Cover extends AbstractAttribute
     private $binaryCover;
 
     /**
-     * @param string $value
-     * @return Cover
+     * @param string $cover
      */
-    public static function create($value)
+    public function __construct($cover)
     {
-        $cover = new Cover();
-        $cover->setBinaryCover($value);
-        return $cover;
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setBinaryCover($value)
-    {
-        $this->binaryCover = $value;
+        $this->binaryCover = $cover;
     }
 
     /**
@@ -34,13 +23,5 @@ class Cover extends AbstractAttribute
     public function getBinaryCover()
     {
         return $this->binaryCover;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getMembersFields()
-    {
-        return array('cover_data');
     }
 }

@@ -1,15 +1,14 @@
 <?php
 
-namespace Mhor\MediaInfo\Attribute;
+namespace Mhor\MediaInfo\Checker;
 
-class DateTime extends AbstractAttribute
+class DateTimeChecker extends AbstractAttributeChecker
 {
-
     /**
      * @param string $value
      * @return \DateTime
      */
-    public static function create($value)
+    public function create($value)
     {
         return new \DateTime($value);
     }
@@ -17,7 +16,7 @@ class DateTime extends AbstractAttribute
     /**
      * @return array
      */
-    public static function getMembersFields()
+    public function getMembersFields()
     {
         return array(
             'file_last_modification_date',
