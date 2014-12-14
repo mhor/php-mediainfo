@@ -9,6 +9,13 @@ use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Attribute\Mode;
 use Mhor\MediaInfo\Attribute\Rate;
 use Mhor\MediaInfo\Attribute\Size;
+use Mhor\MediaInfo\Checker\AbstractAttributeChecker;
+use Mhor\MediaInfo\Checker\CoverChecker;
+use Mhor\MediaInfo\Checker\DateTimeChecker;
+use Mhor\MediaInfo\Checker\DurationChecker;
+use Mhor\MediaInfo\Checker\ModeChecker;
+use Mhor\MediaInfo\Checker\RateChecker;
+use Mhor\MediaInfo\Checker\SizeChecker;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 
 class AttributeFactory
@@ -16,14 +23,14 @@ class AttributeFactory
     /**
      * @param $attribute
      * @param $value
-     * @return AbstractAttribute
+     * @return mixed
      */
     public static function create($attribute, $value)
     {
         $attributesType = self::getAllAttributeType();
-        foreach($attributesType as $attributeType) {
+        foreach ($attributesType as $attributeType) {
             if ($attributeType->isMember($attribute)) {
-                return $attributeType::create($value);
+                return $attributeType->create($value);
             }
         }
 
@@ -31,17 +38,17 @@ class AttributeFactory
     }
 
     /**
-     * @return AbstractAttribute[]
+     * @return AbstractAttributeChecker[]
      */
     private static function getAllAttributeType()
     {
         return array(
-            new Cover(),
-            new Duration(),
-            new Mode(),
-            new Rate(),
-            new Size(),
-            new DateTime(),
+            new CoverChecker(),
+            new DurationChecker(),
+            new ModeChecker(),
+            new RateChecker(),
+            new SizeChecker(),
+            new DateTimeChecker(),
         );
     }
 }

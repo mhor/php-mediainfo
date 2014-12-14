@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Attribute;
 
-class Duration extends AbstractAttribute
+class Duration implements AttributeInterface
 {
     /**
      * @var int
@@ -10,22 +10,12 @@ class Duration extends AbstractAttribute
     private $milliseconds;
 
     /**
-     * @param array $durations
+     * @param $duration
      * @return Duration
      */
-    public static function create($durations)
+    public function __construct($duration)
     {
-        $duration = new Duration();
-        $duration->setMilliseconds($durations[0]);
-        return $duration;
-    }
-
-    /**
-     * @param int $milliseconds
-     */
-    public function setMilliseconds($milliseconds)
-    {
-        $this->milliseconds = $milliseconds;
+        $this->milliseconds = $duration;
     }
 
     /**
@@ -34,13 +24,5 @@ class Duration extends AbstractAttribute
     public function getMilliseconds()
     {
         return $this->milliseconds;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getMembersFields()
-    {
-        return array('duration');
     }
 }
