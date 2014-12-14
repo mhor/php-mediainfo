@@ -23,9 +23,19 @@ class RateChecker extends AbstractAttributeChecker
     public function getMembersFields()
     {
         return array(
-            'channel_s_',
+            'channel_s',
             'bit_rate',
             'sampling_rate',
+            'bit_depth',
+            'width',
+            'nominal_bit_rate',
+            'frame_rate',
+            'display_aspect_ratio',
+            'frame_rate',
+            'format_settings_reframes',
+            'height',
+            'resolution',
+            'original_display_aspect_ratio',
         );
     }
 }

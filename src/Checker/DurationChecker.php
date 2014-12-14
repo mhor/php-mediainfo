@@ -21,6 +21,11 @@ class DurationChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array('duration');
+        return array(
+            'duration',
+            'delay_relative_to_video',
+            'video0_delay',
+            'delay',
+        );
     }
 }

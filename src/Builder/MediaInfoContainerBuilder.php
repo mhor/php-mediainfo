@@ -79,6 +79,6 @@ class MediaInfoContainerBuilder
      */
     private function formatAttribute($attribute)
     {
-        return str_replace(' ', '_', strtolower($attribute));
+        return trim(str_replace('__', '_', str_replace(' ', '_', strtolower($attribute))), '_');
     }
 }
