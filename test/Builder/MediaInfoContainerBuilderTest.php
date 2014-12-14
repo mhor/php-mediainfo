@@ -1,8 +1,11 @@
 <?php
 
-namespace Mhor\MediaInfo\test\Builder;
+namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
+use Mhor\MediaInfo\Type\AbstractType;
+
+class TrackTestType extends AbstractType{}
 
 class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,5 +44,24 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $images = $mediaContainer->getImages();
         $this->assertEquals(0, count($images[0]->get()));
+    }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testAddInvalidType()
+    {
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+        $mediaInfoContainerBuilder->addTrackType('InvalidType', array());
+    }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testAddInvalidTypeOnMediaInfoContainer()
+    {
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+        $mediaInfoContainer = $mediaInfoContainerBuilder->build();
+        $mediaInfoContainer->add(new TrackTestType());
     }
 }
