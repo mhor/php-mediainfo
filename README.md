@@ -18,12 +18,8 @@ $ brew install mediainfo
 ```
 
 To use this class install it through [Composer](https://getcomposer.org/), add:
-```json
-{
-    "require" : {
-        "mhor/php-mediainfo": "@dev"
-    }
-}
+```bash
+$ composer require mhor/php-mediainfo
 ```
 
 ## How to use
