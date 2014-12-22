@@ -98,7 +98,7 @@ For fields:
 
 - cover_data
 
-[Cover](src/Attribute/Cover) type will be applied
+[Cover](src/Attribute/Cover.php) type will be applied
 
 #### Duration
 For fields:
@@ -108,7 +108,7 @@ For fields:
 - video0_delay
 - delay
 
-[Duration](src/Attribute/Duration) type will be applied
+[Duration](src/Attribute/Duration.php) type will be applied
 
 #### Mode
 For fields:
@@ -134,7 +134,7 @@ For fields:
 - format_settings_cabac
 - unique_id
 
-[Mode](src/Attribute/Mode) type will be applied
+[Mode](src/Attribute/Mode.php) type will be applied
 
 #### Rate
 For fields:
@@ -153,7 +153,7 @@ For fields:
 - resolution
 - original_display_aspect_ratio
 
-[Rate](src/Attribute/Rate) type will be applied
+[Rate](src/Attribute/Rate.php) type will be applied
 
 #### Size
 For fields:
@@ -161,10 +161,10 @@ For fields:
 - file_size
 - stream_size
 
-[Size](src/Attribute/Sire) type will be applied
+[Size](src/Attribute/Size.php) type will be applied
 
 #### Others
-- All date fields will be transformed into [`Datetime`](src/Attribute/Datetime) php object
+- All date fields will be transformed into `Datetime` php object
 
 ##LICENSE
 See `LICENSE` for more information
