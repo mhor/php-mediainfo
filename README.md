@@ -60,7 +60,7 @@ foreach ($videos as $video) {
 ```php
 $audios = $mediaInfoContainer->getAudios();
 
-foreach($audios as $audio) {
+foreach ($audios as $audio) {
     // ... do something
 }
 ```
