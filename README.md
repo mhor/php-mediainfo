@@ -50,7 +50,7 @@ $general = $mediaInfoContainer->getGeneral();
 ```php
 $videos = $mediaInfoContainer->getVideos();
 
-foreach($videos as $video) {
+foreach ($videos as $video) {
     // ... do something
 }
 ```
@@ -70,7 +70,7 @@ foreach($audios as $audio) {
 ```php
 $images = $mediaInfoContainer->getImages();
 
-foreach($images as $image) {
+foreach ($images as $image) {
     // ... do something
 }
 ```
@@ -94,7 +94,7 @@ $oneInformation = $general->get('count_of_audio_streams');
 ### Specials types
 
 #### Cover
-For fields:
+For field:
 
 - cover_data
 
