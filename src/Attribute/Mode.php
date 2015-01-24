@@ -17,7 +17,6 @@ class Mode implements AttributeInterface
     /**
      * @param string $shortName
      * @param string $fullName
-     * @return Mode
      */
     public function __construct($shortName, $fullName)
     {

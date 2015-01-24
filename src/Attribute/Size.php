@@ -11,8 +11,6 @@ class Size implements AttributeInterface
 
     /**
      * @param int $size
-     *
-     * @return Size
      */
     public function __construct($size)
     {

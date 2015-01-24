@@ -11,7 +11,6 @@ class Duration implements AttributeInterface
 
     /**
      * @param $duration
-     * @return Duration
      */
     public function __construct($duration)
     {
