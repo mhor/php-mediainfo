@@ -65,6 +65,16 @@ foreach ($audios as $audio) {
 }
 ```
 
+### Get subtitles information from media information container
+
+```php
+$subtitles = $mediaInfoContainer->getSubtitles();
+
+foreach ($subtitles as $subtitle) {
+    // ... do something
+}
+```
+
 ### Get images information from media information container
 
 ```php

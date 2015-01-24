@@ -45,6 +45,7 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(20974464, $audios[0]->get('samples_count'));
         $this->assertEquals(null, $audios[0]->get('test'));
 
-        $this->assertEquals(34, count($mediaInfoContainer->getGeneral()->get()));
+        $subtitles = $mediaInfoContainer->getSubtitles();
+        $this->assertEquals(16, count($subtitles[0]->get()));
     }
 }
