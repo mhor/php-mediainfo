@@ -25,4 +25,12 @@ class Duration implements AttributeInterface
     {
         return $this->milliseconds;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->milliseconds;
+    }
 }

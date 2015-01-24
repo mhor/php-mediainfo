@@ -41,4 +41,12 @@ class Rate implements AttributeInterface
     {
         return $this->textValue;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->textValue;
+    }
 }
