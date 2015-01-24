@@ -26,4 +26,12 @@ class Size implements AttributeInterface
     {
         return $this->bit;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->bit;
+    }
 }

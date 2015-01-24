@@ -24,4 +24,12 @@ class Cover implements AttributeInterface
     {
         return $this->binaryCover;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->binaryCover;
+    }
 }

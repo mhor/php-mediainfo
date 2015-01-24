@@ -40,4 +40,12 @@ class Mode implements AttributeInterface
     {
         return $this->shortName;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->shortName;
+    }
 }
