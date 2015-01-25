@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Type\AbstractType;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
 use Mhor\MediaInfo\Type\Image;
+use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
 
 class MediaInfoContainer
@@ -14,6 +15,7 @@ class MediaInfoContainer
     const AUDIO_CLASS = 'Mhor\MediaInfo\Type\Audio';
     const IMAGE_CLASS = 'Mhor\MediaInfo\Type\Image';
     const VIDEO_CLASS = 'Mhor\MediaInfo\Type\Video';
+    const SUBTITLE_CLASS = 'Mhor\MediaInfo\Type\Subtitle';
 
     /**
      * @var string
@@ -34,6 +36,11 @@ class MediaInfoContainer
      * @var Video[]
      */
     private $videos = array();
+
+    /**
+     * @var Subtitle[]
+     */
+    private $subtitles = array();
 
     /**
      * @var Image[]
@@ -89,6 +96,14 @@ class MediaInfoContainer
     }
 
     /**
+     * @return Subtitle[]
+     */
+    public function getSubtitles()
+    {
+        return $this->subtitles;
+    }
+
+    /**
      * @param General $general
      */
     public function setGeneral($general)
@@ -114,6 +129,9 @@ class MediaInfoContainer
                 break;
             case self::GENERAL_CLASS:
                 $this->setGeneral($trackType);
+                break;
+            case self::SUBTITLE_CLASS:
+                $this->addSubtitle($trackType);
                 break;
             default:
                 throw new \Exception('Unknow type');
@@ -142,5 +160,13 @@ class MediaInfoContainer
     private function addImage(Image $image)
     {
         $this->images[] = $image;
+    }
+
+    /**
+     * @param Subtitle $subtitle
+     */
+    private function addSubtitle(Subtitle $subtitle)
+    {
+        $this->subtitles[] = $subtitle;
     }
 }

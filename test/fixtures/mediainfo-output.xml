@@ -97,6 +97,34 @@
             <Stream_size>18.1 MiB (98%)</Stream_size>
             <Proportion_of_this_stream>0.98404</Proportion_of_this_stream>
         </track>
-
+        <track type="Text" streamid="7">
+            <Count>195</Count>
+            <Count_of_stream_of_this_kind>8</Count_of_stream_of_this_kind>
+            <Kind_of_stream>Text</Kind_of_stream>
+            <Kind_of_stream>Text</Kind_of_stream>
+            <Stream_identifier>6</Stream_identifier>
+            <Stream_identifier>7</Stream_identifier>
+            <StreamOrder>9</StreamOrder>
+            <ID>11</ID>
+            <ID>11</ID>
+            <Unique_ID>652628868</Unique_ID>
+            <Format>UTF-8</Format>
+            <Commercial_name>UTF-8</Commercial_name>
+            <Codec_ID>S_TEXT/UTF8</Codec_ID>
+            <Codec_ID_Info>UTF-8 Plain Text</Codec_ID_Info>
+            <Codec>S_TEXT/UTF8</Codec>
+            <Codec>UTF-8</Codec>
+            <Codec_Info>UTF-8 Plain Text</Codec_Info>
+            <Language>ja</Language>
+            <Language>Japanese</Language>
+            <Language>Japanese</Language>
+            <Language>ja</Language>
+            <Language>jpn</Language>
+            <Language>ja</Language>
+            <Default>No</Default>
+            <Default>No</Default>
+            <Forced>No</Forced>
+            <Forced>No</Forced>
+        </track>
     </File>
 </Mediainfo>

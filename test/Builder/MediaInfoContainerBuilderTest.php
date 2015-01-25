@@ -3,6 +3,7 @@
 namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
+use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Type\AbstractType;
 
 class TrackTestType extends AbstractType{}
@@ -26,24 +27,29 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
     {
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
 
-        $mediaInfoContainerBuilder->addTrackType('Audio', array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::AUDIO, array());
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $audios = $mediaContainer->getAudios();
         $this->assertEquals(0, count($audios[0]->get()));
 
-        $mediaInfoContainerBuilder->addTrackType('Video', array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::VIDEO, array());
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $videos = $mediaContainer->getVideos();
         $this->assertEquals(0, count($videos[0]->get()));
 
-        $mediaInfoContainerBuilder->addTrackType('General', array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::GENERAL, array());
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $this->assertEquals(0, count($mediaContainer->getGeneral()->get()));
 
-        $mediaInfoContainerBuilder->addTrackType('Image', array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::IMAGE, array());
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $images = $mediaContainer->getImages();
         $this->assertEquals(0, count($images[0]->get()));
+
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::SUBTITLE, array());
+        $mediaContainer = $mediaInfoContainerBuilder->build();
+        $subtitles = $mediaContainer->getSubtitles();
+        $this->assertEquals(0, count($subtitles[0]->get()));
     }
 
     /**

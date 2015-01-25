@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Type\AbstractType;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
 use Mhor\MediaInfo\Type\Image;
+use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
 
 class TypeFactory
@@ -14,6 +15,7 @@ class TypeFactory
     const IMAGE = 'Image';
     const GENERAL = 'General';
     const VIDEO = 'Video';
+    const SUBTITLE = 'Text';
 
     /**
      * @param $type
@@ -31,6 +33,8 @@ class TypeFactory
                 return new General();
             case self::VIDEO:
                 return new Video();
+            case self::SUBTITLE:
+                return new Subtitle();
             default:
                 throw new \Exception('Type doesn\'t exist');
         }
