@@ -10,8 +10,13 @@ class MediaInfoCommandBuilder
     public function buildMediaInfoCommandRunner($filepath)
     {
         $fileSystem = new Filesystem();
+        
         if (!$fileSystem->exists($filepath)) {
             throw new \Exception('File doesn\'t exist');
+        }
+
+        if (is_dir($filepath)) {
+            throw new \Exception('You must specify a filename, not a directory name');
         }
 
         return new MediaInfoCommandRunner($filepath);
