@@ -1,5 +1,6 @@
 {
     "name": "mhor/php-mediainfo",
+    "type": "library",
     "description": "Simple class to parse mediainfo command",
     "license": "MIT",
     "authors": [
