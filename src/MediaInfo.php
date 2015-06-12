@@ -10,6 +10,7 @@ class MediaInfo
 {
     /**
      * @param $filePath
+     * @throws UnknownTrackTypeException
      * @return MediaInfoContainer
      */
     public function getInfo($filePath, $ignoreUnknownTrackTypes = false)

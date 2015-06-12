@@ -22,7 +22,7 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
     }
 
     /**
-     * @throws \Exception
+     * @throws UnknownTrackTypeException
      * @return MediaInfoContainer
      */
     public function getMediaInfoContainer($ignoreUnknownTrackTypes = false)
