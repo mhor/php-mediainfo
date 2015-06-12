@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Factory\AttributeFactory;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Type\AbstractType;
+use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 
 class MediaInfoContainerBuilder
 {

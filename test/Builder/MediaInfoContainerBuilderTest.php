@@ -5,6 +5,7 @@ namespace Mhor\MediaInfo\Test\Builder;
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Type\AbstractType;
+use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 
 class TrackTestType extends AbstractType{}
 
