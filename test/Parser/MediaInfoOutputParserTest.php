@@ -11,9 +11,12 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
      */
     private $outputPath;
 
+    private $invalidOutputPath;
+
     public function setUp()
     {
         $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
+        $this->invalidOutputPath = __DIR__.'/../fixtures/mediainfo-output-invalid-types.xml';
     }
 
     /**
@@ -47,5 +50,25 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
 
         $subtitles = $mediaInfoContainer->getSubtitles();
         $this->assertEquals(16, count($subtitles[0]->get()));
+    }
+
+    public function testIgnoreInvalidTrackType()
+    {
+        $mediaInfoOutputParser = new MediaInfoOutputParser();
+        $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
+        // the xml specifically has an unknown type in it
+        // when passing true we want to ignore/skip unknown track types
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer(true);
+    }
+
+    /**
+     * @expectedException UnknownTrackTypeException
+     */
+    public function testThrowInvalidTrackType()
+    {
+        $mediaInfoOutputParser = new MediaInfoOutputParser();
+        $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
+        // will throw exception here as default behavior
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
     }
 }

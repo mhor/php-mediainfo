@@ -44,6 +44,7 @@ class MediaInfoContainerBuilder
     /**
      * @param $typeName
      * @param array $attributes
+     * @throws UnknownTrackTypeException
      */
     public function addTrackType($typeName, array $attributes)
     {

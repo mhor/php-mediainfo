@@ -50,10 +50,15 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $subtitles = $mediaContainer->getSubtitles();
         $this->assertEquals(0, count($subtitles[0]->get()));
+
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::OTHER, array());
+        $mediaContainer = $mediaInfoContainerBuilder->build();
+        $others = $mediaContainer->getOthers();
+        $this->assertEquals(0, count($others[0]->get()));
     }
 
     /**
-     * @expectedException \Exception
+     * @expectedException UnknownTrackTypeException
      */
     public function testAddInvalidType()
     {
