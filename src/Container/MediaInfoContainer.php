@@ -152,9 +152,7 @@ class MediaInfoContainer
                 $this->addOther($trackType);
                 break;
             default:
-                // skip type type rather than wrecking everything
-                // unknown track types are already handled in creation, we shouldn't need to throw anything here
-                break;
+                throw new \Exception('Unknown type');
         }
     }
 
