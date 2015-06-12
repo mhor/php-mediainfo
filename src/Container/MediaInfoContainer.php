@@ -129,6 +129,7 @@ class MediaInfoContainer
 
     /**
      * @param  AbstractType $trackType
+     * @throws \Exception
      */
     public function add(AbstractType $trackType)
     {
