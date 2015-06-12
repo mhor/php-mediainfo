@@ -28,20 +28,20 @@ class TypeFactory
     public function create($type)
     {
         switch ($type) {
-        case self::AUDIO:
-            return new Audio();
-        case self::IMAGE:
-            return new Image();
-        case self::GENERAL:
-            return new General();
-        case self::VIDEO:
-            return new Video();
-        case self::SUBTITLE:
-            return new Subtitle();
-        case self::OTHER:
-            return new Other();
-        default:
-            throw new UnknownTrackTypeException($type);
+            case self::AUDIO:
+                return new Audio();
+            case self::IMAGE:
+                return new Image();
+            case self::GENERAL:
+                return new General();
+            case self::VIDEO:
+                return new Video();
+            case self::SUBTITLE:
+                return new Subtitle();
+            case self::OTHER:
+                return new Other();
+            default:
+                throw new UnknownTrackTypeException($type);
         }
     }
 }
