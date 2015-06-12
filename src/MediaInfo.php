@@ -10,7 +10,8 @@ class MediaInfo
 {
     /**
      * @param $filePath
-     * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The default behavior (false) is throw an exception on unknown track types.
+     * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The 
+                                            default behavior (false) is throw an exception on unknown track types.
      * @throws UnknownTrackTypeException
      * @return MediaInfoContainer
      */
