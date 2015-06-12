@@ -12,7 +12,7 @@ class MediaInfo
      * @param $filePath
      * @return MediaInfoContainer
      */
-    public function getInfo($filePath)
+    public function getInfo($filePath, $ignoreUnknownTrackTypes = false)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath)->run();
@@ -20,6 +20,6 @@ class MediaInfo
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
 
-        return $mediaInfoOutputParser->getMediaInfoContainer();
+        return $mediaInfoOutputParser->getMediaInfoContainer($ignoreUnknownTrackTypes);
     }
 }

@@ -8,6 +8,8 @@ use Mhor\MediaInfo\Type\General;
 use Mhor\MediaInfo\Type\Image;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
+use Mhor\MediaInfo\Type\Other;
+use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 
 class MediaInfoContainer
 {
@@ -16,6 +18,7 @@ class MediaInfoContainer
     const IMAGE_CLASS = 'Mhor\MediaInfo\Type\Image';
     const VIDEO_CLASS = 'Mhor\MediaInfo\Type\Video';
     const SUBTITLE_CLASS = 'Mhor\MediaInfo\Type\Subtitle';
+    const OTHER_CLASS = 'Mhor\MediaInfo\Type\Other';
 
     /**
      * @var string
@@ -48,6 +51,11 @@ class MediaInfoContainer
     private $images = array();
 
     /**
+     * @var Other[]
+     */
+    private $others = array();
+
+    /**
      * @return General
      */
     public function getGeneral()
@@ -69,6 +77,14 @@ class MediaInfoContainer
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * @return Other[]
+     */
+    public function getOthers()
+    {
+        return $this->others;
     }
 
     /**
@@ -113,7 +129,6 @@ class MediaInfoContainer
 
     /**
      * @param  AbstractType $trackType
-     * @throws \Exception
      */
     public function add(AbstractType $trackType)
     {
@@ -133,8 +148,13 @@ class MediaInfoContainer
             case self::SUBTITLE_CLASS:
                 $this->addSubtitle($trackType);
                 break;
+            case self::OTHER_CLASS:
+                $this->addOther($trackType);
+                break;
             default:
-                throw new \Exception('Unknow type');
+                // skip type type rather than wrecking everything
+                // unknown track types are already handled in creation, we shouldn't need to throw anything here
+                break;
         }
     }
 
@@ -168,5 +188,13 @@ class MediaInfoContainer
     private function addSubtitle(Subtitle $subtitle)
     {
         $this->subtitles[] = $subtitle;
+    }
+
+    /**
+     * @param Other $other
+     */
+    private function addOther(Other $other)
+    {
+        $this->others[] = $other;
     }
 }
