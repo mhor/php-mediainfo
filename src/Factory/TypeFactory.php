@@ -23,7 +23,7 @@ class TypeFactory
     /**
      * @param $type
      * @return AbstractType
-     * @throws UnknownTrackTypeException
+     * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
      */
     public function create($type)
     {

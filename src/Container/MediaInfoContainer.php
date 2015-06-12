@@ -9,7 +9,6 @@ use Mhor\MediaInfo\Type\Image;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
 use Mhor\MediaInfo\Type\Other;
-use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 
 class MediaInfoContainer
 {
