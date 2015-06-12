@@ -15,7 +15,5 @@ class UnknownTrackTypeException extends \Exception
     public function getTrackType()
     {
         return $this->trackType;
-    } 
+    }
 }
-
-?>

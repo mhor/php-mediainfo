@@ -29,19 +29,19 @@ class TypeFactory
     {
         switch ($type) {
             case self::AUDIO:
-                return new Audio();
+            return new Audio();
             case self::IMAGE:
-                return new Image();
+            return new Image();
             case self::GENERAL:
-                return new General();
+            return new General();
             case self::VIDEO:
-                return new Video();
+            return new Video();
             case self::SUBTITLE:
-                return new Subtitle();
+            return new Subtitle();
             case self::OTHER:
-               return new Other();
+            return new Other();
             default:
-                throw new UnknownTrackTypeException($type);
+            throw new UnknownTrackTypeException($type);
         }
     }
 }
