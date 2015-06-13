@@ -10,9 +10,12 @@ class MediaInfo
 {
     /**
      * @param $filePath
+     * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
+                                            default behavior (false) is throw an exception on unknown track types.
+     * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
      * @return MediaInfoContainer
      */
-    public function getInfo($filePath)
+    public function getInfo($filePath, $ignoreUnknownTrackTypes = false)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath)->run();
@@ -20,6 +23,6 @@ class MediaInfo
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
 
-        return $mediaInfoOutputParser->getMediaInfoContainer();
+        return $mediaInfoOutputParser->getMediaInfoContainer($ignoreUnknownTrackTypes);
     }
 }
