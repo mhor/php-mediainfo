@@ -14,6 +14,7 @@ class SizeChecker extends AbstractAttributeChecker
     public function create($sizes)
     {
         $size = new Size($sizes[0]);
+
         return $size;
     }
 
@@ -22,9 +23,9 @@ class SizeChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'file_size',
             'stream_size',
-        );
+        ];
     }
 }

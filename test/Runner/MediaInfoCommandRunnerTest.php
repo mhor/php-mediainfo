@@ -18,8 +18,8 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->filePath = __DIR__ . '/../fixtures/test.mp3';
-        $this->outputPath = __DIR__ . '/../fixtures/mediainfo-output.xml';
+        $this->filePath = __DIR__.'/../fixtures/test.mp3';
+        $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
     }
 
     public function testRun()
@@ -37,7 +37,6 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $processMock->method('isSuccessful')
             ->willReturn(true);
 
-
         $processBuilderMock = $this->getMockBuilder('Symfony\Component\Process\ProcessBuilder')
             ->disableOriginalConstructor()
             ->getMock();
@@ -47,7 +46,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
-            array('--OUTPUT=XML', '-f'),
+            ['--OUTPUT=XML', '-f'],
             $processBuilderMock
         );
 
@@ -72,7 +71,6 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $processMock->method('isSuccessful')
             ->willReturn(false);
 
-
         $processBuilderMock = $this->getMockBuilder('Symfony\Component\Process\ProcessBuilder')
             ->disableOriginalConstructor()
             ->getMock();
@@ -82,7 +80,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
-            array('--OUTPUT=XML', '-f'),
+            ['--OUTPUT=XML', '-f'],
             $processBuilderMock
         );
 
@@ -107,7 +105,6 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $processMock->method('isSuccessful')
             ->willReturn(true);
 
-
         $processBuilderMock = $this->getMockBuilder('Symfony\Component\Process\ProcessBuilder')
             ->disableOriginalConstructor()
             ->getMock();
@@ -117,7 +114,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
-            array('--OUTPUT=XML', '-f'),
+            ['--OUTPUT=XML', '-f'],
             $processBuilderMock
         );
 
@@ -134,4 +131,4 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(file_get_contents($this->outputPath), $output);
     }
-} 
+}

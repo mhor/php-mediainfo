@@ -5,7 +5,8 @@ namespace Mhor\MediaInfo\Parser;
 abstract class AbstractXmlOutputParser implements OutputParserInterface
 {
     /**
-     * @param  string $xmlString
+     * @param string $xmlString
+     *
      * @return array
      */
     protected function transformXmlToArray($xmlString)

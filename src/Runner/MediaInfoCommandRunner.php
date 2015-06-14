@@ -29,7 +29,7 @@ class MediaInfoCommandRunner
     /**
      * @var array
      */
-    protected $arguments = array('--OUTPUT=XML', '-f');
+    protected $arguments = ['--OUTPUT=XML', '-f'];
 
     /**
      * @param string         $filePath
@@ -57,8 +57,9 @@ class MediaInfoCommandRunner
     }
 
     /**
-     * @return string
      * @throws \RuntimeException
+     *
+     * @return string
      */
     public function run()
     {
@@ -88,9 +89,11 @@ class MediaInfoCommandRunner
 
     /**
      * Blocks until call is complete.
-     * @return string
-     * @throws \Exception If this function is called before start()
+     *
+     * @throws \Exception        If this function is called before start()
      * @throws \RuntimeException
+     *
+     * @return string
      */
     public function wait()
     {
@@ -100,7 +103,7 @@ class MediaInfoCommandRunner
 
         // blocks here until process completes
         $this->processAsync->wait();
-        
+
         if (!$this->processAsync->isSuccessful()) {
             throw new \RuntimeException($this->processAsync->getErrorOutput());
         }

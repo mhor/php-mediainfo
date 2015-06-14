@@ -44,6 +44,7 @@ class MediaInfoContainerBuilder
     /**
      * @param $typeName
      * @param array $attributes
+     *
      * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
      */
     public function addTrackType($typeName, array $attributes)
@@ -75,7 +76,8 @@ class MediaInfoContainerBuilder
     }
 
     /**
-     * @param  string $attribute
+     * @param string $attribute
+     *
      * @return string
      */
     private function formatAttribute($attribute)
