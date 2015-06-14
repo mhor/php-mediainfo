@@ -6,6 +6,7 @@ class DateTimeChecker extends AbstractAttributeChecker
 {
     /**
      * @param string $value
+     *
      * @return \DateTime
      */
     public function create($value)
@@ -18,9 +19,9 @@ class DateTimeChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'file_last_modification_date',
-            'file_last_modification_date_local'
-        );
+            'file_last_modification_date_local',
+        ];
     }
 }

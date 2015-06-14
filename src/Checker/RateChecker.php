@@ -14,6 +14,7 @@ class RateChecker extends AbstractAttributeChecker
     public function create($value)
     {
         $rate = new Rate($value[0], $value[1]);
+
         return $rate;
     }
 
@@ -22,7 +23,7 @@ class RateChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'channel_s',
             'bit_rate',
             'sampling_rate',
@@ -36,6 +37,6 @@ class RateChecker extends AbstractAttributeChecker
             'height',
             'resolution',
             'original_display_aspect_ratio',
-        );
+        ];
     }
 }

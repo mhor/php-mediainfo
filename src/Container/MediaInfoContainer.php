@@ -6,9 +6,9 @@ use Mhor\MediaInfo\Type\AbstractType;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
 use Mhor\MediaInfo\Type\Image;
+use Mhor\MediaInfo\Type\Other;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
-use Mhor\MediaInfo\Type\Other;
 
 class MediaInfoContainer
 {
@@ -32,27 +32,27 @@ class MediaInfoContainer
     /**
      * @var Audio[]
      */
-    private $audios = array();
+    private $audios = [];
 
     /**
      * @var Video[]
      */
-    private $videos = array();
+    private $videos = [];
 
     /**
      * @var Subtitle[]
      */
-    private $subtitles = array();
+    private $subtitles = [];
 
     /**
      * @var Image[]
      */
-    private $images = array();
+    private $images = [];
 
     /**
      * @var Other[]
      */
-    private $others = array();
+    private $others = [];
 
     /**
      * @return General
@@ -127,7 +127,8 @@ class MediaInfoContainer
     }
 
     /**
-     * @param  AbstractType $trackType
+     * @param AbstractType $trackType
+     *
      * @throws \Exception
      */
     public function add(AbstractType $trackType)

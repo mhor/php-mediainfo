@@ -8,11 +8,13 @@ class DurationChecker extends AbstractAttributeChecker
 {
     /**
      * @param array $durations
+     *
      * @return Duration
      */
     public function create($durations)
     {
         $duration = new Duration($durations[0]);
+
         return $duration;
     }
 
@@ -21,11 +23,11 @@ class DurationChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'duration',
             'delay_relative_to_video',
             'video0_delay',
             'delay',
-        );
+        ];
     }
 }

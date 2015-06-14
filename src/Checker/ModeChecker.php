@@ -6,9 +6,9 @@ use Mhor\MediaInfo\Attribute\Mode;
 
 class ModeChecker extends AbstractAttributeChecker
 {
-
     /**
      * @param array $rateMode
+     *
      * @return Mode
      */
     public function create($rateMode)
@@ -17,6 +17,7 @@ class ModeChecker extends AbstractAttributeChecker
             $rateMode[1] = $rateMode[0];
         }
         $mode = new Mode($rateMode[0], $rateMode[1]);
+
         return $mode;
     }
 
@@ -25,7 +26,7 @@ class ModeChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'overall_bit_rate_mode',
             'overall_bit_rate',
             'bit_rate_mode',
@@ -46,6 +47,6 @@ class ModeChecker extends AbstractAttributeChecker
             'frame_rate_mode',
             'format_settings_cabac',
             'unique_id',
-        );
+        ];
     }
 }

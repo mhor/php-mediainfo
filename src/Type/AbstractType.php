@@ -7,11 +7,12 @@ abstract class AbstractType
     /**
      * @var array
      */
-    protected $attributes = array();
+    protected $attributes = [];
 
     /**
      * @param $attribute
      * @param string|object $value
+     *
      * @return string
      */
     public function set($attribute, $value)
