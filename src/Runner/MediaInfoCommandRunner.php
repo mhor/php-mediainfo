@@ -92,7 +92,7 @@ class MediaInfoCommandRunner
      * @throws \Exception If this function is called before start()
      * @throws \RuntimeException
      */
-    public function wait() 
+    public function wait()
     {
         if ($processAsync == null) {
             throw new \Exception('You must run `start` before running `wait`');
