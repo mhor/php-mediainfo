@@ -14,6 +14,7 @@ class RateChecker extends AbstractAttributeChecker
     public function create($value)
     {
         $rate = new Rate($value[0], $value[1]);
+
         return $rate;
     }
 

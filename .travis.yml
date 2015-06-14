@@ -1,15 +1,20 @@
 language: php
 
 php:
+  - 5.3.3
   - 5.3
   - 5.4
+  - 5.5.9
   - 5.5
   - 5.6
+  - 7.0
   - hhvm
 
+install:
+  - travis_retry composer install --no-interaction --prefer-source
+
 before_script:
-    - composer install --dev --prefer-source
-    - mkdir -p build/logs
+  - mkdir -p build/logs
 
 script:
   - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
