@@ -9,14 +9,14 @@ use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 class MediaInfo
 {
     /**
-     * @var MediaInfoCommandRunner
+     * @var MediaInfoCommandRunner|null
      */
     private $mediaInfoCommandRunnerAsync = null;
 
     /**
      * @param $filePath
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
-     default behavior (false) is throw an exception on unknown track types.
+     *                                      default behavior (false) is throw an exception on unknown track types.
      * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
      *
      * @return MediaInfoContainer
@@ -34,6 +34,7 @@ class MediaInfo
 
     /**
      * Call to start asynchronous process.
+     *
      * Make call to MediaInfo::getInfoWaitAsync() afterwards to received MediaInfoContainer object.
      *
      * @param $filePath
@@ -47,7 +48,7 @@ class MediaInfo
 
     /**
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
-     default behavior (false) is throw an exception on unknown track types.
+     *                                      default behavior (false) is throw an exception on unknown track types.
      * @throws \Exception                                         If this function is called before getInfoStartAsync()
      * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
      *
