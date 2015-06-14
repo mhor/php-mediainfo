@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": ">=5.3.3",
         "symfony/process": "~2.3",
         "symfony/filesystem": "~2.3"
     },
