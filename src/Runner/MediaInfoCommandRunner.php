@@ -80,10 +80,10 @@ class MediaInfoCommandRunner
     public function start()
     {
         $this->processBuilder->add($this->filePath);
-        $process = $this->processBuilder->getProcess();
+        $this->processAsync = $this->processBuilder->getProcess();
         // just takes advantage of symfony's underlying Process framework
         // process runs in background
-        $this->processAsync = $process->start();
+        $this->processAsync->start();
     }
 
     /**
