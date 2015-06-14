@@ -39,8 +39,8 @@ class MediaInfo
     public function getInfoStartAsync($filePath)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $mediaInfoCommandRunnerAsync = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath);
-        $mediaInfoCommandRunnerAsync->start();
+        $this->mediaInfoCommandRunnerAsync = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath);
+        $this->mediaInfoCommandRunnerAsync->start();
     }
 
     /**
@@ -52,12 +52,12 @@ class MediaInfo
      */
     public function getInfoWaitAsync($ignoreUnknownTrackTypes = false)
     {
-        if ($mediaInfoCommandRunnerAsync == null) {
+        if ($this->mediaInfoCommandRunnerAsync == null) {
             throw new \Exception('You must run `getInfoStartAsync` before running `getInfoWaitAsync`');
         }
 
         // blocks here until process is complete
-        $output = $mediaInfoCommandRunnerAsync->wait();
+        $output = $this->mediaInfoCommandRunnerAsync->wait();
 
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
