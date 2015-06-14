@@ -8,11 +8,13 @@ class CoverChecker extends AbstractAttributeChecker
 {
     /**
      * @param string $value
+     *
      * @return Cover
      */
     public function create($value)
     {
         $cover = new Cover($value);
+
         return $cover;
     }
 

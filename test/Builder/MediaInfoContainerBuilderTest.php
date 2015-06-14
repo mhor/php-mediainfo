@@ -6,7 +6,9 @@ use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Type\AbstractType;
 
-class TrackTestType extends AbstractType{}
+class TrackTestType extends AbstractType
+{
+}
 
 class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
 {

@@ -16,8 +16,9 @@ class MediaInfo
     /**
      * @param $filePath
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
-                                            default behavior (false) is throw an exception on unknown track types.
+     default behavior (false) is throw an exception on unknown track types.
      * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
+     *
      * @return MediaInfoContainer
      */
     public function getInfo($filePath, $ignoreUnknownTrackTypes = false)
@@ -33,7 +34,8 @@ class MediaInfo
 
     /**
      * Call to start asynchronous process.
-     * Make call to MediaInfo::getInfoWaitAsync() afterwards to received MediaInfoContainer object
+     * Make call to MediaInfo::getInfoWaitAsync() afterwards to received MediaInfoContainer object.
+     *
      * @param $filePath
      */
     public function getInfoStartAsync($filePath)
@@ -45,9 +47,10 @@ class MediaInfo
 
     /**
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
-                                            default behavior (false) is throw an exception on unknown track types.
-     * @throws \Exception If this function is called before getInfoStartAsync()
+     default behavior (false) is throw an exception on unknown track types.
+     * @throws \Exception                                         If this function is called before getInfoStartAsync()
      * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
+     *
      * @return MediaInfoContainer
      */
     public function getInfoWaitAsync($ignoreUnknownTrackTypes = false)

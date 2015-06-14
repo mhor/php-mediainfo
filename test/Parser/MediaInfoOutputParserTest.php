@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Parser;
+namespace Mhor\MediaInfo\test\Parser;
 
 use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 
