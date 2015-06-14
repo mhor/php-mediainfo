@@ -17,6 +17,11 @@ class MediaInfoCommandRunner
     protected $processBuilder;
 
     /**
+     * @var Process
+     */
+    protected $processAsync = null;
+
+    /**
      * @var string
      */
     protected $command = 'mediainfo';
@@ -66,5 +71,40 @@ class MediaInfoCommandRunner
         }
 
         return $process->getOutput();
+    }
+
+    /**
+     * Asynchronously start mediainfo operation.
+     * Make call to MediaInfoCommandRunner::wait() afterwards to receive output.
+     */
+    public function start()
+    {
+        $this->processBuilder->add($this->filePath);
+        $this->processAsync = $this->processBuilder->getProcess();
+        // just takes advantage of symfony's underlying Process framework
+        // process runs in background
+        $this->processAsync->start();
+    }
+
+    /**
+     * Blocks until call is complete.
+     * @return string
+     * @throws \Exception If this function is called before start()
+     * @throws \RuntimeException
+     */
+    public function wait()
+    {
+        if ($this->processAsync == null) {
+            throw new \Exception('You must run `start` before running `wait`');
+        }
+
+        // blocks here until process completes
+        $this->processAsync->wait();
+        
+        if (!$this->processAsync->isSuccessful()) {
+            throw new \RuntimeException($this->processAsync->getErrorOutput());
+        }
+
+        return $this->processAsync->getOutput();
     }
 }
