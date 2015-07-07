@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\test\Parser;
+namespace Mhor\MediaInfo\Test\Parser;
 
 use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 
@@ -62,7 +62,7 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Mhor\MediaInfo\Exception\UnknownTrackTypeException
+     * @expectedException \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      */
     public function testThrowInvalidTrackType()
     {

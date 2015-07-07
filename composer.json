@@ -1,7 +1,7 @@
 {
     "name": "mhor/php-mediainfo",
     "type": "library",
-    "description": "Simple class to parse mediainfo command",
+    "description": "PHP wrapper around the mediainfo command",
     "license": "MIT",
     "authors": [
         {
@@ -24,6 +24,12 @@
             "Mhor\\MediaInfo\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Mhor\\MediaInfo\\Test\\": "test/"
+        }
+    },
+
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"

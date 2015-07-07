@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\test\Builder;
+namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Builder\MediaInfoCommandBuilder;
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;

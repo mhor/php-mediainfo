@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\test\Attribute;
+namespace Mhor\MediaInfo\Test\Attribute;
 
 use Mhor\MediaInfo\Attribute\Cover;
 use Mhor\MediaInfo\Attribute\Duration;

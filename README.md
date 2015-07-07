@@ -1,32 +1,35 @@
 #Php-MediaInfo [![Build Status](https://travis-ci.org/mhor/php-mediainfo.svg?branch=master)](https://travis-ci.org/mhor/php-mediainfo) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mhor/php-mediainfo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mhor/php-mediainfo/?branch=master) [![Coverage Status](https://img.shields.io/coveralls/mhor/php-mediainfo.svg)](https://coveralls.io/r/mhor/php-mediainfo?branch=master) [![Packagist](https://img.shields.io/packagist/v/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![Packagist](https://img.shields.io/packagist/dt/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![StyleCI](https://styleci.io/repos/27673427/shield?style=flat)](https://styleci.io/repos/27673427)
 
 ## Introduction
-PHP library to run `mediainfo` command
+
+PHP wrapper around the `mediainfo` command
 
 ## Installation
 
+### 1 - Install  mediainfo
 You should install [mediainfo](http://manpages.ubuntu.com/manpages/gutsy/man1/mediainfo.1.html):
 
-On linux:
+#### On linux:
 
 ```bash
 $ sudo apt-get install mediainfo
 ```
 
-On Mac:
+#### On Mac:
 
 ```bash
 $ brew install mediainfo
 ```
 
-To use this class install it through [Composer](https://getcomposer.org/), add:
+### 2 - Integration in your php project
+
+To use this library install it through [Composer](https://getcomposer.org/), add:
 
 ```bash
 $ composer require mhor/php-mediainfo
 ```
 
 ## How to use
-
 
 ### Retrieve media information container
 ```php
@@ -175,6 +178,17 @@ For fields:
 
 #### Others
 - All date fields will be transformed into `Datetime` php object
+
+
+### Extra
+
+#### Symfony integration
+
+Look at this bundle: [MhorMediainfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
+
+#### Codeigniter integration
+
+Look at [this](https://philsturgeon.uk/blog/2012/05/composer-with-codeigniter/) to use composer with Codeigniter
 
 ##LICENSE
 See `LICENSE` for more information
