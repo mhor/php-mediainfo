@@ -6,7 +6,7 @@ PHP wrapper around the `mediainfo` command
 
 ## Installation
 
-### 1 - Install  mediainfo
+### 1 - Install mediainfo
 You should install [mediainfo](http://manpages.ubuntu.com/manpages/gutsy/man1/mediainfo.1.html):
 
 #### On linux:
@@ -23,7 +23,7 @@ $ brew install mediainfo
 
 ### 2 - Integration in your php project
 
-To use this library install it through [Composer](https://getcomposer.org/), add:
+To use this library install it through [Composer](https://getcomposer.org/), run:
 
 ```bash
 $ composer require mhor/php-mediainfo
@@ -184,7 +184,7 @@ For fields:
 
 #### Symfony integration
 
-Look at this bundle: [MhorMediainfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
+Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
 
 #### Codeigniter integration
 
