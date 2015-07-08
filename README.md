@@ -4,6 +4,13 @@
 
 PHP wrapper around the `mediainfo` command
 
+## Table of contents:
+- [Installation](#installation)
+- [How to use](#how-to-use)
+- [Specials types](#specials-types)
+- [Extra](#extra)
+- [License](#license)
+
 ## Installation
 
 ### 1 - Install mediainfo
@@ -180,15 +187,15 @@ For fields:
 - All date fields will be transformed into `Datetime` php object
 
 
-### Extra
+## Extra
 
-#### Symfony integration
+### Symfony integration
 
 Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
 
-#### Codeigniter integration
+### Codeigniter integration
 
 Look at [this](https://philsturgeon.uk/blog/2012/05/composer-with-codeigniter/) to use composer with Codeigniter
 
-##LICENSE
+##License
 See `LICENSE` for more information
