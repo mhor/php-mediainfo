@@ -4,11 +4,7 @@ namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
 use Mhor\MediaInfo\Factory\TypeFactory;
-use Mhor\MediaInfo\Type\AbstractType;
-
-class TrackTestType extends AbstractType
-{
-}
+use Mhor\MediaInfo\Test\Stub\TrackTestType;
 
 class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
 {
@@ -60,7 +56,7 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Mhor\MediaInfo\Exception\UnknownTrackTypeException
+     * @expectedException \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      */
     public function testAddInvalidType()
     {
