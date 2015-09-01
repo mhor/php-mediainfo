@@ -7,18 +7,19 @@ use Mhor\MediaInfo\Attribute\Mode;
 class ModeChecker extends AbstractAttributeChecker
 {
     /**
-     * @param array $rateMode
+     * @param array|string $rateMode
      *
      * @return Mode
      */
     public function create($rateMode)
     {
+        $rateMode = (array) $rateMode;
+
         if (!isset($rateMode[1])) {
             $rateMode[1] = $rateMode[0];
         }
-        $mode = new Mode($rateMode[0], $rateMode[1]);
 
-        return $mode;
+        return new Mode($rateMode[0], $rateMode[1]);
     }
 
     /**
