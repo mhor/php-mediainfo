@@ -172,6 +172,7 @@ For fields:
 - height
 - resolution
 - original_display_aspect_ratio
+- maximum_bit_rate
 
 [Rate](src/Attribute/Rate.php) type will be applied
 
