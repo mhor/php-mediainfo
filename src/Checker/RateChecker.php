@@ -24,6 +24,7 @@ class RateChecker extends AbstractAttributeChecker
     public function getMembersFields()
     {
         return array(
+            'maximum_bit_rate',
             'channel_s',
             'bit_rate',
             'sampling_rate',
