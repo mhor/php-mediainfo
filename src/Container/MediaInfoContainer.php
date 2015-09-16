@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Type\AbstractType;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
 use Mhor\MediaInfo\Type\Image;
+use Mhor\MediaInfo\Type\Menu;
 use Mhor\MediaInfo\Type\Other;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
@@ -17,6 +18,7 @@ class MediaInfoContainer
     const IMAGE_CLASS = 'Mhor\MediaInfo\Type\Image';
     const VIDEO_CLASS = 'Mhor\MediaInfo\Type\Video';
     const SUBTITLE_CLASS = 'Mhor\MediaInfo\Type\Subtitle';
+    const MENU_CLASS = 'Mhor\MediaInfo\Type\Menu';
     const OTHER_CLASS = 'Mhor\MediaInfo\Type\Other';
 
     /**
@@ -50,6 +52,12 @@ class MediaInfoContainer
     private $images = array();
 
     /**
+     * @var Menu[]
+     */
+    private $menus = array();
+
+
+    /**
      * @var Other[]
      */
     private $others = array();
@@ -76,6 +84,14 @@ class MediaInfoContainer
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * @return Menu[]
+     */
+    public function getMenus()
+    {
+        return $this->menus;
     }
 
     /**
@@ -149,6 +165,9 @@ class MediaInfoContainer
             case self::SUBTITLE_CLASS:
                 $this->addSubtitle($trackType);
                 break;
+            case self::MENU_CLASS:
+                $this->addMenu($trackType);
+                break;
             case self::OTHER_CLASS:
                 $this->addOther($trackType);
                 break;
@@ -187,6 +206,14 @@ class MediaInfoContainer
     private function addSubtitle(Subtitle $subtitle)
     {
         $this->subtitles[] = $subtitle;
+    }
+
+    /**
+     * @param Menu $menu
+     */
+    private function addMenu(Menu $menu)
+    {
+        $this->menus[] = $menu;
     }
 
     /**
