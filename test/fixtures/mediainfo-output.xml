@@ -125,5 +125,21 @@
             <Forced>No</Forced>
             <Forced>No</Forced>
         </track>
+        <track type="Menu">
+            <Count>84</Count>
+            <Count_of_stream_of_this_kind>1</Count_of_stream_of_this_kind>
+            <Kind_of_stream>Menu</Kind_of_stream>
+            <Kind_of_stream>Menu</Kind_of_stream>
+            <Stream_identifier>0</Stream_identifier>
+            <Chapters_Pos_Begin>77</Chapters_Pos_Begin>
+            <Chapters_Pos_End>84</Chapters_Pos_End>
+            <_00_00_00000>en:Chapter 1</_00_00_00000>
+            <_00_01_35000>en:Chapter 2</_00_01_35000>
+            <_00_03_04800>en:Chapter 3</_00_03_04800>
+            <_00_13_05200>en:Chapter 4</_00_13_05200>
+            <_00_22_14700>en:Chapter 5</_00_22_14700>
+            <_00_23_44600>en:Chapter 6</_00_23_44600>
+            <_00_24_01000>en:Chapter 7</_00_24_01000>
+        </track>
     </File>
 </Mediainfo>
