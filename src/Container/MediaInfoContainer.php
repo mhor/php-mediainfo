@@ -56,7 +56,6 @@ class MediaInfoContainer
      */
     private $menus = array();
 
-
     /**
      * @var Other[]
      */

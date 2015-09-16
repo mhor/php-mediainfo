@@ -7,13 +7,13 @@ use Mhor\MediaInfo\Type as Type;
 
 class TypeFactory
 {
-    const AUDIO    = 'Audio';
-    const IMAGE    = 'Image';
-    const GENERAL  = 'General';
-    const VIDEO    = 'Video';
+    const AUDIO = 'Audio';
+    const IMAGE = 'Image';
+    const GENERAL = 'General';
+    const VIDEO = 'Video';
     const SUBTITLE = 'Text';
-    const MENU     = 'Menu';
-    const OTHER    = 'Other';
+    const MENU = 'Menu';
+    const OTHER = 'Other';
 
     /**
      * @param string $type

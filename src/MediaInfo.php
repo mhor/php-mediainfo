@@ -52,7 +52,7 @@ class MediaInfo
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
      *                                      default behavior (false) is throw an exception on unknown track types.
      *
-     * @throws \Exception                                         If this function is called before getInfoStartAsync()
+     * @throws \Exception                                          If this function is called before getInfoStartAsync()
      * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      *
      * @return MediaInfoContainer
