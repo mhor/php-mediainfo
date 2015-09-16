@@ -42,6 +42,7 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Mhor\MediaInfo\Type\General', get_class($mediaInfoContainer->getGeneral()));
 
         $this->assertEquals(1, count($mediaInfoContainer->getAudios()));
+        $this->assertEquals(1, count($mediaInfoContainer->getMenus()));
 
         $audios = $mediaInfoContainer->getAudios();
         $this->assertEquals(20, count($audios[0]->get()));

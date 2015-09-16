@@ -95,6 +95,30 @@ foreach ($images as $image) {
 }
 ```
 
+### Get menus information from media information container
+
+```php
+$menus = $mediaInfoContainer->getMenus();
+
+foreach ($menus as $menu) {
+    // ... do something
+}
+```
+
+### Ignore unknown types:
+
+By default unknown type throw an error this, to avoid this behavior, you can do:
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfoContainer = $mediaInfo->getInfo('music.mp3', false);
+
+$others = $mediaInfoContainer->getOthers();
+foreach ($others as $other) {
+    // ... do something
+}
+```
+
 ### Access to information
 
 #### Get all information into an array

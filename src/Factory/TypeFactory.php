@@ -3,13 +3,7 @@
 namespace Mhor\MediaInfo\Factory;
 
 use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
-use Mhor\MediaInfo\Type\AbstractType;
-use Mhor\MediaInfo\Type\Audio;
-use Mhor\MediaInfo\Type\General;
-use Mhor\MediaInfo\Type\Image;
-use Mhor\MediaInfo\Type\Other;
-use Mhor\MediaInfo\Type\Subtitle;
-use Mhor\MediaInfo\Type\Video;
+use Mhor\MediaInfo\Type as Type;
 
 class TypeFactory
 {
@@ -18,30 +12,33 @@ class TypeFactory
     const GENERAL = 'General';
     const VIDEO = 'Video';
     const SUBTITLE = 'Text';
+    const MENU = 'Menu';
     const OTHER = 'Other';
 
     /**
-     * @param $type
+     * @param string $type
      *
-     * @throws Mhor\MediaInfo\Exception\UnknownTrackTypeException
+     * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      *
-     * @return AbstractType
+     * @return Type\AbstractType
      */
     public function create($type)
     {
         switch ($type) {
             case self::AUDIO:
-                return new Audio();
+                return new Type\Audio();
             case self::IMAGE:
-                return new Image();
+                return new Type\Image();
             case self::GENERAL:
-                return new General();
+                return new Type\General();
             case self::VIDEO:
-                return new Video();
+                return new Type\Video();
             case self::SUBTITLE:
-                return new Subtitle();
+                return new Type\Subtitle();
+            case self::MENU:
+                return new Type\Menu();
             case self::OTHER:
-                return new Other();
+                return new Type\Other();
             default:
                 throw new UnknownTrackTypeException($type);
         }
