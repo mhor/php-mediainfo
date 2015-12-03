@@ -17,7 +17,8 @@ abstract class AbstractType
      */
     public function set($attribute, $value)
     {
-        $this->attributes[$attribute] = $value;
+        if(!isset($this->attributes[$attribute]))
+            $this->attributes[$attribute] = $value;
     }
 
     /**
