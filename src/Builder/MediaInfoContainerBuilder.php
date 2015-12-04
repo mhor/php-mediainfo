@@ -61,18 +61,44 @@ class MediaInfoContainerBuilder
      */
     private function addAttributes(AbstractType $trackType, $attributes)
     {
-        $this->mediaInfoContainer;
-        foreach ($attributes as $attribute => $value) {
+        foreach ($this->sanitizeAttributes($attributes) as $attribute => $value) {
             if ($attribute[0] === '@') {
                 continue;
             }
 
-            $attribute = $this->formatAttribute($attribute);
             $trackType->set(
                 $attribute,
                 AttributeFactory::create($attribute, $value)
             );
         }
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    private function sanitizeAttributes(array $attributes)
+    {
+        $sanitizeAttributes = array();
+        foreach ($attributes as $key => $value) {
+            $key = $this->formatAttribute($key);
+            if (isset($sanitizeAttributes[$key])) {
+                if (!is_array($sanitizeAttributes[$key])) {
+                    $sanitizeAttributes[$key] = array($sanitizeAttributes[$key]);
+                }
+
+                if (!is_array($value)) {
+                    $value = array($value);
+                }
+
+                $value = $sanitizeAttributes[$key] + $value;
+            }
+
+            $sanitizeAttributes[$key] = $value;
+        }
+
+        return $sanitizeAttributes;
     }
 
     /**

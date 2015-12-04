@@ -2,6 +2,7 @@
 
 namespace Mhor\MediaInfo\Test\Builder;
 
+use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Test\Stub\TrackTestType;
@@ -72,5 +73,25 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
         $mediaInfoContainer = $mediaInfoContainerBuilder->build();
         $mediaInfoContainer->add(new TrackTestType());
+    }
+
+    public function testSanitizeAttributes()
+    {
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::AUDIO, array(
+            'Duration' => '10',
+            'DuRatioN' => '20',
+            'DURATION' => '4000',
+
+        ));
+
+        $mediaContainer = $mediaInfoContainerBuilder->build();
+        $audios = $mediaContainer->getAudios();
+
+        $this->assertEquals('Mhor\MediaInfo\Attribute\Duration', get_class($audios[0]->get('duration')));
+
+        /** @var Duration $duration */
+        $duration = $audios[0]->get('duration');
+        $this->assertEquals('10', $duration->getMilliseconds());
     }
 }

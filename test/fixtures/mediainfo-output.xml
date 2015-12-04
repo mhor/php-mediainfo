@@ -33,6 +33,7 @@
             <Duration>7mn 55s 193ms</Duration>
             <Duration>7mn 55s</Duration>
             <Duration>00:07:55.193</Duration>
+            <DURATION>test_field</DURATION>
             <Overall_bit_rate_mode>CBR</Overall_bit_rate_mode>
             <Overall_bit_rate_mode>Constant</Overall_bit_rate_mode>
             <Overall_bit_rate>320000</Overall_bit_rate>
