@@ -4,5 +4,4 @@ enabled:
   - long_array_syntax
 
 disabled:
-  - psr0
   - short_array_syntax
