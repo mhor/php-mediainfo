@@ -75,15 +75,40 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $mediaInfoContainer->add(new TrackTestType());
     }
 
-    public function testSanitizeAttributes()
+    public function attributesProvider()
+    {
+        return array(
+            array(
+                array(
+                    'Duration' => '10',
+                    'DuRatioN' => '20',
+                    'DURATION' => '4000',
+                ),
+            ),
+            array(
+                array(
+                    'Duration' => array('10', '30', '40'),
+                    'DuRatioN' => '20',
+                    'DURATION' => '4000',
+                ),
+            ),
+            array(
+                array(
+                    'Duration' => '10',
+                    'DuRatioN' => '20',
+                    'DURATION' => array('60', '70', '80'),
+                ),
+            ),
+        );
+    }
+
+    /**
+     * @dataProvider attributesProvider
+     */
+    public function testSanitizeAttributes(array $attributes)
     {
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::AUDIO, array(
-            'Duration' => '10',
-            'DuRatioN' => '20',
-            'DURATION' => '4000',
-
-        ));
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::AUDIO, $attributes);
 
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $audios = $mediaContainer->getAudios();
