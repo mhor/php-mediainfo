@@ -12,6 +12,9 @@ php:
   - 7.0
   - hhvm
 
+env:
+    global:
+        - LANG=en_US.UTF-8
 install:
   - travis_retry composer install --no-interaction --prefer-source
 
