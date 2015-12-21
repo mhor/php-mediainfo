@@ -4,7 +4,6 @@ namespace Mhor\MediaInfo\Runner;
 
 use Symfony\Component\Process\ProcessBuilder;
 
-
 class MediaInfoCommandRunner
 {
     /**
