@@ -39,7 +39,6 @@ class MediaInfoCommandRunner
     public function __construct($filePath, array $arguments = null, $processBuilder = null)
     {
         $this->filePath = $filePath;
-
         if ($arguments !== null) {
             $this->arguments = $arguments;
         }
@@ -63,10 +62,10 @@ class MediaInfoCommandRunner
      */
     public function run()
     {
-        $this->processBuilder->add($this->filePath);
+        $lc_ctype = setlocale(LC_CTYPE, 0);
+        $this->processBuilder->add($this->filePath)->addEnvironmentVariables(array('LANG' => $lc_ctype));
         $process = $this->processBuilder->getProcess();
         $process->run();
-
         if (!$process->isSuccessful()) {
             throw new \RuntimeException($process->getErrorOutput());
         }
