@@ -3,7 +3,7 @@
 namespace Mhor\MediaInfo\Runner;
 
 use Symfony\Component\Process\ProcessBuilder;
-use Symfony\Component\Process\Process;
+
 
 class MediaInfoCommandRunner
 {
