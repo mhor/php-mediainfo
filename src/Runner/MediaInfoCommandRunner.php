@@ -63,7 +63,7 @@ class MediaInfoCommandRunner
      */
     public function run()
     {
-        $lc_ctype = setlocale(LC_CTYPE,0);
+        $lc_ctype = setlocale(LC_CTYPE, 0);
         $this->processBuilder->add($this->filePath)->addEnvironmentVariables(array('LANG' => $lc_ctype));
         $process = $this->processBuilder->getProcess();
         $process->run();
