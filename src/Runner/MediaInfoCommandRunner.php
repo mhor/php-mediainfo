@@ -44,12 +44,7 @@ class MediaInfoCommandRunner
         }
 
         if ($processBuilder === null) {
-            $prefix = $this->arguments;
-            array_unshift($prefix, $this->command);
-            $this->processBuilder = ProcessBuilder::create()
-                ->setPrefix(
-                    $prefix
-                );
+            $this->processBuilder = ProcessBuilder::create()->setPrefix($this->command)->setArguments($this->arguments);
         } else {
             $this->processBuilder = $processBuilder;
         }
