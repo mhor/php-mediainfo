@@ -15,6 +15,13 @@ class MediaInfo
     private $mediaInfoCommandRunnerAsync = null;
 
     /**
+     * @var array
+     */
+    private $configuration = array(
+        'command' => null,
+    );
+
+    /**
      * @param $filePath
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
      *                                      default behavior (false) is throw an exception on unknown track types.
@@ -26,7 +33,7 @@ class MediaInfo
     public function getInfo($filePath, $ignoreUnknownTrackTypes = false)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath)->run();
+        $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath, $this->configuration)->run();
 
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
@@ -44,7 +51,10 @@ class MediaInfo
     public function getInfoStartAsync($filePath)
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $this->mediaInfoCommandRunnerAsync = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath);
+        $this->mediaInfoCommandRunnerAsync = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
+            $filePath,
+            $this->configuration
+        );
         $this->mediaInfoCommandRunnerAsync->start();
     }
 
@@ -70,5 +80,20 @@ class MediaInfo
         $mediaInfoOutputParser->parse($output);
 
         return $mediaInfoOutputParser->getMediaInfoContainer($ignoreUnknownTrackTypes);
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     */
+    public function setConfig($key, $value)
+    {
+        if (!array_key_exists($key, $this->configuration)) {
+            throw new \Exception(
+                sprintf('key "%s" does\'t exist', $key)
+            );
+        }
+
+        $this->configuration[$key] = $value;
     }
 }

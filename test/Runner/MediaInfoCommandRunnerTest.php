@@ -46,6 +46,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
+            null,
             array('--OUTPUT=XML', '-f'),
             $processBuilderMock
         );
@@ -80,6 +81,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
+            'custom_mediainfo',
             array('--OUTPUT=XML', '-f'),
             $processBuilderMock
         );
@@ -114,6 +116,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
+            null,
             array('--OUTPUT=XML', '-f'),
             $processBuilderMock
         );

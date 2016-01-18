@@ -31,4 +31,18 @@ class MediaInfoCommandBuilderTest extends \PHPUnit_Framework_TestCase
         $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner($this->filePath);
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
+
+    public function testConfiguredCommand()
+    {
+        $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
+        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
+            $this->filePath,
+            array(
+                'command' => '/usr/bin/local/mediainfo',
+            )
+        );
+
+        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner($this->filePath, '/usr/bin/local/mediainfo');
+        $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
+    }
 }

@@ -7,7 +7,13 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class MediaInfoCommandBuilder
 {
-    public function buildMediaInfoCommandRunner($filepath)
+    /**
+     * @param string $filepath
+     * @param array  $configuration
+     *
+     * @return MediaInfoCommandRunner
+     */
+    public function buildMediaInfoCommandRunner($filepath, array $configuration = array())
     {
         $fileSystem = new Filesystem();
 
@@ -19,6 +25,10 @@ class MediaInfoCommandBuilder
             throw new \Exception('You must specify a filename, not a directory name');
         }
 
-        return new MediaInfoCommandRunner($filepath);
+        $configuration = $configuration + array(
+            'command' => null,
+        );
+
+        return new MediaInfoCommandRunner($filepath, $configuration['command']);
     }
 }
