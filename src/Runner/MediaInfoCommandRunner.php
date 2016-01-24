@@ -36,15 +36,25 @@ class MediaInfoCommandRunner
      * @param array          $arguments
      * @param ProcessBuilder $processBuilder
      */
-    public function __construct($filePath, array $arguments = null, $processBuilder = null)
-    {
+    public function __construct(
+        $filePath,
+        $command = null,
+        array $arguments = null,
+        $processBuilder = null
+    ) {
         $this->filePath = $filePath;
+        if ($command !== null) {
+            $this->command = $command;
+        }
+
         if ($arguments !== null) {
             $this->arguments = $arguments;
         }
 
         if ($processBuilder === null) {
-            $this->processBuilder = ProcessBuilder::create()->setPrefix($this->command)->setArguments($this->arguments);
+            $this->processBuilder = ProcessBuilder::create()
+            ->setPrefix($this->command)
+            ->setArguments($this->arguments);
         } else {
             $this->processBuilder = $processBuilder;
         }

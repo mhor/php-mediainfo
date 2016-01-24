@@ -214,6 +214,14 @@ For fields:
 
 ## Extra
 
+### Use custom mediainfo path
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfo->setConfig('command', '/usr/local/bin/mediainfo');
+$mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
+```
+
 ### Symfony integration
 
 Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
