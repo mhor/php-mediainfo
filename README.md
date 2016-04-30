@@ -222,6 +222,15 @@ $mediaInfo->setConfig('command', '/usr/local/bin/mediainfo');
 $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 ```
 
+### MediaInfoContainer to JSON and Array
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
+
+$json = json_encode($mediaInfoContainer);
+$array = $mediaInfoContainer->__toArray();
+```
+
 ### Symfony integration
 
 Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
