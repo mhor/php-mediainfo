@@ -11,8 +11,7 @@ use Mhor\MediaInfo\Type\Other;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
 
-class MediaInfoContainer
-    implements \JsonSerializable
+class MediaInfoContainer implements \JsonSerializable
 {
     const GENERAL_CLASS = 'Mhor\MediaInfo\Type\General';
     const AUDIO_CLASS = 'Mhor\MediaInfo\Type\Audio';
@@ -229,7 +228,8 @@ class MediaInfoContainer
      *
      * @return array
      */
-    public function jsonSerialize() {
+    public function jsonSerialize() 
+    {
         return get_object_vars($this);
     }
     
@@ -238,7 +238,8 @@ class MediaInfoContainer
      *
      * @return array
      */
-    public function __toArray() {
+    public function __toArray() 
+    {
         return json_decode(json_encode($this->jsonSerialize()));
     }
 }
