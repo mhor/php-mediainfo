@@ -1,5 +1,4 @@
-# Php-MediaInfo
-[__copied from GitHub__](https://github.com/javiertrejo/php-mediainfo)
+#Php-MediaInfo [![Build Status](https://travis-ci.org/mhor/php-mediainfo.svg?branch=master)](https://travis-ci.org/mhor/php-mediainfo) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mhor/php-mediainfo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mhor/php-mediainfo/?branch=master) [![Coverage Status](https://img.shields.io/coveralls/mhor/php-mediainfo.svg)](https://coveralls.io/r/mhor/php-mediainfo?branch=master) [![Packagist](https://img.shields.io/packagist/v/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![Packagist](https://img.shields.io/packagist/dt/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![StyleCI](https://styleci.io/repos/27673427/shield?style=flat)](https://styleci.io/repos/27673427)
 
 ## Introduction
 
