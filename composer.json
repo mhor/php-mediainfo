@@ -29,7 +29,6 @@
             "Mhor\\MediaInfo\\Test\\": "test/"
         }
     },
-
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
