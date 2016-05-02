@@ -1,13 +1,34 @@
 <?php
 
-use Mhor\MediaInfo\MediaInfo;
+use Mhor\MediaInfo\Container\MediaInfoContainer,
+    Mhor\MediaInfo\Type\General,
+    Mhor\MediaInfo\Type\Audio;
 
 class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
 {
+    private function createContainer()
+    {
+        $mediaInfoContainer = new MediaInfoContainer();
+        
+        $general = new General();
+        
+        $general->set('Format', 'MPEG Audio');
+        $general->set('Duration', '1mn 20s');
+        
+        $audio = new Audio();
+        
+        $audio->set('Format', 'MPEG Audio');
+        $audio->set('Bit rate', '56.0 Kbps');
+        
+        $mediaInfoContainer->add($audio);
+        $mediaInfoContainer->add($general);
+        
+        return $mediaInfoContainer;
+    }
+    
     public function testToJson()
     {
-        $mediaInfo = new MediaInfo();
-        $mediaInfoContainer = $mediaInfo->getInfo('test/fixtures/test.mp3');
+        $mediaInfoContainer = $this->createContainer();
         
         $data = json_encode($mediaInfoContainer);
         
@@ -16,8 +37,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
     
     public function testToJsonType()
     {
-        $mediaInfo = new MediaInfo();
-        $mediaInfoContainer = $mediaInfo->getInfo('test/fixtures/test.mp3');
+        $mediaInfoContainer = $this->createContainer();
         
         $data = json_encode($mediaInfoContainer->getGeneral());
         
@@ -26,8 +46,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
     
     public function testToArray()
     {
-        $mediaInfo = new MediaInfo();
-        $mediaInfoContainer = $mediaInfo->getInfo('test/fixtures/test.mp3');
+        $mediaInfoContainer = $this->createContainer();
         
         $array = $mediaInfoContainer->__toArray();
         
@@ -36,8 +55,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
     
     public function testToArrayType()
     {
-        $mediaInfo = new MediaInfo();
-        $mediaInfoContainer = $mediaInfo->getInfo('test/fixtures/test.mp3');
+        $mediaInfoContainer = $this->createContainer();
         
         $array = $mediaInfoContainer->getGeneral()->__toArray();
         
