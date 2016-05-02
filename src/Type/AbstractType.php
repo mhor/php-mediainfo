@@ -58,7 +58,7 @@ abstract class AbstractType implements \JsonSerializable
      * Convert the object into array
      *
      * @return array
-     */    
+     */
     public function __toArray()
     {
         return $this->jsonSerialize();
