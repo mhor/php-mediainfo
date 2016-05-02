@@ -11,7 +11,7 @@ use Mhor\MediaInfo\Type\Other;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
 
-class MediaInfoContainer
+class MediaInfoContainer implements \JsonSerializable
 {
     const GENERAL_CLASS = 'Mhor\MediaInfo\Type\General';
     const AUDIO_CLASS = 'Mhor\MediaInfo\Type\Audio';
@@ -221,5 +221,25 @@ class MediaInfoContainer
     private function addOther(Other $other)
     {
         $this->others[] = $other;
+    }
+    
+    /**
+     * Convert the object into array
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
+    
+    /**
+     * Dump object to array
+     *
+     * @return array
+     */
+    public function __toArray()
+    {
+        return $this->jsonSerialize();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Type;
 
-abstract class AbstractType
+abstract class AbstractType implements \JsonSerializable
 {
     /**
      * @var array
@@ -36,5 +36,31 @@ abstract class AbstractType
         }
 
         return;
+    }
+    
+    /**
+     * Convert the object into json
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        $array = get_object_vars($this);
+        
+        if (isset($array['attributes'])) {
+            $array = $array['attributes'];
+        }
+        
+        return $array;
+    }
+
+    /**
+     * Convert the object into array
+     *
+     * @return array
+     */
+    public function __toArray()
+    {
+        return $this->jsonSerialize();
     }
 }

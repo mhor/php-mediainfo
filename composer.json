@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4.0",
         "symfony/process": "~2.3|~3.0",
         "symfony/filesystem": "~2.3|~3.0"
     },
@@ -29,7 +29,6 @@
             "Mhor\\MediaInfo\\Test\\": "test/"
         }
     },
-
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
