@@ -228,7 +228,7 @@ class MediaInfoContainer implements \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize() 
+    public function jsonSerialize()
     {
         return get_object_vars($this);
     }
@@ -238,8 +238,8 @@ class MediaInfoContainer implements \JsonSerializable
      *
      * @return array
      */
-    public function __toArray() 
+    public function __toArray()
     {
-        return json_decode(json_encode($this->jsonSerialize()));
+        return $this->jsonSerialize();
     }
 }
