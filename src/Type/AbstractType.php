@@ -34,28 +34,26 @@ abstract class AbstractType implements \JsonSerializable
         if (isset($this->attributes[$attribute])) {
             return $this->attributes[$attribute];
         }
-
-        return;
     }
-    
+
     /**
-     * Convert the object into json
+     * Convert the object into json.
      *
      * @return array
      */
     public function jsonSerialize()
     {
         $array = get_object_vars($this);
-        
+
         if (isset($array['attributes'])) {
             $array = $array['attributes'];
         }
-        
+
         return $array;
     }
 
     /**
-     * Convert the object into array
+     * Convert the object into array.
      *
      * @return array
      */

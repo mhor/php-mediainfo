@@ -222,9 +222,9 @@ class MediaInfoContainer implements \JsonSerializable
     {
         $this->others[] = $other;
     }
-    
+
     /**
-     * Convert the object into array
+     * Convert the object into array.
      *
      * @return array
      */
@@ -232,9 +232,9 @@ class MediaInfoContainer implements \JsonSerializable
     {
         return get_object_vars($this);
     }
-    
+
     /**
-     * Dump object to array
+     * Dump object to array.
      *
      * @return array
      */
