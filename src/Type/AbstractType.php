@@ -2,8 +2,12 @@
 
 namespace Mhor\MediaInfo\Type;
 
-abstract class AbstractType
+use Mhor\MediaInfo\DumpTrait;
+
+abstract class AbstractType implements \JsonSerializable
 {
+    use DumpTrait;
+    
     /**
      * @var array
      */
