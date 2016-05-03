@@ -34,22 +34,24 @@ trait DumpTrait
         $components = explode('\\', get_class($this));
         $rootNode = end($components);
         $xml = new \SimpleXMLElement("<?xml version=\"1.0\"?><$rootNode></$rootNode>");
-        $array = json_decode(json_encode($this), TRUE);
+        $array = json_decode(json_encode($this), true);
         
-        $this->ComposeXML($array, $xml);
+        $this->composeXML($array, $xml);
         
         return $xml;
     }
     
-    protected function ComposeXML( $data, &$xml )
+    protected function composeXML($data, &$xml)
     {
-        foreach( $data as $key => $value ) {
-            if( is_array($value) ) {
-                if( is_numeric($key) ){
+        foreach ($data as $key => $value)
+        {
+            if (is_array($value)) {
+                if(is_numeric($key)){
                     $key = 'item'.$key;
                 }
+                
                 $subnode = $xml->addChild($key);
-                $this->ComposeXML($value, $subnode);
+                $this->composeXML($value, $subnode);
             } else {
                 $xml->addChild("$key",htmlspecialchars("$value"));
             }

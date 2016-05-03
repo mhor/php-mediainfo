@@ -9,8 +9,8 @@ use Mhor\MediaInfo\Type\Image;
 use Mhor\MediaInfo\Type\Menu;
 use Mhor\MediaInfo\Type\Other;
 use Mhor\MediaInfo\Type\Subtitle;
-use Mhor\MediaInfo\Type\Video,
-    Mhor\MediaInfo\DumpTrait;
+use Mhor\MediaInfo\Type\Video;
+use Mhor\MediaInfo\DumpTrait;
 
 class MediaInfoContainer implements \JsonSerializable
 {
@@ -224,5 +224,5 @@ class MediaInfoContainer implements \JsonSerializable
     private function addOther(Other $other)
     {
         $this->others[] = $other;
-    }        
+    }
 }
