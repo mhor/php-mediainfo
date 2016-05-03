@@ -2,8 +2,12 @@
 
 namespace Mhor\MediaInfo\Type;
 
+use Mhor\MediaInfo\DumpTrait;
+
 abstract class AbstractType implements \JsonSerializable
 {
+    use DumpTrait;
+    
     /**
      * @var array
      */
@@ -36,31 +40,5 @@ abstract class AbstractType implements \JsonSerializable
         }
 
         return;
-    }
-    
-    /**
-     * Convert the object into json
-     *
-     * @return array
-     */
-    public function jsonSerialize()
-    {
-        $array = get_object_vars($this);
-        
-        if (isset($array['attributes'])) {
-            $array = $array['attributes'];
-        }
-        
-        return $array;
-    }
-
-    /**
-     * Convert the object into array
-     *
-     * @return array
-     */
-    public function __toArray()
-    {
-        return $this->jsonSerialize();
     }
 }
