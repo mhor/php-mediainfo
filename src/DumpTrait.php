@@ -43,17 +43,16 @@ trait DumpTrait
     
     protected function composeXML($data, &$xml)
     {
-        foreach ($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
             if (is_array($value)) {
-                if(is_numeric($key)){
+                if (is_numeric($key)) {
                     $key = 'item'.$key;
                 }
                 
                 $subnode = $xml->addChild($key);
                 $this->composeXML($value, $subnode);
             } else {
-                $xml->addChild("$key",htmlspecialchars("$value"));
+                $xml->addChild("$key", htmlspecialchars("$value"));
             }
         }
     }
