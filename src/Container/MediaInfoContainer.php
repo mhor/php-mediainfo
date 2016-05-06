@@ -10,9 +10,12 @@ use Mhor\MediaInfo\Type\Menu;
 use Mhor\MediaInfo\Type\Other;
 use Mhor\MediaInfo\Type\Subtitle;
 use Mhor\MediaInfo\Type\Video;
+use Mhor\MediaInfo\DumpTrait;
 
 class MediaInfoContainer implements \JsonSerializable
 {
+    use DumpTrait;
+    
     const GENERAL_CLASS = 'Mhor\MediaInfo\Type\General';
     const AUDIO_CLASS = 'Mhor\MediaInfo\Type\Audio';
     const IMAGE_CLASS = 'Mhor\MediaInfo\Type\Image';
