@@ -225,24 +225,4 @@ class MediaInfoContainer implements \JsonSerializable
     {
         $this->others[] = $other;
     }
-
-    /**
-     * Convert the object into array.
-     *
-     * @return array
-     */
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
-    }
-
-    /**
-     * Dump object to array.
-     *
-     * @return array
-     */
-    public function __toArray()
-    {
-        return $this->jsonSerialize();
-    }
 }

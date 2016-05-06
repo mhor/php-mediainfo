@@ -2,3 +2,4 @@ vendor/
 composer.phar
 composer.lock
 MediaInfo.exe
+test/fixtures/test.mp3
