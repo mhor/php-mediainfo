@@ -1,9 +1,11 @@
 <?php
-
 namespace Mhor\MediaInfo\Attribute;
+
+use Mhor\MediaInfo\DumpTrait;
 
 class Cover implements AttributeInterface
 {
+    use DumpTrait;
     /**
      * @var string
      */
