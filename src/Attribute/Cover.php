@@ -1,4 +1,5 @@
 <?php
+
 namespace Mhor\MediaInfo\Attribute;
 
 use Mhor\MediaInfo\DumpTrait;
