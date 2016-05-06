@@ -7,7 +7,7 @@ use Mhor\MediaInfo\DumpTrait;
 class Size implements AttributeInterface
 {
     use DumpTrait;
-    
+
     /**
      * @var int
      */

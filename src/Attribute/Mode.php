@@ -1,4 +1,5 @@
 <?php
+
 namespace Mhor\MediaInfo\Attribute;
 
 use Mhor\MediaInfo\DumpTrait;
@@ -6,7 +7,7 @@ use Mhor\MediaInfo\DumpTrait;
 class Mode implements AttributeInterface
 {
     use DumpTrait;
-    
+
     /**
      * @var string
      */

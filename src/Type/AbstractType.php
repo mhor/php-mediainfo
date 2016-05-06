@@ -7,7 +7,7 @@ use Mhor\MediaInfo\DumpTrait;
 abstract class AbstractType implements \JsonSerializable
 {
     use DumpTrait;
-    
+
     /**
      * @var array
      */
