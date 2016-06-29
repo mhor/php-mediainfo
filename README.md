@@ -222,6 +222,15 @@ $mediaInfo->setConfig('command', '/usr/local/bin/mediainfo');
 $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 ```
 
+### Use url as filepath
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfo->setConfig('command', '/usr/local/bin/mediainfo');
+$mediaInfoContainer = $mediaInfo->getInfo('http://example.org/music/test.mp3');
+```
+
+
 ### MediaInfoContainer to JSON, Array or XML
 ```php
 $mediaInfo = new MediaInfo();
