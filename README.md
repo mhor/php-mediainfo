@@ -226,7 +226,6 @@ $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 
 ```php
 $mediaInfo = new MediaInfo();
-$mediaInfo->setConfig('command', '/usr/local/bin/mediainfo');
 $mediaInfoContainer = $mediaInfo->getInfo('http://example.org/music/test.mp3');
 ```
 
