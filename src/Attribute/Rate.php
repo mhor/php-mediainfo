@@ -19,8 +19,8 @@ class Rate implements AttributeInterface
     private $textValue;
 
     /**
-     * @param string $absoluteValue
-     * @param string $textValue
+     * @param string|float $absoluteValue
+     * @param string       $textValue
      */
     public function __construct($absoluteValue, $textValue)
     {

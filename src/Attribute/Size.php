@@ -14,7 +14,7 @@ class Size implements AttributeInterface
     private $bit;
 
     /**
-     * @param string $size
+     * @param string|int $size
      */
     public function __construct($size)
     {

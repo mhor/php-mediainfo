@@ -14,7 +14,7 @@ class Duration implements AttributeInterface
     private $milliseconds;
 
     /**
-     * @param string $duration
+     * @param string|int $duration
      */
     public function __construct($duration)
     {
