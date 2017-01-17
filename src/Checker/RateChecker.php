@@ -32,12 +32,9 @@ class RateChecker extends AbstractAttributeChecker
             'width',
             'nominal_bit_rate',
             'frame_rate',
-            'display_aspect_ratio',
-            'frame_rate',
             'format_settings_reframes',
             'height',
             'resolution',
-            'original_display_aspect_ratio',
         );
     }
 }
