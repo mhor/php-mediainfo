@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Attribute\Cover;
 use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Attribute\Mode;
 use Mhor\MediaInfo\Attribute\Rate;
+use Mhor\MediaInfo\Attribute\Ratio;
 use Mhor\MediaInfo\Attribute\Size;
 
 class AttributeTest extends \PHPUnit_Framework_TestCase
@@ -33,13 +34,22 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('short', (string) $mode);
     }
 
+    public function testRatio()
+    {
+        $ratio = new Ratio('15555', '15.55 Mo');
+        $this->assertSame(15555.0, $ratio->getAbsoluteValue());
+        $this->assertTrue(is_float($ratio->getAbsoluteValue()));
+        $this->assertEquals('15.55 Mo', $ratio->getTextValue());
+        $this->assertSame('15.55 Mo', (string) $ratio);
+    }
+
     public function testRate()
     {
-        $rate = new Rate('15555', '15.55 Mo');
-        $this->assertSame(15555.0, $rate->getAbsoluteValue());
-        $this->assertTrue(is_float($rate->getAbsoluteValue()));
-        $this->assertEquals('15.55 Mo', $rate->getTextValue());
-        $this->assertSame('15.55 Mo', (string) $rate);
+        $rate = new Rate('720', '720p');
+        $this->assertSame(720, $rate->getAbsoluteValue());
+        $this->assertTrue(is_int($rate->getAbsoluteValue()));
+        $this->assertEquals('720p', $rate->getTextValue());
+        $this->assertSame('720p', (string) $rate);
     }
 
     public function testSize()
