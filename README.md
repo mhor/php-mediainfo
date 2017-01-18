@@ -191,7 +191,6 @@ For fields:
 - nominal_bit_rate
 - frame_rate
 - display_aspect_ratio
-- frame_rate
 - format_settings_reframes
 - height
 - resolution
@@ -199,6 +198,14 @@ For fields:
 - maximum_bit_rate
 
 [Rate](src/Attribute/Rate.php) type will be applied
+
+#### Ratio
+For fields:
+
+- display_aspect_ratio
+- original_display_aspect_ratio
+
+[Ratio](src/Attribute/Ratio.php) type will be applied
 
 #### Size
 For fields:
