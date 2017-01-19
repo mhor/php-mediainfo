@@ -37,32 +37,32 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @var Audio[]
      */
-    private $audios = array();
+    private $audios = [];
 
     /**
      * @var Video[]
      */
-    private $videos = array();
+    private $videos = [];
 
     /**
      * @var Subtitle[]
      */
-    private $subtitles = array();
+    private $subtitles = [];
 
     /**
      * @var Image[]
      */
-    private $images = array();
+    private $images = [];
 
     /**
      * @var Menu[]
      */
-    private $menus = array();
+    private $menus = [];
 
     /**
      * @var Other[]
      */
-    private $others = array();
+    private $others = [];
 
     /**
      * @return General

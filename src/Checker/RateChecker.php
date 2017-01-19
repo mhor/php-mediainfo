@@ -23,7 +23,7 @@ class RateChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'maximum_bit_rate',
             'channel_s',
             'bit_rate',
@@ -35,6 +35,6 @@ class RateChecker extends AbstractAttributeChecker
             'format_settings_reframes',
             'height',
             'resolution',
-        );
+        ];
     }
 }

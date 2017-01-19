@@ -13,7 +13,7 @@ class MediaInfoCommandBuilder
      *
      * @return MediaInfoCommandRunner
      */
-    public function buildMediaInfoCommandRunner($filepath, array $configuration = array())
+    public function buildMediaInfoCommandRunner($filepath, array $configuration = [])
     {
         if (filter_var($filepath, FILTER_VALIDATE_URL) === false) {
             $fileSystem = new Filesystem();
@@ -30,9 +30,9 @@ class MediaInfoCommandBuilder
             }
         }
 
-        $configuration = $configuration + array(
+        $configuration = $configuration + [
             'command' => null,
-        );
+        ];
 
         return new MediaInfoCommandRunner($filepath, $configuration['command']);
     }

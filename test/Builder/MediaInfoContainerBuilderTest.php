@@ -26,31 +26,31 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
     {
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
 
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::AUDIO, array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::AUDIO, []);
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $audios = $mediaContainer->getAudios();
         $this->assertEquals(0, count($audios[0]->get()));
 
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::VIDEO, array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::VIDEO, []);
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $videos = $mediaContainer->getVideos();
         $this->assertEquals(0, count($videos[0]->get()));
 
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::GENERAL, array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::GENERAL, []);
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $this->assertEquals(0, count($mediaContainer->getGeneral()->get()));
 
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::IMAGE, array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::IMAGE, []);
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $images = $mediaContainer->getImages();
         $this->assertEquals(0, count($images[0]->get()));
 
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::SUBTITLE, array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::SUBTITLE, []);
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $subtitles = $mediaContainer->getSubtitles();
         $this->assertEquals(0, count($subtitles[0]->get()));
 
-        $mediaInfoContainerBuilder->addTrackType(TypeFactory::OTHER, array());
+        $mediaInfoContainerBuilder->addTrackType(TypeFactory::OTHER, []);
         $mediaContainer = $mediaInfoContainerBuilder->build();
         $others = $mediaContainer->getOthers();
         $this->assertEquals(0, count($others[0]->get()));
@@ -62,7 +62,7 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddInvalidType()
     {
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
-        $mediaInfoContainerBuilder->addTrackType('InvalidType', array());
+        $mediaInfoContainerBuilder->addTrackType('InvalidType', []);
     }
 
     /**
@@ -77,29 +77,29 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
 
     public function attributesProvider()
     {
-        return array(
-            array(
-                array(
+        return [
+            [
+                [
                     'Duration' => '10',
                     'DuRatioN' => '20',
                     'DURATION' => '4000',
-                ),
-            ),
-            array(
-                array(
-                    'Duration' => array('10', '30', '40'),
+                ],
+            ],
+            [
+                [
+                    'Duration' => ['10', '30', '40'],
                     'DuRatioN' => '20',
                     'DURATION' => '4000',
-                ),
-            ),
-            array(
-                array(
+                ],
+            ],
+            [
+                [
                     'Duration' => '10',
                     'DuRatioN' => '20',
-                    'DURATION' => array('60', '70', '80'),
-                ),
-            ),
-        );
+                    'DURATION' => ['60', '70', '80'],
+                ],
+            ],
+        ];
     }
 
     /**

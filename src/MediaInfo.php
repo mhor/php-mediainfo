@@ -17,9 +17,9 @@ class MediaInfo
     /**
      * @var array
      */
-    private $configuration = array(
+    private $configuration = [
         'command' => null,
-    );
+    ];
 
     /**
      * @param $filePath

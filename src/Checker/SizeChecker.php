@@ -23,9 +23,9 @@ class SizeChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'file_size',
             'stream_size',
-        );
+        ];
     }
 }
