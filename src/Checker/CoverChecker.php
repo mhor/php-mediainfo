@@ -23,6 +23,6 @@ class CoverChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array('cover_data');
+        return ['cover_data'];
     }
 }

@@ -27,7 +27,7 @@ class ModeChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'overall_bit_rate_mode',
             'overall_bit_rate',
             'bit_rate_mode',
@@ -48,6 +48,6 @@ class ModeChecker extends AbstractAttributeChecker
             'frame_rate_mode',
             'format_settings_cabac',
             'unique_id',
-        );
+        ];
     }
 }

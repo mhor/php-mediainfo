@@ -80,16 +80,16 @@ class MediaInfoContainerBuilder
      */
     private function sanitizeAttributes(array $attributes)
     {
-        $sanitizeAttributes = array();
+        $sanitizeAttributes = [];
         foreach ($attributes as $key => $value) {
             $key = $this->formatAttribute($key);
             if (isset($sanitizeAttributes[$key])) {
                 if (!is_array($sanitizeAttributes[$key])) {
-                    $sanitizeAttributes[$key] = array($sanitizeAttributes[$key]);
+                    $sanitizeAttributes[$key] = [$sanitizeAttributes[$key]];
                 }
 
                 if (!is_array($value)) {
-                    $value = array($value);
+                    $value = [$value];
                 }
 
                 $value = $sanitizeAttributes[$key] + $value;

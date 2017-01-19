@@ -36,7 +36,7 @@ class AttributeFactory
      */
     private static function getAllAttributeType()
     {
-        return array(
+        return [
             new CoverChecker(),
             new DurationChecker(),
             new ModeChecker(),
@@ -44,6 +44,6 @@ class AttributeFactory
             new RatioChecker(),
             new SizeChecker(),
             new DateTimeChecker(),
-        );
+        ];
     }
 }

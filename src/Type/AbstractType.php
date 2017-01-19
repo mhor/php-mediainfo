@@ -11,7 +11,7 @@ abstract class AbstractType implements \JsonSerializable
     /**
      * @var array
      */
-    protected $attributes = array();
+    protected $attributes = [];
 
     /**
      * @param $attribute
