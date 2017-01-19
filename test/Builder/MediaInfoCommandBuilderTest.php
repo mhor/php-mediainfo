@@ -63,9 +63,9 @@ class MediaInfoCommandBuilderTest extends \PHPUnit_Framework_TestCase
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
             $this->filePath,
-            array(
+            [
                 'command' => '/usr/bin/local/mediainfo',
-            )
+            ]
         );
 
         $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner($this->filePath, '/usr/bin/local/mediainfo');

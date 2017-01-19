@@ -29,7 +29,7 @@ class MediaInfoCommandRunner
     /**
      * @var array
      */
-    protected $arguments = array('--OUTPUT=XML', '-f');
+    protected $arguments = ['--OUTPUT=XML', '-f'];
 
     /**
      * @param string         $filePath

@@ -23,9 +23,9 @@ class RatioChecker extends AbstractAttributeChecker
      */
     public function getMembersFields()
     {
-        return array(
+        return [
             'display_aspect_ratio',
             'original_display_aspect_ratio',
-        );
+        ];
     }
 }

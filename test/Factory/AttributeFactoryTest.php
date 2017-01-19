@@ -10,10 +10,10 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $ratio = AttributeFactory::create(
             'display_aspect_ratio',
-            array(
+            [
                 '15.55',
                 '15.55 Mo',
-            )
+            ]
         );
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Ratio', get_class($ratio));
@@ -23,10 +23,10 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $rate = AttributeFactory::create(
             'height',
-            array(
+            [
                 '720',
                 '720p',
-            )
+            ]
         );
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Rate', get_class($rate));
@@ -36,10 +36,10 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $size = AttributeFactory::create(
             'file_size',
-            array(
+            [
                 '19316079',
                 '18.4 MiB',
-            )
+            ]
         );
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Size', get_class($size));
@@ -49,10 +49,10 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $mode = AttributeFactory::create(
             'overall_bit_rate',
-            array(
+            [
                 'CBR',
                 'Constant',
-            )
+            ]
         );
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Mode', get_class($mode));
@@ -62,9 +62,9 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $duration = AttributeFactory::create(
             'duration',
-            array(
+            [
                 '475193',
-            )
+            ]
         );
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Duration', get_class($duration));
@@ -74,9 +74,9 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $cover = AttributeFactory::create(
             'cover_data',
-            array(
+            [
                 '01010101',
-            )
+            ]
         );
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Cover', get_class($cover));
