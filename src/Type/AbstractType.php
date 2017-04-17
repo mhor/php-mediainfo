@@ -21,7 +21,8 @@ abstract class AbstractType implements \JsonSerializable
      */
     public function set($attribute, $value)
     {
-        $this->attributes[$attribute] = $value;
+        if(!isset($this->attributes[$attribute]))
+            $this->attributes[$attribute] = $value;
     }
 
     /**
