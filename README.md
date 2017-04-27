@@ -245,6 +245,16 @@ $array = $mediaInfoContainer->__toArray();
 $xml = $mediaInfoContainer->__toXML();
 ```
 
+### Usage for WindowsOS
+
+Download MediaInfo CLI from [here](https://mediaarea.net/de/MediaInfo/Download/Windows). Extract zip-archive and place MediaInfo.exe somewhere. Use it:
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfo->setConfig('command', 'C:\path\to\directory\MediaInfo.exe');
+$mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
+```
+
 ### Symfony integration
 
 Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
