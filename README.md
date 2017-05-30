@@ -105,7 +105,37 @@ foreach ($menus as $menu) {
 }
 ```
 
-### Ignore unknown types:
+### Example
+
+```php
+<?php
+
+require './vendor/autoload.php';
+
+use Mhor\MediaInfo\MediaInfo;
+
+$mediaInfo = new MediaInfo();
+$mediaInfoContainer = $mediaInfo->getInfo('./SampleVideo_1280x720_5mb.mkv');
+
+echo "Videos channel: \n";
+echo "=======================\n";
+foreach ($mediaInfoContainer->getVideos() as $video) {
+    echo 'format: '.(string)$video->get('format')."\n";
+    echo 'height: '.$video->get('height')->getAbsoluteValue()."\n";
+    echo "\n---------------------\n";
+}
+
+echo "Audios channel: \n";
+echo "=======================\n";
+foreach ($mediaInfoContainer->getAudios() as $audio) {
+
+    echo 'unique_id: '.$audio->get('unique_id') . "\n";
+    echo 'format: '.$audio->get('format');
+    echo "\n---------------------\n";
+}
+```
+
+### Ignore unknown types
 
 By default unknown type throw an error this, to avoid this behavior, you can do:
 
