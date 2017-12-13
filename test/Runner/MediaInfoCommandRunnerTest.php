@@ -126,7 +126,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         // do some stuff in between, count to 5
         $i = 0;
         do {
-            ++$i;
+            $i++;
         } while ($i < 5);
 
         // block and complete operation
