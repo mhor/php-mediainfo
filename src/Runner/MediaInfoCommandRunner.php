@@ -2,7 +2,7 @@
 
 namespace Mhor\MediaInfo\Runner;
 
-use Symfony\Component\Process\ProcessBuilder;
+use Symfony\Component\Process\Process;
 
 class MediaInfoCommandRunner
 {
@@ -12,14 +12,9 @@ class MediaInfoCommandRunner
     protected $filePath;
 
     /**
-     * @var ProcessBuilder
-     */
-    protected $processBuilder;
-
-    /**
      * @var Process
      */
-    protected $processAsync = null;
+    protected $process;
 
     /**
      * @var string
@@ -32,15 +27,15 @@ class MediaInfoCommandRunner
     protected $arguments = ['--OUTPUT=XML', '-f'];
 
     /**
-     * @param string         $filePath
-     * @param array          $arguments
-     * @param ProcessBuilder $processBuilder
+     * @param string  $filePath
+     * @param array   $arguments
+     * @param Process $process
      */
     public function __construct(
         $filePath,
         $command = null,
         array $arguments = null,
-        $processBuilder = null
+        Process $process = null
     ) {
         $this->filePath = $filePath;
         if ($command !== null) {
@@ -51,12 +46,26 @@ class MediaInfoCommandRunner
             $this->arguments = $arguments;
         }
 
-        if ($processBuilder === null) {
-            $this->processBuilder = ProcessBuilder::create()
-            ->setPrefix($this->command)
-            ->setArguments($this->arguments);
+        array_unshift($this->arguments, $this->filePath);
+
+        if (method_exists('Symfony\\Component\\Process\\ProcessUtils', 'escapeArgument')) {
+            // Symfony 2 compatibility
+            $input = implode(' ', array_map(['Symfony\\Component\\Process\\ProcessUtils', 'escapeArgument'], $this->arguments));
         } else {
-            $this->processBuilder = $processBuilder;
+            $input = new \ArrayIterator($this->arguments);
+        }
+
+        if (null !== $process) {
+            $process->setCommandLine($this->command);
+            $process->setInput($input);
+            $this->process = $process;
+        } else {
+            $this->process = new Process(
+                $this->command,
+                null,
+                null,
+                $input
+            );
         }
     }
 
@@ -67,16 +76,16 @@ class MediaInfoCommandRunner
      */
     public function run()
     {
-        $lc_ctype = setlocale(LC_CTYPE, 0);
-        $this->processBuilder->add($this->filePath);
-        $this->processBuilder->setEnv('LANG', $lc_ctype);
-        $process = $this->processBuilder->getProcess();
-        $process->run();
-        if (!$process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
+        $env = [
+            'LANG' => setlocale(LC_CTYPE, 0),
+        ];
+        $this->process->setEnv($env);
+        $this->process->run();
+        if (!$this->process->isSuccessful()) {
+            throw new \RuntimeException($this->process->getErrorOutput());
         }
 
-        return $process->getOutput();
+        return $this->process->getOutput();
     }
 
     /**
@@ -85,11 +94,9 @@ class MediaInfoCommandRunner
      */
     public function start()
     {
-        $this->processBuilder->add($this->filePath);
-        $this->processAsync = $this->processBuilder->getProcess();
         // just takes advantage of symfony's underlying Process framework
         // process runs in background
-        $this->processAsync->start();
+        $this->process->start();
     }
 
     /**
@@ -102,17 +109,17 @@ class MediaInfoCommandRunner
      */
     public function wait()
     {
-        if ($this->processAsync == null) {
+        if ($this->process == null) {
             throw new \Exception('You must run `start` before running `wait`');
         }
 
         // blocks here until process completes
-        $this->processAsync->wait();
+        $this->process->wait();
 
-        if (!$this->processAsync->isSuccessful()) {
-            throw new \RuntimeException($this->processAsync->getErrorOutput());
+        if (!$this->process->isSuccessful()) {
+            throw new \RuntimeException($this->process->getErrorOutput());
         }
 
-        return $this->processAsync->getOutput();
+        return $this->process->getOutput();
     }
 }

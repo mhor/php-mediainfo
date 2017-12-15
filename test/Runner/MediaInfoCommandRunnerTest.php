@@ -37,18 +37,11 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $processMock->method('isSuccessful')
             ->willReturn(true);
 
-        $processBuilderMock = $this->getMockBuilder('Symfony\Component\Process\ProcessBuilder')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $processBuilderMock->method('getProcess')
-            ->willReturn($processMock);
-
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
             null,
             ['--OUTPUT=XML', '-f'],
-            $processBuilderMock
+            $processMock
         );
 
         $this->assertEquals(file_get_contents($this->outputPath), $mediaInfoCommandRunner->run());
@@ -72,18 +65,11 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $processMock->method('isSuccessful')
             ->willReturn(false);
 
-        $processBuilderMock = $this->getMockBuilder('Symfony\Component\Process\ProcessBuilder')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $processBuilderMock->method('getProcess')
-            ->willReturn($processMock);
-
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
             'custom_mediainfo',
             ['--OUTPUT=XML', '-f'],
-            $processBuilderMock
+            $processMock
         );
 
         $mediaInfoCommandRunner->run();
@@ -107,18 +93,11 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $processMock->method('isSuccessful')
             ->willReturn(true);
 
-        $processBuilderMock = $this->getMockBuilder('Symfony\Component\Process\ProcessBuilder')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $processBuilderMock->method('getProcess')
-            ->willReturn($processMock);
-
         $mediaInfoCommandRunner = new MediaInfoCommandRunner(
             $this->filePath,
             null,
             ['--OUTPUT=XML', '-f'],
-            $processBuilderMock
+            $processMock
         );
 
         $mediaInfoCommandRunner->start();
