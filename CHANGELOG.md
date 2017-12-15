@@ -1,5 +1,25 @@
 # Change Log
 
+## [4.0.0](https://github.com/mhor/php-mediainfo/tree/4.0.0) (2017-12-15)
+[Full Changelog](https://github.com/mhor/php-mediainfo/compare/3.0.0...4.0.0)
+
+**Closed issues:**
+
+- Support for Symfony 4 components [\#77](https://github.com/mhor/php-mediainfo/issues/77)
+- How to use on windows IIS7 PHP [\#73](https://github.com/mhor/php-mediainfo/issues/73)
+- Unicode filename fail [\#72](https://github.com/mhor/php-mediainfo/issues/72)
+- Migrate to array short syntax [\#69](https://github.com/mhor/php-mediainfo/issues/69)
+- use url for path to media file [\#59](https://github.com/mhor/php-mediainfo/issues/59)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#79](https://github.com/mhor/php-mediainfo/pull/79) ([mhor](https://github.com/mhor))
+- Allow compatibility with symfony4 components [\#78](https://github.com/mhor/php-mediainfo/pull/78) ([fvilpoix](https://github.com/fvilpoix))
+- Update README.md [\#75](https://github.com/mhor/php-mediainfo/pull/75) ([cklm](https://github.com/cklm))
+- I guess it's still accurate but must be specified [\#74](https://github.com/mhor/php-mediainfo/pull/74) ([Nek-](https://github.com/Nek-))
+- Apply fixes from StyleCI [\#71](https://github.com/mhor/php-mediainfo/pull/71) ([mhor](https://github.com/mhor))
+- change StyleCI config [\#70](https://github.com/mhor/php-mediainfo/pull/70) ([mhor](https://github.com/mhor))
+
 ## [3.0.0](https://github.com/mhor/php-mediainfo/tree/3.0.0) (2017-01-17)
 [Full Changelog](https://github.com/mhor/php-mediainfo/compare/2.3.1...3.0.0)
 
