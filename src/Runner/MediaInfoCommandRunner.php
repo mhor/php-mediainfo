@@ -46,26 +46,32 @@ class MediaInfoCommandRunner
             $this->arguments = $arguments;
         }
 
-        array_unshift($this->arguments, $this->filePath);
+        // /path/to/mediainfo $MEDIAINFO_VAR0 $MEDIAINFO_VAR1...
+        // args are given through ENV vars in order to have system escape them
 
-        if (method_exists('Symfony\\Component\\Process\\ProcessUtils', 'escapeArgument')) {
-            // Symfony 2 compatibility
-            $input = implode(' ', array_map(['Symfony\\Component\\Process\\ProcessUtils', 'escapeArgument'], $this->arguments));
-        } else {
-            $input = new \ArrayIterator($this->arguments);
+        $args = $this->arguments;
+        array_unshift($args, $this->filePath);
+
+        $env = [
+            'LANG' => setlocale(LC_CTYPE, 0),
+        ];
+        $finalCommand = [$this->command];
+
+        $i = 0;
+        foreach ($args as $value) {
+            $var = 'MEDIAINFO_VAR_'.$i++;
+            $finalCommand[] = '$'.$var;
+            $env[$var] = $value;
         }
 
+        $finalCommandString = implode(' ', $finalCommand);
+
         if (null !== $process) {
-            $process->setCommandLine($this->command);
-            $process->setInput($input);
+            $process->setCommandLine($finalCommandString);
+            $process->setEnv($env);
             $this->process = $process;
         } else {
-            $this->process = new Process(
-                $this->command,
-                null,
-                null,
-                $input
-            );
+            $this->process = new Process($finalCommandString, null, $env);
         }
     }
 
@@ -76,10 +82,6 @@ class MediaInfoCommandRunner
      */
     public function run()
     {
-        $env = [
-            'LANG' => setlocale(LC_CTYPE, 0),
-        ];
-        $this->process->setEnv($env);
         $this->process->run();
         if (!$this->process->isSuccessful()) {
             throw new \RuntimeException($this->process->getErrorOutput());
