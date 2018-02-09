@@ -46,9 +46,6 @@ class MediaInfoCommandRunner
             $this->arguments = $arguments;
         }
 
-        // /path/to/mediainfo $MEDIAINFO_VAR0 $MEDIAINFO_VAR1...
-        // args are given through ENV vars in order to have system escape them
-
         $args = $this->arguments;
         array_unshift($args, $this->filePath);
 
@@ -57,21 +54,15 @@ class MediaInfoCommandRunner
         ];
         $finalCommand = [$this->command];
 
-        $i = 0;
         foreach ($args as $value) {
-            $var = 'MEDIAINFO_VAR_'.$i++;
-            $finalCommand[] = '$'.$var;
-            $env[$var] = $value;
+            $finalCommand[] = $value;
         }
 
-        $finalCommandString = implode(' ', $finalCommand);
-
         if (null !== $process) {
-            $process->setCommandLine($finalCommandString);
             $process->setEnv($env);
             $this->process = $process;
         } else {
-            $this->process = new Process($finalCommandString, null, $env);
+            $this->process = new Process($finalCommand, null, $env);
         }
     }
 
@@ -83,6 +74,8 @@ class MediaInfoCommandRunner
     public function run()
     {
         $this->process->run();
+        //var_dump($this->process->getOutput());
+        //exit();
         if (!$this->process->isSuccessful()) {
             throw new \RuntimeException($this->process->getErrorOutput());
         }
