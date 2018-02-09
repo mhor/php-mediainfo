@@ -74,8 +74,6 @@ class MediaInfoCommandRunner
     public function run()
     {
         $this->process->run();
-        //var_dump($this->process->getOutput());
-        //exit();
         if (!$this->process->isSuccessful()) {
             throw new \RuntimeException($this->process->getErrorOutput());
         }
