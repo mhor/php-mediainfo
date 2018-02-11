@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MediaInfo xmlns="https://mediaarea.net/mediainfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://mediaarea.net/mediainfo https://mediaarea.net/mediainfo/mediainfo_2_0.xsd" version="2.0">
+   <creatingLibrary version="17.10" url="https://mediaarea.net/MediaInfo">MediaInfoLib</creatingLibrary>
+   <media ref="SampleVideo_1280x720_5mb.mkv">
+      <track type="General">
+         <UniqueID>242721404234216185607275687535790177333</UniqueID>
+         <VideoCount>1</VideoCount>
+         <AudioCount>1</AudioCount>
+         <FileExtension>mkv</FileExtension>
+         <Format>Matroska</Format>
+         <Format_Version>2</Format_Version>
+         <FileSize>5247430</FileSize>
+         <Duration>26.330</Duration>
+         <OverallBitRate>1594358</OverallBitRate>
+         <IsStreamable>Yes</IsStreamable>
+         <File_Modified_Date>UTC 2017-05-30 15:26:21</File_Modified_Date>
+         <File_Modified_Date_Local>2017-05-30 17:26:21</File_Modified_Date_Local>
+         <Encoded_Application>Lavf53.24.2</Encoded_Application>
+         <Encoded_Library>Lavf53.24.2</Encoded_Library>
+      </track>
+      <track type="Video">
+         <StreamOrder>0</StreamOrder>
+         <ID>1</ID>
+         <UniqueID>1</UniqueID>
+         <Format>MPEG-4 Visual</Format>
+         <Format_Profile>Simple</Format_Profile>
+         <Format_Level>1</Format_Level>
+         <Format_Settings_BVOP>No</Format_Settings_BVOP>
+         <Format_Settings_QPel>No</Format_Settings_QPel>
+         <Format_Settings_GMC>0</Format_Settings_GMC>
+         <Format_Settings_Matrix>Default (H.263)</Format_Settings_Matrix>
+         <CodecID>V_MPEG4/ISO/ASP</CodecID>
+         <Width>1280</Width>
+         <Height>720</Height>
+         <Sampled_Width>1280</Sampled_Width>
+         <Sampled_Height>720</Sampled_Height>
+         <PixelAspectRatio>1.000</PixelAspectRatio>
+         <DisplayAspectRatio>1.778</DisplayAspectRatio>
+         <FrameRate_Mode>VFR</FrameRate_Mode>
+         <ColorSpace>YUV</ColorSpace>
+         <ChromaSubsampling>4:2:0</ChromaSubsampling>
+         <BitDepth>8</BitDepth>
+         <ScanType>Progressive</ScanType>
+         <Compression_Mode>Lossy</Compression_Mode>
+         <Delay>0.000</Delay>
+         <Encoded_Library>Lavc54.92.100</Encoded_Library>
+         <Default>Yes</Default>
+         <Forced>No</Forced>
+      </track>
+      <track type="Audio">
+         <StreamOrder>1</StreamOrder>
+         <ID>2</ID>
+         <UniqueID>2</UniqueID>
+         <Format>AAC</Format>
+         <Format_Profile>LC</Format_Profile>
+         <CodecID>A_AAC-2</CodecID>
+         <Duration>26.330</Duration>
+         <Channels>6</Channels>
+         <ChannelPositions>Front: L C R, Side: L R, LFE</ChannelPositions>
+         <ChannelLayout>C L R Ls Rs LFE</ChannelLayout>
+         <SamplesPerFrame>1024</SamplesPerFrame>
+         <SamplingRate>48000</SamplingRate>
+         <SamplingCount>1263840</SamplingCount>
+         <FrameRate>46.875</FrameRate>
+         <Compression_Mode>Lossy</Compression_Mode>
+         <Delay>0.005</Delay>
+         <Delay_Source>Container</Delay_Source>
+         <Default>Yes</Default>
+         <Forced>No</Forced>
+      </track>
+   </media>
+</MediaInfo>
