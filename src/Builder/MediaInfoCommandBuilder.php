@@ -8,32 +8,41 @@ use Symfony\Component\Filesystem\Filesystem;
 class MediaInfoCommandBuilder
 {
     /**
-     * @param string $filepath
+     * @param string $filePath
      * @param array  $configuration
+     *
+     * @throws \Exception
      *
      * @return MediaInfoCommandRunner
      */
-    public function buildMediaInfoCommandRunner($filepath, array $configuration = [])
+    public function buildMediaInfoCommandRunner($filePath, array $configuration = [])
     {
-        if (filter_var($filepath, FILTER_VALIDATE_URL) === false) {
+        if (filter_var($filePath, FILTER_VALIDATE_URL) === false) {
             $fileSystem = new Filesystem();
 
-            if (!$fileSystem->exists($filepath)) {
-                throw new \Exception(sprintf('File "%s" does not exist', $filepath));
+            if (!$fileSystem->exists($filePath)) {
+                throw new \Exception(sprintf('File "%s" does not exist', $filePath));
             }
 
-            if (is_dir($filepath)) {
+            if (is_dir($filePath)) {
                 throw new \Exception(sprintf(
                     'Expected a filename, got "%s", which is a directory',
-                    $filepath
+                    $filePath
                 ));
             }
         }
 
         $configuration = $configuration + [
-            'command' => null,
+            'command'                            => null,
+            'use_oldxml_mediainfo_output_format' => false,
         ];
 
-        return new MediaInfoCommandRunner($filepath, $configuration['command']);
+        return new MediaInfoCommandRunner(
+            $filePath,
+            $configuration['command'],
+            null,
+            null,
+            $configuration['use_oldxml_mediainfo_output_format']
+        );
     }
 }

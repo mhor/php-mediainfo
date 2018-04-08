@@ -6,6 +6,9 @@ use Symfony\Component\Process\Process;
 
 class MediaInfoCommandRunner
 {
+    const FORCED_OLDXML_OUTPUT_FORMAT_ARGUMENTS = ['--OUTPUT=OLDXML', '-f'];
+    const XML_OUTPUT_FORMAT_ARGUMENTS = ['--OUTPUT=XML', '-f'];
+
     /**
      * @var string
      */
@@ -24,22 +27,30 @@ class MediaInfoCommandRunner
     /**
      * @var array
      */
-    protected $arguments = ['--OUTPUT=XML', '-f'];
+    protected $arguments = [];
 
     /**
      * @param string  $filePath
+     * @param string  $command
      * @param array   $arguments
      * @param Process $process
+     * @param bool    $forceOldXmlOutput
      */
     public function __construct(
         $filePath,
         $command = null,
         array $arguments = null,
-        Process $process = null
+        Process $process = null,
+        $forceOldXmlOutput = false
     ) {
         $this->filePath = $filePath;
         if ($command !== null) {
             $this->command = $command;
+        }
+
+        $this->arguments = self::XML_OUTPUT_FORMAT_ARGUMENTS;
+        if ($forceOldXmlOutput) {
+            $this->arguments = self::FORCED_OLDXML_OUTPUT_FORMAT_ARGUMENTS;
         }
 
         if ($arguments !== null) {

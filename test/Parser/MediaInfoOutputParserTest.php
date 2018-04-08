@@ -11,11 +11,20 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
      */
     private $outputPath;
 
+    /**
+     * @var string
+     */
     private $invalidOutputPath;
+
+    /**
+     * @var string
+     */
+    private $outputMediainfo1710Path;
 
     public function setUp()
     {
         $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
+        $this->outputMediainfo1710Path = __DIR__.'/../fixtures/mediainfo-17.10-output.xml';
         $this->invalidOutputPath = __DIR__.'/../fixtures/mediainfo-output-invalid-types.xml';
     }
 
@@ -60,6 +69,17 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
         // the xml specifically has an unknown type in it
         // when passing true we want to ignore/skip unknown track types
         $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer(true);
+    }
+
+    /**
+     * @expectedException \Mhor\MediaInfo\Exception\MediainfoOutputParsingException
+     */
+    public function testThrowMediaInfoOutputParsingException()
+    {
+        $mediaInfoOutputParser = new MediaInfoOutputParser();
+        $mediaInfoOutputParser->parse(file_get_contents($this->outputMediainfo1710Path));
+        // will throw exception here as default behavior
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
     }
 
     /**

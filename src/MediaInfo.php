@@ -18,7 +18,8 @@ class MediaInfo
      * @var array
      */
     private $configuration = [
-        'command' => null,
+        'command'                            => null,
+        'use_oldxml_mediainfo_output_format' => false,
     ];
 
     /**
@@ -85,6 +86,8 @@ class MediaInfo
     /**
      * @param string $key
      * @param string $value
+     *
+     * @throws \Exception
      */
     public function setConfig($key, $value)
     {

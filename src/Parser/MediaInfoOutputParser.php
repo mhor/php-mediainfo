@@ -4,6 +4,7 @@ namespace Mhor\MediaInfo\Parser;
 
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
+use Mhor\MediaInfo\Exception\MediainfoOutputParsingException;
 use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 
 class MediaInfoOutputParser extends AbstractXmlOutputParser
@@ -33,8 +34,14 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
             throw new \Exception('You must run `parse` before running `getMediaInfoContainer`');
         }
 
-        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder($ignoreUnknownTrackTypes);
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
         $mediaInfoContainerBuilder->setVersion($this->parsedOutput['@attributes']['version']);
+
+        if (false === array_key_exists('File', $this->parsedOutput)) {
+            throw new MediainfoOutputParsingException(
+                'XML format of mediainfo >=17.10 command has changed, check php-mediainfo documentation'
+            );
+        }
 
         foreach ($this->parsedOutput['File']['track'] as $trackType) {
             try {
