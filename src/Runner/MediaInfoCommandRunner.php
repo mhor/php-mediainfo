@@ -71,7 +71,7 @@ class MediaInfoCommandRunner
         $i = 0;
         foreach ($args as $value) {
             $var = 'MEDIAINFO_VAR_'.$i++;
-            $finalCommand[] = '$'.$var;
+            $finalCommand[] = '$"'.$var.'"';
             $env[$var] = $value;
         }
 
