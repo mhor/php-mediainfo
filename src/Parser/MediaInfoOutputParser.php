@@ -42,19 +42,21 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
                 'XML format of mediainfo >=17.10 command has changed, check php-mediainfo documentation'
             );
         }
-
-        foreach ($this->parsedOutput['File']['track'] as $trackType) {
-            try {
-                if (isset($trackType['@attributes']['type'])) {
-                    $mediaInfoContainerBuilder->addTrackType($trackType['@attributes']['type'], $trackType);
-                }
-            } catch (UnknownTrackTypeException $ex) {
-                if (!$ignoreUnknownTrackTypes) {
-                    // rethrow exception
-                    throw $ex;
-                }
-                // else ignore
-            }
+        
+        if(is_array($this)){
+          foreach ($this->parsedOutput['File']['track'] as $trackType) {
+              try {
+                  if (isset($trackType['@attributes']['type'])) {
+                      $mediaInfoContainerBuilder->addTrackType($trackType['@attributes']['type'], $trackType);
+                  }
+              } catch (UnknownTrackTypeException $ex) {
+                  if (!$ignoreUnknownTrackTypes) {
+                      // rethrow exception
+                      throw $ex;
+                  }
+                  // else ignore
+              }
+          }
         }
 
         return $mediaInfoContainerBuilder->build();
