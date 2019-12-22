@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="19.09">
+<File>
+<track type="General">
+<Count>331</Count>
+<Count_of_stream_of_this_kind>1</Count_of_stream_of_this_kind>
+<Kind_of_stream>General</Kind_of_stream>
+<Kind_of_stream>General</Kind_of_stream>
+<Stream_identifier>0</Stream_identifier>
+<Count_of_video_streams>1</Count_of_video_streams>
+<Count_of_audio_streams>1</Count_of_audio_streams>
+<Video_Format_List>VC-1</Video_Format_List>
+<Video_Format_WithHint_List>VC-1 (WMV3)</Video_Format_WithHint_List>
+<Codecs_Video>VC-1</Codecs_Video>
+<Audio_Format_List>WMA</Audio_Format_List>
+<Audio_Format_WithHint_List>WMA</Audio_Format_WithHint_List>
+<Audio_codecs>WMA</Audio_codecs>
+<Complete_name>/mnt/ramdisk/5/54c9f93b-8550-4100-8eeb-328841dc00d6/782247_ohrly-rh131aaso.wmv</Complete_name>
+<Folder_name>/mnt/ramdisk/5/54c9f93b-8550-4100-8eeb-328841dc00d6</Folder_name>
+<File_name_extension>782247_ohrly-rh131aaso.wmv</File_name_extension>
+<File_name>782247_ohrly-rh131aaso</File_name>
+<File_extension>wmv</File_extension>
+<Format>Windows Media</Format>
+<Format>Windows Media</Format>
+<Format_Extensions_usually_used>asf dvr-ms wma wmv</Format_Extensions_usually_used>
+<Commercial_name>Windows Media</Commercial_name>
+<Internet_media_type>video/x-ms-wmv</Internet_media_type>
+<File_size>760169</File_size>
+<File_size>742 KiB</File_size>
+<File_size>742 KiB</File_size>
+<File_size>742 KiB</File_size>
+<File_size>742 KiB</File_size>
+<File_size>742.4 KiB</File_size>
+<Duration>489056</Duration>
+<Duration>8 min 9 s</Duration>
+<Duration>8 min 9 s 56 ms</Duration>
+<Duration>8 min 9 s</Duration>
+<Duration>00:08:09.056</Duration>
+<Duration>00:08:09;03</Duration>
+<Duration>00:08:09.056 (00:08:09;03)</Duration>
+<Overall_bit_rate>12435</Overall_bit_rate>
+<Overall_bit_rate>12.4 kb/s</Overall_bit_rate>
+<Maximum_Overall_bit_rate>5136894</Maximum_Overall_bit_rate>
+<Maximum_Overall_bit_rate>5 137 kb/s</Maximum_Overall_bit_rate>
+<Frame_rate>29.970</Frame_rate>
+<Frame_rate>29.970 FPS</Frame_rate>
+<Frame_count>14657</Frame_count>
+<HeaderSize>1046</HeaderSize>
+<DataSize>759123</DataSize>
+<Performer>Ron Harris</Performer>
+<Encoded_date>UTC 2012-05-14 00:53:44.000</Encoded_date>
+<File_last_modification_date>UTC 2019-12-17 17:20:55</File_last_modification_date>
+<File_last_modification_date__local_>2019-12-17 18:20:55</File_last_modification_date__local_>
+<Copyright>  ￾  </Copyright>
+<Comment>HD Videos</Comment>
+</track>
+<track type="Video">
+<Count>377</Count>
+<Count_of_stream_of_this_kind>1</Count_of_stream_of_this_kind>
+<Kind_of_stream>Video</Kind_of_stream>
+<Kind_of_stream>Video</Kind_of_stream>
+<Stream_identifier>0</Stream_identifier>
+<StreamOrder>0</StreamOrder>
+<ID>1</ID>
+<ID>1</ID>
+<Format>VC-1</Format>
+<Format>VC-1</Format>
+<Commercial_name>VC-1</Commercial_name>
+<Format_profile>Main</Format_profile>
+<Internet_media_type>video/vc1</Internet_media_type>
+<Codec_ID>WMV3</Codec_ID>
+<Codec_ID_Info>Windows Media Video 9</Codec_ID_Info>
+<Codec_ID_Hint>WMV3</Codec_ID_Hint>
+<Codec_ID_Url>http://www.microsoft.com/windows/windowsmedia/format/codecdownload.aspx</Codec_ID_Url>
+<Description_of_the_codec>Windows Media Video 9 - 2-pass VBR</Description_of_the_codec>
+<Duration>489056</Duration>
+<Duration>8 min 9 s</Duration>
+<Duration>8 min 9 s 56 ms</Duration>
+<Duration>8 min 9 s</Duration>
+<Duration>00:08:09.056</Duration>
+<Duration>00:08:09;03</Duration>
+<Duration>00:08:09.056 (00:08:09;03)</Duration>
+<Bit_rate>5000000</Bit_rate>
+<Bit_rate>5 000 kb/s</Bit_rate>
+<Width>1920</Width>
+<Width>1 920 pixels</Width>
+<Height>1080</Height>
+<Height>1 080 pixels</Height>
+<Pixel_aspect_ratio>1.000</Pixel_aspect_ratio>
+<Display_aspect_ratio>1.778</Display_aspect_ratio>
+<Display_aspect_ratio>16:9</Display_aspect_ratio>
+<Frame_rate>29.970</Frame_rate>
+<Frame_rate>29.970 (29970/1000) FPS</Frame_rate>
+<FrameRate_Num>29970</FrameRate_Num>
+<FrameRate_Den>1000</FrameRate_Den>
+<Frame_count>14657</Frame_count>
+<Color_space>YUV</Color_space>
+<Chroma_subsampling>4:2:0</Chroma_subsampling>
+<Chroma_subsampling>4:2:0</Chroma_subsampling>
+<Bit_depth>8</Bit_depth>
+<Bit_depth>8 bits</Bit_depth>
+<Scan_type>Progressive</Scan_type>
+<Scan_type>Progressive</Scan_type>
+<Compression_mode>Lossy</Compression_mode>
+<Compression_mode>Lossy</Compression_mode>
+<Bits__Pixel_Frame_>0.080</Bits__Pixel_Frame_>
+<Stream_size>305660000</Stream_size>
+<Stream_size>292 MiB</Stream_size>
+<Stream_size>292 MiB</Stream_size>
+<Stream_size>292 MiB</Stream_size>
+<Stream_size>292 MiB</Stream_size>
+<Stream_size>291.5 MiB</Stream_size>
+</track>
+<track type="Audio">
+<Count>280</Count>
+<Count_of_stream_of_this_kind>1</Count_of_stream_of_this_kind>
+<Kind_of_stream>Audio</Kind_of_stream>
+<Kind_of_stream>Audio</Kind_of_stream>
+<Stream_identifier>0</Stream_identifier>
+<StreamOrder>1</StreamOrder>
+<ID>2</ID>
+<ID>2</ID>
+<Format>WMA</Format>
+<Format>WMA</Format>
+<Commercial_name>WMA</Commercial_name>
+<Format_version>Version 2</Format_version>
+<Codec_ID>161</Codec_ID>
+<Codec_ID_Info>Windows Media Audio</Codec_ID_Info>
+<Codec_ID_Url>http://www.microsoft.com/windows/windowsmedia/format/codecdownload.aspx</Codec_ID_Url>
+<Description_of_the_codec>Windows Media Audio 9 - 128 kbps, 44 kHz, stereo CBR</Description_of_the_codec>
+<Duration>489056</Duration>
+<Duration>8 min 9 s</Duration>
+<Duration>8 min 9 s 56 ms</Duration>
+<Duration>8 min 9 s</Duration>
+<Duration>00:08:09.056</Duration>
+<Duration>00:08:09.056</Duration>
+<Bit_rate>128000</Bit_rate>
+<Bit_rate>128 kb/s</Bit_rate>
+<Channel_s_>2</Channel_s_>
+<Channel_s_>2 channels</Channel_s_>
+<Sampling_rate>44100</Sampling_rate>
+<Sampling_rate>44.1 kHz</Sampling_rate>
+<Samples_count>21567370</Samples_count>
+<Bit_depth>16</Bit_depth>
+<Bit_depth>16 bits</Bit_depth>
+<Stream_size>7824896</Stream_size>
+<Stream_size>7.46 MiB</Stream_size>
+<Stream_size>7 MiB</Stream_size>
+<Stream_size>7.5 MiB</Stream_size>
+<Stream_size>7.46 MiB</Stream_size>
+<Stream_size>7.462 MiB</Stream_size>
+</track>
+</File>
+</Mediainfo>

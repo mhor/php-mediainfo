@@ -21,11 +21,17 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
      */
     private $outputMediainfo1710Path;
 
+    /**
+     * @var string
+     */
+    private $invalidEncodingOutputPath;
+
     public function setUp()
     {
         $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
         $this->outputMediainfo1710Path = __DIR__.'/../fixtures/mediainfo-17.10-output.xml';
         $this->invalidOutputPath = __DIR__.'/../fixtures/mediainfo-output-invalid-types.xml';
+        $this->invalidEncodingOutputPath = __DIR__.'/../fixtures/mediainfo-output-invalid-encoding.xml';
     }
 
     /**
@@ -91,5 +97,14 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
         $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
         // will throw exception here as default behavior
         $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
+    }
+
+    public function testIgnoreInvalidEncodingErrors()
+    {
+        $mediaInfoOutputParser = new MediaInfoOutputParser();
+        $mediaInfoOutputParser->parse(file_get_contents($this->invalidEncodingOutputPath));
+        // xml string in file contains bad encoded characters, on parsing simplexml should not
+        // throw an error
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer(true);
     }
 }
