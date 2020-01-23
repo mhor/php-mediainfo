@@ -2,6 +2,11 @@ language: php
 
 sudo: false
 
+branches:
+  only:
+  - master
+  - 6.0.X
+
 matrix:
   include:
     - php: 5.6
