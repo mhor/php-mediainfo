@@ -4,9 +4,9 @@ namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
+use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Test\Stub\TrackTestType;
-use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use PHPUnit\Framework\TestCase;
 
 class MediaInfoContainerBuilderTest extends TestCase

@@ -2,10 +2,10 @@
 
 namespace Mhor\MediaInfo\Test\Parser;
 
-use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Exception\MediainfoOutputParsingException;
 use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
+use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 use PHPUnit\Framework\TestCase;
 
 class MediaInfoOutputParserTest extends TestCase
