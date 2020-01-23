@@ -3,8 +3,9 @@
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
+use PHPUnit\Framework\TestCase;
 
-class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
+class MediaInfoContainerTest extends TestCase
 {
     private function createContainer()
     {

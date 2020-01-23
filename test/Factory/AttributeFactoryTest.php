@@ -3,8 +3,9 @@
 namespace Mhor\MediaInfo\Test\Factory;
 
 use Mhor\MediaInfo\Factory\AttributeFactory;
+use PHPUnit\Framework\TestCase;
 
-class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
+class AttributeFactoryTest extends TestCase
 {
     public function testCreateRatio()
     {
