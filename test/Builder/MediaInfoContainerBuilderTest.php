@@ -4,10 +4,12 @@ namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
+use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Test\Stub\TrackTestType;
+use PHPUnit\Framework\TestCase;
 
-class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
+class MediaInfoContainerBuilderTest extends TestCase
 {
     public function testSetVersion()
     {
@@ -56,20 +58,16 @@ class MediaInfoContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, count($others[0]->get()));
     }
 
-    /**
-     * @expectedException \Mhor\MediaInfo\Exception\UnknownTrackTypeException
-     */
     public function testAddInvalidType()
     {
+        $this->expectException(UnknownTrackTypeException::class);
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
         $mediaInfoContainerBuilder->addTrackType('InvalidType', []);
     }
 
-    /**
-     * @expectedException \Exception
-     */
     public function testAddInvalidTypeOnMediaInfoContainer()
     {
+        $this->expectException(\Exception::class);
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
         $mediaInfoContainer = $mediaInfoContainerBuilder->build();
         $mediaInfoContainer->add(new TrackTestType());

@@ -4,12 +4,13 @@ namespace Mhor\MediaInfo\Test\Builder;
 
 use Mhor\MediaInfo\Builder\MediaInfoCommandBuilder;
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
+use PHPUnit\Framework\TestCase;
 
-class MediaInfoCommandBuilderTest extends \PHPUnit_Framework_TestCase
+class MediaInfoCommandBuilderTest extends TestCase
 {
     private $filePath;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->filePath = __DIR__.'/../fixtures/test.mp3';
     }
@@ -29,22 +30,18 @@ class MediaInfoCommandBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage File "non existing path" does not exist
-     */
     public function testExceptionWithNonExistingFile()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('File "non existing path" does not exist');
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('non existing path');
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Expected a filename, got ".", which is a directory
-     */
     public function testExceptionWithDirectory()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Expected a filename, got ".", which is a directory');
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('.');
     }

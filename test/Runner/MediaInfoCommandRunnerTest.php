@@ -3,8 +3,9 @@
 namespace Mhor\MediaInfo\Test\Parser;
 
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
+use PHPUnit\Framework\TestCase;
 
-class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
+class MediaInfoCommandRunnerTest extends TestCase
 {
     /**
      * @var string
@@ -16,7 +17,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
      */
     private $filePath;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->filePath = __DIR__.'/../fixtures/test.mp3';
         $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
@@ -29,7 +30,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $processMock->method('run')
-            ->willReturn(true);
+            ->willReturn(1);
 
         $processMock->method('getOutput')
             ->willReturn(file_get_contents($this->outputPath));
@@ -47,17 +48,15 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(file_get_contents($this->outputPath), $mediaInfoCommandRunner->run());
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testRunException()
     {
+        $this->expectException(\RuntimeException::class);
         $processMock = $this->getMockBuilder('Symfony\Component\Process\Process')
             ->disableOriginalConstructor()
             ->getMock();
 
         $processMock->method('run')
-            ->willReturn(true);
+            ->willReturn(0);
 
         $processMock->method('getErrorOutput')
             ->willReturn('Error');
