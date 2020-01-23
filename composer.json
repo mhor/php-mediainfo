@@ -2,6 +2,12 @@
     "name": "mhor/php-mediainfo",
     "type": "library",
     "description": "PHP wrapper around the mediainfo command",
+    "keywords": [
+        "mediainfo",
+        "wrapper",
+        "metadata",
+        "id3"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,12 +16,12 @@
         }
     ],
     "require": {
-        "php": ">=7.2.0",
+        "php": "^7.2",
         "symfony/process": "~3.4|~4.0",
         "symfony/filesystem": "~3.4|~4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.0"
+        "phpunit/phpunit": "~8.5"
     },
     "autoload": {
         "psr-4": {

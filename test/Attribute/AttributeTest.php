@@ -8,8 +8,9 @@ use Mhor\MediaInfo\Attribute\Mode;
 use Mhor\MediaInfo\Attribute\Rate;
 use Mhor\MediaInfo\Attribute\Ratio;
 use Mhor\MediaInfo\Attribute\Size;
+use PHPUnit\Framework\TestCase;
 
-class AttributeTest extends \PHPUnit_Framework_TestCase
+class AttributeTest extends TestCase
 {
     public function testCover()
     {
