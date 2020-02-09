@@ -34,7 +34,7 @@ class MediaInfoCommandBuilder
 
         $configuration = $configuration + [
             'command'                            => null,
-            'use_oldxml_mediainfo_output_format' => false,
+            'use_oldxml_mediainfo_output_format' => true,
         ];
 
         return new MediaInfoCommandRunner(

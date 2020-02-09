@@ -41,7 +41,7 @@ class MediaInfoCommandRunner
         $command = null,
         array $arguments = null,
         Process $process = null,
-        $forceOldXmlOutput = false
+        $forceOldXmlOutput = true
     ) {
         $this->filePath = $filePath;
         if ($command !== null) {
