@@ -61,11 +61,19 @@ class MediaInfoCommandBuilderTest extends TestCase
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
             $this->filePath,
             [
-                'command' => '/usr/bin/local/mediainfo',
+                'command'                            => '/usr/bin/local/mediainfo',
+                'use_oldxml_mediainfo_output_format' => false,
             ]
         );
 
-        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner($this->filePath, '/usr/bin/local/mediainfo');
+        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(
+            $this->filePath,
+            '/usr/bin/local/mediainfo',
+            null,
+            null,
+            false
+        );
+
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 }

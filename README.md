@@ -257,11 +257,11 @@ $mediaInfo->setConfig('command', '/usr/local/bin/mediainfo');
 $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 ```
 
-### Support new mediainfo version (>=17.10)
+### Support old mediainfo version (<17.10)
 
 ```php
 $mediaInfo = new MediaInfo();
-$mediaInfo->setConfig('use_oldxml_mediainfo_output_format', true);
+$mediaInfo->setConfig('use_oldxml_mediainfo_output_format', false);
 $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 ```
 
