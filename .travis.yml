@@ -5,7 +5,7 @@ sudo: false
 branches:
   only:
   - master
-  - 6.0.X
+  - 6.0.x
 
 matrix:
   include:
