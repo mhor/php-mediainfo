@@ -5,6 +5,7 @@ namespace Mhor\MediaInfo\Test\Builder;
 use Mhor\MediaInfo\Builder\MediaInfoCommandBuilder;
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Process\Process;
 
 class MediaInfoCommandBuilderTest extends TestCase
 {
@@ -15,18 +16,51 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->filePath = __DIR__.'/../fixtures/test.mp3';
     }
 
-    public function testBuilderCommandWithUrl()
+    public function testBuilderCommandWithHttpsUrl()
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('https://example.org/');
 
-        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner('https://example.org/');
-        $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
+        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
+            [
+                'mediainfo',
+                'https://example.org/',
+                '-f',
+                '--OUTPUT=OLDXML',
+            ],
+            null,
+            [
+                'MEDIAINFO_VAR_FILE_PATH'    => 'https://example.org/',
+                'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
+                'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=OLDXML',
+                'LANG'                       => 'en_US.UTF-8',
+            ]
+        ));
 
+        $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
+    }
+
+    public function testBuilderCommandWithHttpUrl()
+    {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('http://example.org/');
 
-        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner('http://example.org/');
+        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
+            [
+                'mediainfo',
+                'http://example.org/',
+                '-f',
+                '--OUTPUT=OLDXML',
+            ],
+            null,
+            [
+                'MEDIAINFO_VAR_FILE_PATH'    => 'http://example.org/',
+                'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
+                'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=OLDXML',
+                'LANG'                       => 'en_US.UTF-8',
+            ]
+        ));
+
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 
@@ -51,7 +85,22 @@ class MediaInfoCommandBuilderTest extends TestCase
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($this->filePath);
 
-        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner($this->filePath);
+        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
+            [
+                'mediainfo',
+                $this->filePath,
+                '-f',
+                '--OUTPUT=OLDXML',
+            ],
+            null,
+            [
+                'MEDIAINFO_VAR_FILE_PATH'    => $this->filePath,
+                'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
+                'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=OLDXML',
+                'LANG'                       => 'en_US.UTF-8',
+            ]
+        ));
+
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 
@@ -66,13 +115,21 @@ class MediaInfoCommandBuilderTest extends TestCase
             ]
         );
 
-        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(
-            $this->filePath,
-            '/usr/bin/local/mediainfo',
+        $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
+            [
+                '/usr/bin/local/mediainfo',
+                $this->filePath,
+                '-f',
+                '--OUTPUT=XML',
+            ],
             null,
-            null,
-            false
-        );
+            [
+                'MEDIAINFO_VAR_FILE_PATH'    => $this->filePath,
+                'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
+                'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=XML',
+                'LANG'                       => 'en_US.UTF-8',
+            ]
+        ));
 
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }

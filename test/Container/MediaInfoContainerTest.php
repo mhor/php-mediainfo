@@ -1,5 +1,8 @@
 <?php
 
+namespace Mhor\MediaInfo\Test\Container;
+
+use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
@@ -13,7 +16,7 @@ class MediaInfoContainerTest extends TestCase
         $general = new General();
 
         $general->set('Format', 'MPEG Audio');
-        $general->set('Duration', '1mn 20s');
+        $general->set('Duration', new Duration('1200000'));
 
         $audio = new Audio();
 
