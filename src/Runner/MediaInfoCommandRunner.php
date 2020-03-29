@@ -71,7 +71,14 @@ class MediaInfoCommandRunner
         $i = 0;
         foreach ($args as $value) {
             $var = 'MEDIAINFO_VAR_'.$i++;
-            $finalCommand[] = '"$'.$var.'"';
+
+            if (stripos(PHP_OS, 'WIN') === 0) {
+                // windows needs an other declaration of env-variables
+                $finalCommand[] = '"%'.$var.'%"';
+            } else {
+                $finalCommand[] = '"$'.$var.'"';
+            }
+
             $env[$var] = $value;
         }
 
