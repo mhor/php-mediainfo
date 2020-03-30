@@ -15,6 +15,8 @@ matrix:
       env: SYMFONY_VERSION=4.0.*
     - php: 7.4
       env: SYMFONY_VERSION=4.4.*
+    - php: 7.4
+      env: SYMFONY_VERSION=5.0.*
 
 env:
     global:

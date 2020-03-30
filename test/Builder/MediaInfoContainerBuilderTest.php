@@ -61,7 +61,13 @@ class MediaInfoContainerBuilderTest extends TestCase
     public function testAddInvalidType()
     {
         $this->expectException(UnknownTrackTypeException::class);
+        $this->expectExceptionMessage('Type doesn\'t exist: InvalidType');
+
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+        $mediaInfoContainerBuilder->addTrackType('InvalidType', []);
+
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+
         $mediaInfoContainerBuilder->addTrackType('InvalidType', []);
     }
 

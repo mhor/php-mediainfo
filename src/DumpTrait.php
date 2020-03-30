@@ -11,13 +11,7 @@ trait DumpTrait
      */
     public function jsonSerialize()
     {
-        $array = get_object_vars($this);
-
-        if (isset($array['attributes'])) {
-            $array = $array['attributes'];
-        }
-
-        return $array;
+        return get_object_vars($this);
     }
 
     /**
