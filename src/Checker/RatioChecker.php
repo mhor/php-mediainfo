@@ -11,7 +11,7 @@ class RatioChecker extends AbstractAttributeChecker
      *
      * @return Ratio
      */
-    public function create($value)
+    public function create($value): \Mhor\MediaInfo\Attribute\Ratio
     {
         return new Ratio($value[0], $value[1]);
     }
@@ -19,7 +19,7 @@ class RatioChecker extends AbstractAttributeChecker
     /**
      * @return array
      */
-    public function getMembersFields()
+    public function getMembersFields(): array
     {
         return [
             'display_aspect_ratio',

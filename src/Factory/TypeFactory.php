@@ -22,7 +22,7 @@ class TypeFactory
      *
      * @return Type\AbstractType
      */
-    public function create($type)
+    public function create($type): Type\AbstractType
     {
         switch ($type) {
             case self::AUDIO:

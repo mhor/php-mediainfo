@@ -11,7 +11,7 @@ class ModeChecker extends AbstractAttributeChecker
      *
      * @return Mode
      */
-    public function create($rateMode)
+    public function create($rateMode): \Mhor\MediaInfo\Attribute\Mode
     {
         $rateMode = (array) $rateMode;
 
@@ -25,7 +25,7 @@ class ModeChecker extends AbstractAttributeChecker
     /**
      * @return array
      */
-    public function getMembersFields()
+    public function getMembersFields(): array
     {
         return [
             'overall_bit_rate_mode',

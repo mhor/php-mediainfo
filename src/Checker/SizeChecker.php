@@ -11,7 +11,7 @@ class SizeChecker extends AbstractAttributeChecker
      *
      * @return Size
      */
-    public function create($sizes)
+    public function create($sizes): \Mhor\MediaInfo\Attribute\Size
     {
         return new Size($sizes[0]);
     }
@@ -19,7 +19,7 @@ class SizeChecker extends AbstractAttributeChecker
     /**
      * @return array
      */
-    public function getMembersFields()
+    public function getMembersFields(): array
     {
         return [
             'file_size',

@@ -9,7 +9,7 @@ class DateTimeChecker extends AbstractAttributeChecker
      *
      * @return \DateTime
      */
-    public function create($value)
+    public function create($value): \DateTime
     {
         return new \DateTime($value);
     }
@@ -17,7 +17,7 @@ class DateTimeChecker extends AbstractAttributeChecker
     /**
      * @return array
      */
-    public function getMembersFields()
+    public function getMembersFields(): array
     {
         return [
             'file_last_modification_date',

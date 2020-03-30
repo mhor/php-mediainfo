@@ -5,11 +5,11 @@ namespace Mhor\MediaInfo\Checker;
 abstract class AbstractAttributeChecker implements AttributeCheckerInterface
 {
     /**
-     * @param $attribute
+     * @param string $attribute
      *
      * @return bool
      */
-    public function isMember($attribute)
+    public function isMember(string $attribute): bool
     {
         return in_array($attribute, $this->getMembersFields());
     }

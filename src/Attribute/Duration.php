@@ -24,7 +24,7 @@ class Duration implements AttributeInterface
     /**
      * @return int
      */
-    public function getMilliseconds()
+    public function getMilliseconds(): int
     {
         return $this->milliseconds;
     }
@@ -32,7 +32,7 @@ class Duration implements AttributeInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->milliseconds;
     }

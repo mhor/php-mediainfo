@@ -22,7 +22,7 @@ class Rate implements AttributeInterface
      * @param string|int $absoluteValue
      * @param string     $textValue
      */
-    public function __construct($absoluteValue, $textValue)
+    public function __construct($absoluteValue, string $textValue)
     {
         $this->absoluteValue = (int) $absoluteValue;
         $this->textValue = $textValue;
@@ -31,7 +31,7 @@ class Rate implements AttributeInterface
     /**
      * @return int
      */
-    public function getAbsoluteValue()
+    public function getAbsoluteValue(): int
     {
         return $this->absoluteValue;
     }
@@ -39,7 +39,7 @@ class Rate implements AttributeInterface
     /**
      * @return string
      */
-    public function getTextValue()
+    public function getTextValue(): string
     {
         return $this->textValue;
     }
@@ -47,7 +47,7 @@ class Rate implements AttributeInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->textValue;
     }

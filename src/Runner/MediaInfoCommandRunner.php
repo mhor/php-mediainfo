@@ -29,7 +29,7 @@ class MediaInfoCommandRunner
      *
      * @return string
      */
-    public function run()
+    public function run(): string
     {
         $this->process->run();
         if (!$this->process->isSuccessful()) {
@@ -43,7 +43,7 @@ class MediaInfoCommandRunner
      * Asynchronously start mediainfo operation.
      * Make call to MediaInfoCommandRunner::wait() afterwards to receive output.
      */
-    public function start()
+    public function start(): void
     {
         // just takes advantage of symfony's underlying Process framework
         // process runs in background
@@ -58,7 +58,7 @@ class MediaInfoCommandRunner
      *
      * @return string
      */
-    public function wait()
+    public function wait(): string
     {
         // blocks here until process completes
         $this->process->wait();
