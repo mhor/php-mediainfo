@@ -37,7 +37,7 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
         $mediaInfoContainerBuilder->setVersion($this->parsedOutput['@attributes']['version']);
 
-        if (false === array_key_exists('File', $this->parsedOutput)) {
+        if (!array_key_exists('File', $this->parsedOutput)) {
             throw new MediainfoOutputParsingException(
                 'XML format of mediainfo >=17.10 command has changed, check php-mediainfo documentation'
             );

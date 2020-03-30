@@ -13,9 +13,7 @@ class SizeChecker extends AbstractAttributeChecker
      */
     public function create($sizes)
     {
-        $size = new Size($sizes[0]);
-
-        return $size;
+        return new Size($sizes[0]);
     }
 
     /**

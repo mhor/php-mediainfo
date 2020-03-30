@@ -33,7 +33,7 @@ class MediaInfoCommandBuilder
             }
         }
 
-        $configuration = $configuration + [
+        $configuration += [
             'command'                            => null,
             'use_oldxml_mediainfo_output_format' => true,
         ];
@@ -65,7 +65,7 @@ class MediaInfoCommandBuilder
             'MEDIAINFO_VAR_OUTPUT'       => MediaInfoCommandRunner::MEDIAINFO_OLDXML_OUTPUT_ARGUMENT,
         ];
 
-        if ($forceOldXmlOutput === false) {
+        if (!$forceOldXmlOutput) {
             $arguments['MEDIAINFO_VAR_OUTPUT'] = MediaInfoCommandRunner::MEDIAINFO_XML_OUTPUT_ARGUMENT;
         }
 

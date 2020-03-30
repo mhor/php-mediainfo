@@ -13,9 +13,7 @@ class RatioChecker extends AbstractAttributeChecker
      */
     public function create($value)
     {
-        $ratio = new Ratio($value[0], $value[1]);
-
-        return $ratio;
+        return new Ratio($value[0], $value[1]);
     }
 
     /**

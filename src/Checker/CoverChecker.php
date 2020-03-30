@@ -13,9 +13,7 @@ class CoverChecker extends AbstractAttributeChecker
      */
     public function create($value)
     {
-        $cover = new Cover($value);
-
-        return $cover;
+        return new Cover($value);
     }
 
     /**

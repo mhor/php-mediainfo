@@ -13,9 +13,7 @@ class DurationChecker extends AbstractAttributeChecker
      */
     public function create($durations)
     {
-        $duration = new Duration($durations[0]);
-
-        return $duration;
+        return new Duration($durations[0]);
     }
 
     /**
