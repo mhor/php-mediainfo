@@ -12,14 +12,14 @@ use PHPUnit\Framework\TestCase;
 
 class AttributeTest extends TestCase
 {
-    public function testCover()
+    public function testCover(): void
     {
         $cover = new Cover('binary_string');
         $this->assertEquals('binary_string', $cover->getBinaryCover());
         $this->assertSame('binary_string', (string) $cover);
     }
 
-    public function testDuration()
+    public function testDuration(): void
     {
         $duration = new Duration('1000');
         $this->assertSame(1000, $duration->getMilliseconds());
@@ -27,7 +27,7 @@ class AttributeTest extends TestCase
         $this->assertSame('1000', (string) $duration);
     }
 
-    public function testMode()
+    public function testMode(): void
     {
         $mode = new Mode('short', 'full');
         $this->assertEquals('short', $mode->getShortName());
@@ -35,7 +35,7 @@ class AttributeTest extends TestCase
         $this->assertSame('short', (string) $mode);
     }
 
-    public function testRatio()
+    public function testRatio(): void
     {
         $ratio = new Ratio('15555', '15.55 Mo');
         $this->assertSame(15555.0, $ratio->getAbsoluteValue());
@@ -44,7 +44,7 @@ class AttributeTest extends TestCase
         $this->assertSame('15.55 Mo', (string) $ratio);
     }
 
-    public function testRate()
+    public function testRate(): void
     {
         $rate = new Rate('720', '720p');
         $this->assertSame(720, $rate->getAbsoluteValue());
@@ -53,7 +53,7 @@ class AttributeTest extends TestCase
         $this->assertSame('720p', (string) $rate);
     }
 
-    public function testSize()
+    public function testSize(): void
     {
         $size = new Size('42');
         $this->assertSame(42, $size->getBit());

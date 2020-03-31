@@ -11,17 +11,15 @@ class DurationChecker extends AbstractAttributeChecker
      *
      * @return Duration
      */
-    public function create($durations)
+    public function create($durations): \Mhor\MediaInfo\Attribute\Duration
     {
-        $duration = new Duration($durations[0]);
-
-        return $duration;
+        return new Duration($durations[0]);
     }
 
     /**
      * @return array
      */
-    public function getMembersFields()
+    public function getMembersFields(): array
     {
         return [
             'duration',

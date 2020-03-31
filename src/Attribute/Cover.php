@@ -15,7 +15,7 @@ class Cover implements AttributeInterface
     /**
      * @param string $cover
      */
-    public function __construct($cover)
+    public function __construct(string $cover)
     {
         $this->binaryCover = $cover;
     }
@@ -23,7 +23,7 @@ class Cover implements AttributeInterface
     /**
      * @return string
      */
-    public function getBinaryCover()
+    public function getBinaryCover(): string
     {
         return $this->binaryCover;
     }
@@ -31,7 +31,7 @@ class Cover implements AttributeInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->binaryCover;
     }

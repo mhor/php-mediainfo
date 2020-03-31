@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class MediaInfoContainerTest extends TestCase
 {
-    private function createContainer()
+    private function createContainer(): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         $mediaInfoContainer = new MediaInfoContainer();
         $general = new General();
@@ -29,7 +29,7 @@ class MediaInfoContainerTest extends TestCase
         return $mediaInfoContainer;
     }
 
-    public function testToJson()
+    public function testToJson(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -38,7 +38,7 @@ class MediaInfoContainerTest extends TestCase
         $this->assertRegExp('/^\{.+\}$/', $data);
     }
 
-    public function testToJsonType()
+    public function testToJsonType(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -47,7 +47,7 @@ class MediaInfoContainerTest extends TestCase
         $this->assertRegExp('/^\{.+\}$/', $data);
     }
 
-    public function testToArray()
+    public function testToArray(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -56,7 +56,7 @@ class MediaInfoContainerTest extends TestCase
         $this->assertArrayHasKey('version', $array);
     }
 
-    public function testToArrayType()
+    public function testToArrayType(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -65,7 +65,7 @@ class MediaInfoContainerTest extends TestCase
         $this->assertTrue(is_array($array));
     }
 
-    public function testToXML()
+    public function testToXML(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -74,7 +74,7 @@ class MediaInfoContainerTest extends TestCase
         $this->assertInstanceOf('SimpleXMLElement', $xml);
     }
 
-    public function testToXMLType()
+    public function testToXMLType(): void
     {
         $mediaInfoContainer = $this->createContainer();
 

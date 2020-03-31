@@ -28,7 +28,7 @@ class MediaInfoContainerBuilder
     /**
      * @return MediaInfoContainer
      */
-    public function build()
+    public function build(): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         return $this->mediaInfoContainer;
     }
@@ -36,7 +36,7 @@ class MediaInfoContainerBuilder
     /**
      * @param string $version
      */
-    public function setVersion($version)
+    public function setVersion($version): void
     {
         $this->mediaInfoContainer->setVersion($version);
     }
@@ -47,7 +47,7 @@ class MediaInfoContainerBuilder
      *
      * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      */
-    public function addTrackType($typeName, array $attributes)
+    public function addTrackType($typeName, array $attributes): void
     {
         $trackType = $this->typeFactory->create($typeName);
         $this->addAttributes($trackType, $attributes);
@@ -59,7 +59,7 @@ class MediaInfoContainerBuilder
      * @param AbstractType $trackType
      * @param array        $attributes
      */
-    private function addAttributes(AbstractType $trackType, $attributes)
+    private function addAttributes(AbstractType $trackType, array $attributes): void
     {
         foreach ($this->sanitizeAttributes($attributes) as $attribute => $value) {
             if ($attribute[0] === '@') {
@@ -78,7 +78,7 @@ class MediaInfoContainerBuilder
      *
      * @return array
      */
-    private function sanitizeAttributes(array $attributes)
+    private function sanitizeAttributes(array $attributes): array
     {
         $sanitizeAttributes = [];
         foreach ($attributes as $key => $value) {
@@ -106,7 +106,7 @@ class MediaInfoContainerBuilder
      *
      * @return string
      */
-    private function formatAttribute($attribute)
+    private function formatAttribute(string $attribute): string
     {
         return trim(str_replace('__', '_', str_replace(' ', '_', strtolower($attribute))), '_');
     }

@@ -16,7 +16,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->filePath = __DIR__.'/../fixtures/test.mp3';
     }
 
-    public function testBuilderCommandWithHttpsUrl()
+    public function testBuilderCommandWithHttpsUrl(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('https://example.org/');
@@ -40,7 +40,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 
-    public function testBuilderCommandWithHttpUrl()
+    public function testBuilderCommandWithHttpUrl(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('http://example.org/');
@@ -64,7 +64,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 
-    public function testExceptionWithNonExistingFile()
+    public function testExceptionWithNonExistingFile(): void
     {
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('File "non existing path" does not exist');
@@ -72,7 +72,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('non existing path');
     }
 
-    public function testExceptionWithDirectory()
+    public function testExceptionWithDirectory(): void
     {
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Expected a filename, got ".", which is a directory');
@@ -80,7 +80,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('.');
     }
 
-    public function testBuilderCommand()
+    public function testBuilderCommand(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($this->filePath);
@@ -104,7 +104,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->assertEquals($equalsMediaInfoCommandRunner, $mediaInfoCommandRunner);
     }
 
-    public function testConfiguredCommand()
+    public function testConfiguredCommand(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(

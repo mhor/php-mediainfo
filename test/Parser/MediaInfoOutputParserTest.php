@@ -32,14 +32,14 @@ class MediaInfoOutputParserTest extends TestCase
         $this->invalidOutputPath = __DIR__.'/../fixtures/mediainfo-output-invalid-types.xml';
     }
 
-    public function testGetMediaInfoContainerBeforeCallParse()
+    public function testGetMediaInfoContainerBeforeCallParse(): void
     {
         $this->expectException(\Exception::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->getMediaInfoContainer();
     }
 
-    public function testGetMediaInfoContainer()
+    public function testGetMediaInfoContainer(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->outputPath));
@@ -56,15 +56,15 @@ class MediaInfoOutputParserTest extends TestCase
         $this->assertEquals(1, count($mediaInfoContainer->getMenus()));
 
         $audios = $mediaInfoContainer->getAudios();
-        $this->assertEquals(20, count($audios[0]->get()));
+        $this->assertEquals(20, is_array($audios[0]->get()) || $audios[0]->get() instanceof \Countable ? count($audios[0]->get()) : 0);
         $this->assertEquals(20974464, $audios[0]->get('samples_count'));
         $this->assertEquals(null, $audios[0]->get('test'));
 
         $subtitles = $mediaInfoContainer->getSubtitles();
-        $this->assertEquals(16, count($subtitles[0]->get()));
+        $this->assertEquals(16, is_array($subtitles[0]->get()) || $subtitles[0]->get() instanceof \Countable ? count($subtitles[0]->get()) : 0);
     }
 
-    public function testIgnoreInvalidTrackType()
+    public function testIgnoreInvalidTrackType(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
@@ -74,7 +74,7 @@ class MediaInfoOutputParserTest extends TestCase
         $this->assertInstanceOf(MediaInfoContainer::class, $mediaInfoContainer);
     }
 
-    public function testThrowMediaInfoOutputParsingException()
+    public function testThrowMediaInfoOutputParsingException(): void
     {
         $this->expectException(MediainfoOutputParsingException::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
@@ -83,7 +83,7 @@ class MediaInfoOutputParserTest extends TestCase
         $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
     }
 
-    public function testThrowInvalidTrackType()
+    public function testThrowInvalidTrackType(): void
     {
         $this->expectException(UnknownTrackTypeException::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();

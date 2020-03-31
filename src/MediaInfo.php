@@ -31,7 +31,7 @@ class MediaInfo
      *
      * @return MediaInfoContainer
      */
-    public function getInfo($filePath, $ignoreUnknownTrackTypes = false)
+    public function getInfo($filePath, $ignoreUnknownTrackTypes = false): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath, $this->configuration)->run();
@@ -49,7 +49,7 @@ class MediaInfo
      *
      * @param $filePath
      */
-    public function getInfoStartAsync($filePath)
+    public function getInfoStartAsync($filePath): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $this->mediaInfoCommandRunnerAsync = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
@@ -68,7 +68,7 @@ class MediaInfo
      *
      * @return MediaInfoContainer
      */
-    public function getInfoWaitAsync($ignoreUnknownTrackTypes = false)
+    public function getInfoWaitAsync($ignoreUnknownTrackTypes = false): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         if ($this->mediaInfoCommandRunnerAsync == null) {
             throw new \Exception('You must run `getInfoStartAsync` before running `getInfoWaitAsync`');
