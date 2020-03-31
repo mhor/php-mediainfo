@@ -22,7 +22,7 @@ class Ratio implements AttributeInterface
      * @param string|float $absoluteValue
      * @param string       $textValue
      */
-    public function __construct($absoluteValue, $textValue)
+    public function __construct($absoluteValue, string $textValue)
     {
         $this->absoluteValue = (float) $absoluteValue;
         $this->textValue = $textValue;
@@ -31,7 +31,7 @@ class Ratio implements AttributeInterface
     /**
      * @return float
      */
-    public function getAbsoluteValue()
+    public function getAbsoluteValue(): float
     {
         return $this->absoluteValue;
     }
@@ -39,7 +39,7 @@ class Ratio implements AttributeInterface
     /**
      * @return string
      */
-    public function getTextValue()
+    public function getTextValue(): string
     {
         return $this->textValue;
     }
@@ -47,7 +47,7 @@ class Ratio implements AttributeInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->textValue;
     }

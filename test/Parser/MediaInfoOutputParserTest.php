@@ -2,9 +2,13 @@
 
 namespace Mhor\MediaInfo\Test\Parser;
 
+use Mhor\MediaInfo\Container\MediaInfoContainer;
+use Mhor\MediaInfo\Exception\MediainfoOutputParsingException;
+use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
+use PHPUnit\Framework\TestCase;
 
-class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
+class MediaInfoOutputParserTest extends TestCase
 {
     /**
      * @var string
@@ -21,23 +25,21 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
      */
     private $outputMediainfo1710Path;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
         $this->outputMediainfo1710Path = __DIR__.'/../fixtures/mediainfo-17.10-output.xml';
         $this->invalidOutputPath = __DIR__.'/../fixtures/mediainfo-output-invalid-types.xml';
     }
 
-    /**
-     * @expectedException \Exception
-     */
-    public function testGetMediaInfoContainerBeforeCallParse()
+    public function testGetMediaInfoContainerBeforeCallParse(): void
     {
+        $this->expectException(\Exception::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->getMediaInfoContainer();
     }
 
-    public function testGetMediaInfoContainer()
+    public function testGetMediaInfoContainer(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->outputPath));
@@ -54,39 +56,36 @@ class MediaInfoOutputParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($mediaInfoContainer->getMenus()));
 
         $audios = $mediaInfoContainer->getAudios();
-        $this->assertEquals(20, count($audios[0]->get()));
+        $this->assertEquals(20, is_array($audios[0]->get()) || $audios[0]->get() instanceof \Countable ? count($audios[0]->get()) : 0);
         $this->assertEquals(20974464, $audios[0]->get('samples_count'));
         $this->assertEquals(null, $audios[0]->get('test'));
 
         $subtitles = $mediaInfoContainer->getSubtitles();
-        $this->assertEquals(16, count($subtitles[0]->get()));
+        $this->assertEquals(16, is_array($subtitles[0]->get()) || $subtitles[0]->get() instanceof \Countable ? count($subtitles[0]->get()) : 0);
     }
 
-    public function testIgnoreInvalidTrackType()
+    public function testIgnoreInvalidTrackType(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
         // the xml specifically has an unknown type in it
         // when passing true we want to ignore/skip unknown track types
         $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer(true);
+        $this->assertInstanceOf(MediaInfoContainer::class, $mediaInfoContainer);
     }
 
-    /**
-     * @expectedException \Mhor\MediaInfo\Exception\MediainfoOutputParsingException
-     */
-    public function testThrowMediaInfoOutputParsingException()
+    public function testThrowMediaInfoOutputParsingException(): void
     {
+        $this->expectException(MediainfoOutputParsingException::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->outputMediainfo1710Path));
         // will throw exception here as default behavior
         $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
     }
 
-    /**
-     * @expectedException \Mhor\MediaInfo\Exception\UnknownTrackTypeException
-     */
-    public function testThrowInvalidTrackType()
+    public function testThrowInvalidTrackType(): void
     {
+        $this->expectException(UnknownTrackTypeException::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
         // will throw exception here as default behavior

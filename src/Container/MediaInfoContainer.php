@@ -67,7 +67,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return General
      */
-    public function getGeneral()
+    public function getGeneral(): \Mhor\MediaInfo\Type\General
     {
         return $this->general;
     }
@@ -75,7 +75,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return Audio[]
      */
-    public function getAudios()
+    public function getAudios(): array
     {
         return $this->audios;
     }
@@ -83,7 +83,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return Image[]
      */
-    public function getImages()
+    public function getImages(): array
     {
         return $this->images;
     }
@@ -91,7 +91,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return Menu[]
      */
-    public function getMenus()
+    public function getMenus(): array
     {
         return $this->menus;
     }
@@ -99,7 +99,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return Other[]
      */
-    public function getOthers()
+    public function getOthers(): array
     {
         return $this->others;
     }
@@ -107,15 +107,15 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param string $version
      */
-    public function setVersion($version)
+    public function setVersion($version): void
     {
         $this->version = $version;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getVersion()
+    public function getVersion(): ?string
     {
         return $this->version;
     }
@@ -123,7 +123,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return Video[]
      */
-    public function getVideos()
+    public function getVideos(): array
     {
         return $this->videos;
     }
@@ -131,7 +131,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return Subtitle[]
      */
-    public function getSubtitles()
+    public function getSubtitles(): array
     {
         return $this->subtitles;
     }
@@ -139,7 +139,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param General $general
      */
-    public function setGeneral($general)
+    public function setGeneral($general): void
     {
         $this->general = $general;
     }
@@ -149,7 +149,7 @@ class MediaInfoContainer implements \JsonSerializable
      *
      * @throws \Exception
      */
-    public function add(AbstractType $trackType)
+    public function add(AbstractType $trackType): void
     {
         switch (get_class($trackType)) {
             case self::AUDIO_CLASS:
@@ -181,7 +181,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param Audio $audio
      */
-    private function addAudio(Audio $audio)
+    private function addAudio(Audio $audio): void
     {
         $this->audios[] = $audio;
     }
@@ -189,7 +189,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param Video $video
      */
-    private function addVideo(Video $video)
+    private function addVideo(Video $video): void
     {
         $this->videos[] = $video;
     }
@@ -197,7 +197,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param Image $image
      */
-    private function addImage(Image $image)
+    private function addImage(Image $image): void
     {
         $this->images[] = $image;
     }
@@ -205,7 +205,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param Subtitle $subtitle
      */
-    private function addSubtitle(Subtitle $subtitle)
+    private function addSubtitle(Subtitle $subtitle): void
     {
         $this->subtitles[] = $subtitle;
     }
@@ -213,7 +213,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param Menu $menu
      */
-    private function addMenu(Menu $menu)
+    private function addMenu(Menu $menu): void
     {
         $this->menus[] = $menu;
     }
@@ -221,7 +221,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param Other $other
      */
-    private function addOther(Other $other)
+    private function addOther(Other $other): void
     {
         $this->others[] = $other;
     }

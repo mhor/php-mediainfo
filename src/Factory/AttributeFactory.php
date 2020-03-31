@@ -34,7 +34,7 @@ class AttributeFactory
     /**
      * @return AbstractAttributeChecker[]
      */
-    private static function getAllAttributeType()
+    private static function getAllAttributeType(): array
     {
         return [
             new CoverChecker(),

@@ -9,15 +9,9 @@ trait DumpTrait
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        $array = get_object_vars($this);
-
-        if (isset($array['attributes'])) {
-            $array = $array['attributes'];
-        }
-
-        return $array;
+        return get_object_vars($this);
     }
 
     /**
@@ -25,7 +19,7 @@ trait DumpTrait
      *
      * @return array
      */
-    public function __toArray()
+    public function __toArray(): array
     {
         return $this->jsonSerialize();
     }
@@ -42,7 +36,7 @@ trait DumpTrait
         return $xml;
     }
 
-    protected function composeXML($data, &$xml)
+    protected function composeXML($data, &$xml): void
     {
         foreach ($data as $key => $value) {
             if (is_array($value)) {

@@ -22,7 +22,7 @@ class Mode implements AttributeInterface
      * @param string $shortName
      * @param string $fullName
      */
-    public function __construct($shortName, $fullName)
+    public function __construct(string $shortName, string $fullName)
     {
         $this->shortName = $shortName;
         $this->fullName = $fullName;
@@ -31,7 +31,7 @@ class Mode implements AttributeInterface
     /**
      * @return string
      */
-    public function getFullName()
+    public function getFullName(): string
     {
         return $this->fullName;
     }
@@ -39,7 +39,7 @@ class Mode implements AttributeInterface
     /**
      * @return string
      */
-    public function getShortName()
+    public function getShortName(): string
     {
         return $this->shortName;
     }
@@ -47,7 +47,7 @@ class Mode implements AttributeInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->shortName;
     }

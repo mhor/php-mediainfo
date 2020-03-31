@@ -9,16 +9,14 @@ branches:
 
 matrix:
   include:
-    - php: 5.6
-      env: SYMFONY_VERSION=2.7.*
-    - php: 7.0
-      env: SYMFONY_VERSION=2.7.*
-    - php: 7.1
-      env: SYMFONY_VERSION=4.0.*
     - php: 7.2
-      env: SYMFONY_VERSION=4.0.*
+      env: SYMFONY_VERSION=3.4.*
     - php: 7.3
       env: SYMFONY_VERSION=4.0.*
+    - php: 7.4
+      env: SYMFONY_VERSION=4.4.*
+    - php: 7.4
+      env: SYMFONY_VERSION=5.0.*
 
 env:
     global:

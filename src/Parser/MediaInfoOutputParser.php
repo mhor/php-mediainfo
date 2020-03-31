@@ -17,7 +17,7 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
     /**
      * @param string $output
      */
-    public function parse($output)
+    public function parse(string $output): void
     {
         $this->parsedOutput = $this->transformXmlToArray($output);
     }
@@ -28,7 +28,7 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
      *
      * @return MediaInfoContainer
      */
-    public function getMediaInfoContainer($ignoreUnknownTrackTypes = false)
+    public function getMediaInfoContainer(bool $ignoreUnknownTrackTypes = false): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         if ($this->parsedOutput === null) {
             throw new \Exception('You must run `parse` before running `getMediaInfoContainer`');
@@ -37,7 +37,7 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
         $mediaInfoContainerBuilder->setVersion($this->parsedOutput['@attributes']['version']);
 
-        if (false === array_key_exists('File', $this->parsedOutput)) {
+        if (!array_key_exists('File', $this->parsedOutput)) {
             throw new MediainfoOutputParsingException(
                 'XML format of mediainfo >=17.10 command has changed, check php-mediainfo documentation'
             );

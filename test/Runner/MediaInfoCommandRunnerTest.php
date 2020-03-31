@@ -3,8 +3,10 @@
 namespace Mhor\MediaInfo\Test\Parser;
 
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Process\Process;
 
-class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
+class MediaInfoCommandRunnerTest extends TestCase
 {
     /**
      * @var string
@@ -16,7 +18,7 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
      */
     private $filePath;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->filePath = __DIR__.'/../fixtures/test.mp3';
         $this->outputPath = __DIR__.'/../fixtures/mediainfo-output.xml';
@@ -24,81 +26,76 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
 
     public function testRun()
     {
-        $processMock = $this->getMockBuilder('Symfony\Component\Process\Process')
-            ->disableOriginalConstructor()
-            ->getMock();
+        $process = $this->prophesize(Process::class);
+        $process
+            ->run()
+            ->shouldBeCalled()
+            ->willReturn(1);
 
-        $processMock->method('run')
-            ->willReturn(true);
-
-        $processMock->method('getOutput')
+        $process
+            ->getOutput()
+            ->shouldBeCalled()
             ->willReturn(file_get_contents($this->outputPath));
 
-        $processMock->method('isSuccessful')
+        $process
+            ->isSuccessful()
+            ->shouldBeCalled()
             ->willReturn(true);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner(
-            $this->filePath,
-            null,
-            ['--OUTPUT=XML', '-f'],
-            $processMock
-        );
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
 
         $this->assertEquals(file_get_contents($this->outputPath), $mediaInfoCommandRunner->run());
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testRunException()
     {
-        $processMock = $this->getMockBuilder('Symfony\Component\Process\Process')
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->expectException(\RuntimeException::class);
 
-        $processMock->method('run')
-            ->willReturn(true);
+        $process = $this->prophesize(Process::class);
+        $process
+            ->run()
+            ->shouldBeCalled()
+            ->willReturn(0);
 
-        $processMock->method('getErrorOutput')
+        $process
+            ->getErrorOutput()
+            ->shouldBeCalled()
             ->willReturn('Error');
 
-        $processMock->method('isSuccessful')
+        $process
+            ->isSuccessful()
+            ->shouldBeCalled()
             ->willReturn(false);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner(
-            $this->filePath,
-            'custom_mediainfo',
-            ['--OUTPUT=XML', '-f'],
-            $processMock
-        );
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
 
         $mediaInfoCommandRunner->run();
     }
 
     public function testRunAsync()
     {
-        $processMock = $this->getMockBuilder('Symfony\Component\Process\Process')
-            ->disableOriginalConstructor()
-            ->getMock();
+        $process = $this->prophesize(Process::class);
+        $process
+            ->start()
+            ->shouldBeCalled()
+            ->willReturn($process);
 
-        $processMock->method('start')
-            ->willReturn($processMock);
-
-        $processMock->method('wait')
+        $process
+            ->wait()
+            ->shouldBeCalled()
             ->willReturn(true);
 
-        $processMock->method('getOutput')
+        $process
+            ->getOutput()
+            ->shouldBeCalled()
             ->willReturn(file_get_contents($this->outputPath));
 
-        $processMock->method('isSuccessful')
+        $process
+            ->isSuccessful()
+            ->shouldBeCalled()
             ->willReturn(true);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner(
-            $this->filePath,
-            null,
-            ['--OUTPUT=XML', '-f'],
-            $processMock
-        );
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
 
         $mediaInfoCommandRunner->start();
 
@@ -112,5 +109,45 @@ class MediaInfoCommandRunnerTest extends \PHPUnit_Framework_TestCase
         $output = $mediaInfoCommandRunner->wait();
 
         $this->assertEquals(file_get_contents($this->outputPath), $output);
+    }
+
+    public function testRunAsyncFail()
+    {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Error');
+
+        $process = $this->prophesize(Process::class);
+        $process
+            ->start()
+            ->shouldBeCalled()
+            ->willReturn($process);
+
+        $process
+            ->wait()
+            ->shouldBeCalled()
+            ->willReturn(true);
+
+        $process
+            ->getErrorOutput()
+            ->shouldBeCalled()
+            ->willReturn('Error');
+
+        $process
+            ->isSuccessful()
+            ->shouldBeCalled()
+            ->willReturn(false);
+
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
+
+        $mediaInfoCommandRunner->start();
+
+        // do some stuff in between, count to 5
+        $i = 0;
+        do {
+            $i++;
+        } while ($i < 5);
+
+        // block and complete operation
+        $mediaInfoCommandRunner->wait();
     }
 }

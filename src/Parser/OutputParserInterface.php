@@ -7,12 +7,12 @@ use Mhor\MediaInfo\Container\MediaInfoContainer;
 interface OutputParserInterface
 {
     /**
-     * @param $output
+     * @param string $output
      */
-    public function parse($output);
+    public function parse(string $output);
 
     /**
      * @return MediaInfoContainer
      */
-    public function getMediaInfoContainer();
+    public function getMediaInfoContainer(): \Mhor\MediaInfo\Container\MediaInfoContainer;
 }

@@ -3,10 +3,11 @@
 namespace Mhor\MediaInfo\Test\Factory;
 
 use Mhor\MediaInfo\Factory\AttributeFactory;
+use PHPUnit\Framework\TestCase;
 
-class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
+class AttributeFactoryTest extends TestCase
 {
-    public function testCreateRatio()
+    public function testCreateRatio(): void
     {
         $ratio = AttributeFactory::create(
             'display_aspect_ratio',
@@ -19,7 +20,7 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Mhor\MediaInfo\Attribute\Ratio', get_class($ratio));
     }
 
-    public function testCreateRate()
+    public function testCreateRate(): void
     {
         $rate = AttributeFactory::create(
             'height',
@@ -32,7 +33,7 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Mhor\MediaInfo\Attribute\Rate', get_class($rate));
     }
 
-    public function testCreateSize()
+    public function testCreateSize(): void
     {
         $size = AttributeFactory::create(
             'file_size',
@@ -45,7 +46,7 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Mhor\MediaInfo\Attribute\Size', get_class($size));
     }
 
-    public function testCreateMode()
+    public function testCreateMode(): void
     {
         $mode = AttributeFactory::create(
             'overall_bit_rate',
@@ -58,7 +59,7 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Mhor\MediaInfo\Attribute\Mode', get_class($mode));
     }
 
-    public function testCreateDuration()
+    public function testCreateDuration(): void
     {
         $duration = AttributeFactory::create(
             'duration',
@@ -70,14 +71,9 @@ class AttributeFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Mhor\MediaInfo\Attribute\Duration', get_class($duration));
     }
 
-    public function testCreateCover()
+    public function testCreateCover(): void
     {
-        $cover = AttributeFactory::create(
-            'cover_data',
-            [
-                '01010101',
-            ]
-        );
+        $cover = AttributeFactory::create('cover_data', '01010101');
 
         $this->assertEquals('Mhor\MediaInfo\Attribute\Cover', get_class($cover));
     }

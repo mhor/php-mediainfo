@@ -1,18 +1,22 @@
 <?php
 
+namespace Mhor\MediaInfo\Test\Container;
+
+use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Type\Audio;
 use Mhor\MediaInfo\Type\General;
+use PHPUnit\Framework\TestCase;
 
-class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
+class MediaInfoContainerTest extends TestCase
 {
-    private function createContainer()
+    private function createContainer(): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         $mediaInfoContainer = new MediaInfoContainer();
         $general = new General();
 
         $general->set('Format', 'MPEG Audio');
-        $general->set('Duration', '1mn 20s');
+        $general->set('Duration', new Duration('1200000'));
 
         $audio = new Audio();
 
@@ -25,7 +29,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
         return $mediaInfoContainer;
     }
 
-    public function testToJson()
+    public function testToJson(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -34,7 +38,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertRegExp('/^\{.+\}$/', $data);
     }
 
-    public function testToJsonType()
+    public function testToJsonType(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -43,7 +47,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertRegExp('/^\{.+\}$/', $data);
     }
 
-    public function testToArray()
+    public function testToArray(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -52,7 +56,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('version', $array);
     }
 
-    public function testToArrayType()
+    public function testToArrayType(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -61,7 +65,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($array));
     }
 
-    public function testToXML()
+    public function testToXML(): void
     {
         $mediaInfoContainer = $this->createContainer();
 
@@ -70,7 +74,7 @@ class MediaInfoContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SimpleXMLElement', $xml);
     }
 
-    public function testToXMLType()
+    public function testToXMLType(): void
     {
         $mediaInfoContainer = $this->createContainer();
 

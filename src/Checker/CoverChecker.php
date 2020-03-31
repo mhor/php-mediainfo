@@ -11,17 +11,15 @@ class CoverChecker extends AbstractAttributeChecker
      *
      * @return Cover
      */
-    public function create($value)
+    public function create($value): \Mhor\MediaInfo\Attribute\Cover
     {
-        $cover = new Cover($value);
-
-        return $cover;
+        return new Cover($value);
     }
 
     /**
      * @return array
      */
-    public function getMembersFields()
+    public function getMembersFields(): array
     {
         return ['cover_data'];
     }

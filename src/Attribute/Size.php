@@ -24,7 +24,7 @@ class Size implements AttributeInterface
     /**
      * @return int
      */
-    public function getBit()
+    public function getBit(): int
     {
         return $this->bit;
     }
@@ -32,7 +32,7 @@ class Size implements AttributeInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->bit;
     }

@@ -19,7 +19,7 @@ abstract class AbstractType implements \JsonSerializable
      *
      * @return string
      */
-    public function set($attribute, $value)
+    public function set($attribute, $value): void
     {
         $this->attributes[$attribute] = $value;
     }
@@ -29,7 +29,7 @@ abstract class AbstractType implements \JsonSerializable
      *
      * @return mixed
      */
-    public function get($attribute = null)
+    public function get(string $attribute = null)
     {
         if ($attribute === null) {
             return $this->attributes;
@@ -45,7 +45,7 @@ abstract class AbstractType implements \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $array = get_object_vars($this);
 
@@ -61,7 +61,7 @@ abstract class AbstractType implements \JsonSerializable
      *
      * @return array
      */
-    public function __toArray()
+    public function __toArray(): array
     {
         return $this->jsonSerialize();
     }

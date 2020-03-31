@@ -9,7 +9,7 @@ abstract class AbstractXmlOutputParser implements OutputParserInterface
      *
      * @return array
      */
-    protected function transformXmlToArray($xmlString)
+    protected function transformXmlToArray(string $xmlString): array
     {
         if (mb_detect_encoding($xmlString, 'UTF-8', true) === false) {
             $xmlString = utf8_encode($xmlString);
