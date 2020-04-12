@@ -65,9 +65,9 @@ class MediaInfoContainer implements \JsonSerializable
     private $others = [];
 
     /**
-     * @return General
+     * @return General|null
      */
-    public function getGeneral(): \Mhor\MediaInfo\Type\General
+    public function getGeneral(): ?object
     {
         return $this->general;
     }
