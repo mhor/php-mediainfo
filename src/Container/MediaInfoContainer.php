@@ -67,7 +67,7 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @return General|null
      */
-    public function getGeneral(): ?object
+    public function getGeneral(): ?General
     {
         return $this->general;
     }
