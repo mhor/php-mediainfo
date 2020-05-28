@@ -62,6 +62,13 @@ class MediaInfoOutputParserTest extends TestCase
 
         $subtitles = $mediaInfoContainer->getSubtitles();
         $this->assertEquals(16, is_array($subtitles[0]->get()) || $subtitles[0]->get() instanceof \Countable ? count($subtitles[0]->get()) : 0);
+
+        $this->assertTrue($subtitles[0]->has('commercial_name'));
+        $this->assertFalse($subtitles[0]->has('unexisting_attribute'));
+
+        $this->assertCount(16, $subtitles[0]->list());
+        $this->assertArrayHasKey('commercial_name', array_flip($subtitles[0]->list()));
+        $this->assertArrayNotHasKey('unexisting_attribute', array_flip($subtitles[0]->list()));
     }
 
     public function testIgnoreInvalidTrackType(): void

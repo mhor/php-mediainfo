@@ -120,17 +120,24 @@ $mediaInfoContainer = $mediaInfo->getInfo('./SampleVideo_1280x720_5mb.mkv');
 echo "Videos channel: \n";
 echo "=======================\n";
 foreach ($mediaInfoContainer->getVideos() as $video) {
-    echo 'format: '.(string)$video->get('format')."\n";
-    echo 'height: '.$video->get('height')->getAbsoluteValue()."\n";
+    if ($video->has('format')) {
+        echo 'format: '.(string)$video->get('format')."\n";
+    }
+
+    if ($video->has('height')) {
+        echo 'height: '.$video->get('height')->getAbsoluteValue()."\n";
+    }
+
     echo "\n---------------------\n";
 }
 
 echo "Audios channel: \n";
 echo "=======================\n";
 foreach ($mediaInfoContainer->getAudios() as $audio) {
-
-    echo 'unique_id: '.$audio->get('unique_id') . "\n";
-    echo 'format: '.$audio->get('format');
+    $availableInfo = $audio->list();
+    foreach ($availableInfo as $key) {
+        echo $audio->get($key);
+    }
     echo "\n---------------------\n";
 }
 ```
@@ -163,6 +170,25 @@ Field Name are in lower case separated by "_"
 
 ```php
 $oneInformation = $general->get('count_of_audio_streams');
+```
+
+#### Check if information exists
+
+Field Name are in lower case separated by "_"
+
+```php
+if ($general->has('count_of_audio_streams')) {
+    echo $general->get('count_of_audio_streams');
+}
+```
+
+#### List available information
+
+```php
+$availableInfo = $general->list();
+foreach ($availableInfo as $key) {
+    echo $general->get($key);
+}
 ```
 
 ### Specials types

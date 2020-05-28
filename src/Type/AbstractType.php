@@ -35,9 +35,33 @@ abstract class AbstractType implements \JsonSerializable
             return $this->attributes;
         }
 
-        if (isset($this->attributes[$attribute])) {
+        if ($this->has($attribute)) {
             return $this->attributes[$attribute];
         }
+
+        return null;
+    }
+
+    /**
+     * @param string $attribute
+     *
+     * @return bool
+     */
+    public function has(string $attribute): bool
+    {
+        if (isset($this->attributes[$attribute])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function list(): array
+    {
+        return array_keys($this->attributes);
     }
 
     /**
