@@ -36,6 +36,7 @@ class MediaInfoCommandBuilder
         $configuration += [
             'command'                            => null,
             'use_oldxml_mediainfo_output_format' => true,
+            'urlencode'                          => false,
         ];
 
         return new MediaInfoCommandRunner($this->buildMediaInfoProcess(
