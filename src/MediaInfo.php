@@ -20,6 +20,7 @@ class MediaInfo
     private $configuration = [
         'command'                            => null,
         'use_oldxml_mediainfo_output_format' => true,
+        'urlencode'                          => false,
     ];
 
     /**
