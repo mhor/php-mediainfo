@@ -42,7 +42,7 @@ class MediaInfoCommandBuilder
             $filePath,
             $configuration['command'],
             $configuration['use_oldxml_mediainfo_output_format'],
-            $configuration['urlencode'],
+            $configuration['urlencode']
         ));
     }
 
