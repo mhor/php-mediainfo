@@ -103,9 +103,10 @@ class MediaInfo
 
     /**
      * @param $key
-     * @return mixed
      *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function getConfig($key)
     {
@@ -117,4 +118,5 @@ class MediaInfo
 
         return $this->configuration[$key];
     }
+
 }
