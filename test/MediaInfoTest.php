@@ -35,5 +35,4 @@ class MediaInfoTest extends TestCase
         $mediaInfo = new MediaInfo();
         $mediaInfo->getConfig('unknow_config');
     }
-
 }

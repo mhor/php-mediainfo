@@ -118,5 +118,4 @@ class MediaInfo
 
         return $this->configuration[$key];
     }
-
 }
