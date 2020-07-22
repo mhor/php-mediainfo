@@ -100,4 +100,21 @@ class MediaInfo
 
         $this->configuration[$key] = $value;
     }
+
+    /**
+     * @param $key
+     * @return mixed
+     *
+     * @throws \Exception
+     */
+    public function getConfig($key)
+    {
+        if (!array_key_exists($key, $this->configuration)) {
+            throw new \Exception(
+                sprintf('key "%s" does\'t exist', $key)
+            );
+        }
+
+        return $this->configuration[$key];
+    }
 }
