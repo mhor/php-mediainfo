@@ -20,6 +20,7 @@ class MediaInfo
     private $configuration = [
         'command'                            => null,
         'use_oldxml_mediainfo_output_format' => true,
+        'urlencode'                          => false,
     ];
 
     /**
@@ -98,5 +99,23 @@ class MediaInfo
         }
 
         $this->configuration[$key] = $value;
+    }
+
+    /**
+     * @param $key
+     *
+     * @throws \Exception
+     *
+     * @return mixed
+     */
+    public function getConfig($key)
+    {
+        if (!array_key_exists($key, $this->configuration)) {
+            throw new \Exception(
+                sprintf('key "%s" does\'t exist', $key)
+            );
+        }
+
+        return $this->configuration[$key];
     }
 }

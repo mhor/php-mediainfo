@@ -10,6 +10,7 @@ class MediaInfoCommandRunner
     const MEDIAINFO_OLDXML_OUTPUT_ARGUMENT = '--OUTPUT=OLDXML';
     const MEDIAINFO_XML_OUTPUT_ARGUMENT = '--OUTPUT=XML';
     const MEDIAINFO_FULL_DISPLAY_ARGUMENT = '-f';
+    const MEDIAINFO_URLENCODE = '--urlencode';
 
     /**
      * @var Process

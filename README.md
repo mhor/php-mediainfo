@@ -319,6 +319,20 @@ $mediaInfo->setConfig('command', 'C:\path\to\directory\MediaInfo.exe');
 $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 ```
 
+### Urlencode Config
+
+By default MediaInfo tries to detect if a URL is already percent-encode and encodes the URL when it's not.
+Setting the `'urlencode'` config setting to `true` forces MediaInfo to encode the URL despite the presence of percentage signs in the URL.
+This is for example required when using pre-signed URLs for AWS S3 objects.
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfo->setConfig('urlencode', true);
+$mediaInfoContainer = $mediaInfo->getInfo('https://demo.us-west-1.amazonaws.com/video.mp4?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ABC%2F123%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200721T114451Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Signature=123');
+```
+
+This setting requires MediaInfo `20.03` minimum
+
 ### Symfony integration
 
 Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)

@@ -112,6 +112,7 @@ class MediaInfoCommandBuilderTest extends TestCase
             [
                 'command'                            => '/usr/bin/local/mediainfo',
                 'use_oldxml_mediainfo_output_format' => false,
+                'urlencode'                          => true,
             ]
         );
 
@@ -121,12 +122,14 @@ class MediaInfoCommandBuilderTest extends TestCase
                 $this->filePath,
                 '-f',
                 '--OUTPUT=XML',
+                '--urlencode',
             ],
             null,
             [
                 'MEDIAINFO_VAR_FILE_PATH'    => $this->filePath,
                 'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
                 'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=XML',
+                'MEDIAINFO_VAR_URLENCODE'    => '--urlencode',
                 'LANG'                       => 'en_US.UTF-8',
             ]
         ));

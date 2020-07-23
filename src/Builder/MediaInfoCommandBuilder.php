@@ -36,12 +36,14 @@ class MediaInfoCommandBuilder
         $configuration += [
             'command'                            => null,
             'use_oldxml_mediainfo_output_format' => true,
+            'urlencode'                          => false,
         ];
 
         return new MediaInfoCommandRunner($this->buildMediaInfoProcess(
             $filePath,
             $configuration['command'],
-            $configuration['use_oldxml_mediainfo_output_format']
+            $configuration['use_oldxml_mediainfo_output_format'],
+            $configuration['urlencode']
         ));
     }
 
@@ -49,10 +51,11 @@ class MediaInfoCommandBuilder
      * @param string      $filePath
      * @param string|null $command
      * @param bool        $forceOldXmlOutput
+     * @param bool        $urlencode
      *
      * @return Process
      */
-    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true): Process
+    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false): Process
     {
         if ($command === null) {
             $command = MediaInfoCommandRunner::MEDIAINFO_COMMAND;
@@ -67,6 +70,10 @@ class MediaInfoCommandBuilder
 
         if (!$forceOldXmlOutput) {
             $arguments['MEDIAINFO_VAR_OUTPUT'] = MediaInfoCommandRunner::MEDIAINFO_XML_OUTPUT_ARGUMENT;
+        }
+
+        if ($urlencode) {
+            $arguments['MEDIAINFO_VAR_URLENCODE'] = MediaInfoCommandRunner::MEDIAINFO_URLENCODE;
         }
 
         $env = $arguments + [
