@@ -24,7 +24,7 @@ class MediaInfo
     ];
 
     /**
-     * Stored original XML output from MediaInfo
+     * Stored original XML output from MediaInfo.
      *
      * @var string
      */
@@ -129,7 +129,7 @@ class MediaInfo
     }
 
     /**
-     * Get last received XML output of MediaInfo
+     * Get last received XML output of MediaInfo.
      *
      * @return string
      */
