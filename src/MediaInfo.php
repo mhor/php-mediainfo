@@ -24,6 +24,13 @@ class MediaInfo
     ];
 
     /**
+     * Stored original XML output from MediaInfo
+     *
+     * @var string
+     */
+    private $originalXml = '';
+
+    /**
      * @param $filePath
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
      *                                      default behavior (false) is throw an exception on unknown track types.
@@ -36,6 +43,8 @@ class MediaInfo
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath, $this->configuration)->run();
+
+        $this->originalXml = $output;
 
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
@@ -117,5 +126,15 @@ class MediaInfo
         }
 
         return $this->configuration[$key];
+    }
+
+    /**
+     * Get last received XML output of MediaInfo
+     *
+     * @return string
+     */
+    public function getOriginalXml()
+    {
+        return $this->originalXml;
     }
 }
