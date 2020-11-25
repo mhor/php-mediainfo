@@ -11,6 +11,7 @@ class MediaInfoCommandRunner
     const MEDIAINFO_XML_OUTPUT_ARGUMENT = '--OUTPUT=XML';
     const MEDIAINFO_FULL_DISPLAY_ARGUMENT = '-f';
     const MEDIAINFO_URLENCODE = '--urlencode';
+    const MEDIAINFO_INCLUDE_COVER_DATA = '--Cover_Data=base64';
 
     /**
      * @var Process

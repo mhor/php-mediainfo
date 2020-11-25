@@ -27,12 +27,14 @@ class MediaInfoCommandBuilderTest extends TestCase
                 'https://example.org/',
                 '-f',
                 '--OUTPUT=OLDXML',
+                '--Cover_Data=base64',
             ],
             null,
             [
                 'MEDIAINFO_VAR_FILE_PATH'    => 'https://example.org/',
                 'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
                 'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=OLDXML',
+                'MEDIAINFO_COVER_DATA'       => '--Cover_Data=base64',
                 'LANG'                       => 'en_US.UTF-8',
             ]
         ));
@@ -51,12 +53,14 @@ class MediaInfoCommandBuilderTest extends TestCase
                 'http://example.org/',
                 '-f',
                 '--OUTPUT=OLDXML',
+                '--Cover_Data=base64',
             ],
             null,
             [
                 'MEDIAINFO_VAR_FILE_PATH'    => 'http://example.org/',
                 'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
                 'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=OLDXML',
+                'MEDIAINFO_COVER_DATA'       => '--Cover_Data=base64',
                 'LANG'                       => 'en_US.UTF-8',
             ]
         ));
@@ -91,12 +95,14 @@ class MediaInfoCommandBuilderTest extends TestCase
                 $this->filePath,
                 '-f',
                 '--OUTPUT=OLDXML',
+                '--Cover_Data=base64',
             ],
             null,
             [
                 'MEDIAINFO_VAR_FILE_PATH'    => $this->filePath,
                 'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
                 'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=OLDXML',
+                'MEDIAINFO_COVER_DATA'       => '--Cover_Data=base64',
                 'LANG'                       => 'en_US.UTF-8',
             ]
         ));
@@ -113,6 +119,7 @@ class MediaInfoCommandBuilderTest extends TestCase
                 'command'                            => '/usr/bin/local/mediainfo',
                 'use_oldxml_mediainfo_output_format' => false,
                 'urlencode'                          => true,
+                'include_cover_data'                 => false,
             ]
         );
 
