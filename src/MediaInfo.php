@@ -21,7 +21,7 @@ class MediaInfo
         'command'                            => null,
         'use_oldxml_mediainfo_output_format' => true,
         'urlencode'                          => false,
-        'include_cover_data'                 => true,
+        'include_cover_data'                 => false,
     ];
 
     /**

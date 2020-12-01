@@ -37,7 +37,7 @@ class MediaInfoCommandBuilder
             'command'                            => null,
             'use_oldxml_mediainfo_output_format' => true,
             'urlencode'                          => false,
-            'include_cover_data'                 => true,
+            'include_cover_data'                 => false,
         ];
 
         return new MediaInfoCommandRunner($this->buildMediaInfoProcess(
@@ -57,7 +57,7 @@ class MediaInfoCommandBuilder
      *
      * @return Process
      */
-    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false, bool $includeCoverData = true): Process
+    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false, bool $includeCoverData = false): Process
     {
         if ($command === null) {
             $command = MediaInfoCommandRunner::MEDIAINFO_COMMAND;
