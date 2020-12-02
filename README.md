@@ -333,6 +333,31 @@ $mediaInfoContainer = $mediaInfo->getInfo('https://demo.us-west-1.amazonaws.com/
 
 This setting requires MediaInfo `20.03` minimum
 
+### Cover data
+
+Recent versions of MediaInfo don't include cover data by default, without passing an additional flag. To include any available cover data, set the `'include_cover_data'` config setting to `true`. See the [cover type](#cover) for details on retrieving the base64 encoded image from `cover_data`.
+
+Originally this cover data was always included in the MediaInfo output, so this option is unnecessary for older versions. But [around version 18](https://sourceforge.net/p/mediainfo/discussion/297610/thread/aeb4222d/?limit=25) cover data was removed from the output by default, unless you also pass the `--Cover_Data=base64` flag.
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfo->setConfig('include_cover_data', true);
+$mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
+
+$general = $mediaInfoContainer->getGeneral();
+if ($general->has('cover_data')) {
+    $attributeCover = $general->get('cover_data');
+    $base64EncodedImage = $attributeCover->getBinaryCover();
+}
+```
+
+**Note:** Older versions of MediaInfo will print the following error if passed this flag:
+
+```bash
+$ mediainfo ./music.mp3 -f --OUTPUT=OLDXML --Cover_Data=base64
+Option not known
+```
+
 ### Symfony integration
 
 Look at this bundle: [MhorMediaInfoBunde](https://github.com/mhor/MhorMediaInfoBundle)
