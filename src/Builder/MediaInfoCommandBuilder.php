@@ -37,13 +37,15 @@ class MediaInfoCommandBuilder
             'command'                            => null,
             'use_oldxml_mediainfo_output_format' => true,
             'urlencode'                          => false,
+            'include_cover_data'                 => false,
         ];
 
         return new MediaInfoCommandRunner($this->buildMediaInfoProcess(
             $filePath,
             $configuration['command'],
             $configuration['use_oldxml_mediainfo_output_format'],
-            $configuration['urlencode']
+            $configuration['urlencode'],
+            $configuration['include_cover_data']
         ));
     }
 
@@ -55,7 +57,7 @@ class MediaInfoCommandBuilder
      *
      * @return Process
      */
-    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false): Process
+    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false, bool $includeCoverData = false): Process
     {
         if ($command === null) {
             $command = MediaInfoCommandRunner::MEDIAINFO_COMMAND;
@@ -74,6 +76,10 @@ class MediaInfoCommandBuilder
 
         if ($urlencode) {
             $arguments['MEDIAINFO_VAR_URLENCODE'] = MediaInfoCommandRunner::MEDIAINFO_URLENCODE;
+        }
+
+        if ($includeCoverData) {
+            $arguments['MEDIAINFO_COVER_DATA'] = MediaInfoCommandRunner::MEDIAINFO_INCLUDE_COVER_DATA;
         }
 
         $env = $arguments + [

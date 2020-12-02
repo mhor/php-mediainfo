@@ -113,6 +113,7 @@ class MediaInfoCommandBuilderTest extends TestCase
                 'command'                            => '/usr/bin/local/mediainfo',
                 'use_oldxml_mediainfo_output_format' => false,
                 'urlencode'                          => true,
+                'include_cover_data'                 => true,
             ]
         );
 
@@ -123,6 +124,7 @@ class MediaInfoCommandBuilderTest extends TestCase
                 '-f',
                 '--OUTPUT=XML',
                 '--urlencode',
+                '--Cover_Data=base64',
             ],
             null,
             [
@@ -130,6 +132,7 @@ class MediaInfoCommandBuilderTest extends TestCase
                 'MEDIAINFO_VAR_FULL_DISPLAY' => '-f',
                 'MEDIAINFO_VAR_OUTPUT'       => '--OUTPUT=XML',
                 'MEDIAINFO_VAR_URLENCODE'    => '--urlencode',
+                'MEDIAINFO_COVER_DATA'       => '--Cover_Data=base64',
                 'LANG'                       => 'en_US.UTF-8',
             ]
         ));
