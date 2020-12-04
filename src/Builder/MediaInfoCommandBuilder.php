@@ -83,7 +83,7 @@ class MediaInfoCommandBuilder
         }
 
         $env = $arguments + [
-            'LANG' => setlocale(LC_CTYPE, 0),
+            'LANG' => setlocale(LC_CTYPE, '0'),
         ];
 
         return new Process(
