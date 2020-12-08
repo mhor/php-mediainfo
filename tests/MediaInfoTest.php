@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test;
+namespace Mhor\MediaInfo\Tests;
 
 use Mhor\MediaInfo\MediaInfo;
 use PHPUnit\Framework\TestCase;

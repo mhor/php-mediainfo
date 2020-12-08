@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Stub;
+namespace Mhor\MediaInfo\Tests\Stub;
 
 use Mhor\MediaInfo\Type\AbstractType;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Exception;
+namespace Mhor\MediaInfo\Tests\Exception;
 
 use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use PHPUnit\Framework\TestCase;
