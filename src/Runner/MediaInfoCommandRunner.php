@@ -6,12 +6,12 @@ use Symfony\Component\Process\Process;
 
 class MediaInfoCommandRunner
 {
-    const MEDIAINFO_COMMAND = 'mediainfo';
-    const MEDIAINFO_OLDXML_OUTPUT_ARGUMENT = '--OUTPUT=OLDXML';
-    const MEDIAINFO_XML_OUTPUT_ARGUMENT = '--OUTPUT=XML';
-    const MEDIAINFO_FULL_DISPLAY_ARGUMENT = '-f';
-    const MEDIAINFO_URLENCODE = '--urlencode';
-    const MEDIAINFO_INCLUDE_COVER_DATA = '--Cover_Data=base64';
+    public const MEDIAINFO_COMMAND = 'mediainfo';
+    public const MEDIAINFO_OLDXML_OUTPUT_ARGUMENT = '--OUTPUT=OLDXML';
+    public const MEDIAINFO_XML_OUTPUT_ARGUMENT = '--OUTPUT=XML';
+    public const MEDIAINFO_FULL_DISPLAY_ARGUMENT = '-f';
+    public const MEDIAINFO_URLENCODE = '--urlencode';
+    public const MEDIAINFO_INCLUDE_COVER_DATA = '--Cover_Data=base64';
 
     /**
      * @var Process

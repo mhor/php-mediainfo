@@ -16,13 +16,13 @@ class MediaInfoContainer implements \JsonSerializable
 {
     use DumpTrait;
 
-    const GENERAL_CLASS = 'Mhor\MediaInfo\Type\General';
-    const AUDIO_CLASS = 'Mhor\MediaInfo\Type\Audio';
-    const IMAGE_CLASS = 'Mhor\MediaInfo\Type\Image';
-    const VIDEO_CLASS = 'Mhor\MediaInfo\Type\Video';
-    const SUBTITLE_CLASS = 'Mhor\MediaInfo\Type\Subtitle';
-    const MENU_CLASS = 'Mhor\MediaInfo\Type\Menu';
-    const OTHER_CLASS = 'Mhor\MediaInfo\Type\Other';
+    public const GENERAL_CLASS = 'Mhor\MediaInfo\Type\General';
+    public const AUDIO_CLASS = 'Mhor\MediaInfo\Type\Audio';
+    public const IMAGE_CLASS = 'Mhor\MediaInfo\Type\Image';
+    public const VIDEO_CLASS = 'Mhor\MediaInfo\Type\Video';
+    public const SUBTITLE_CLASS = 'Mhor\MediaInfo\Type\Subtitle';
+    public const MENU_CLASS = 'Mhor\MediaInfo\Type\Menu';
+    public const OTHER_CLASS = 'Mhor\MediaInfo\Type\Other';
 
     /**
      * @var string
