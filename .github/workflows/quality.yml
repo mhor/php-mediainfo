@@ -1,4 +1,4 @@
-name: Code_Checks
+name: Quality
 
 on:
     pull_request: null
