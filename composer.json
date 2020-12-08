@@ -30,7 +30,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Mhor\\MediaInfo\\Test\\": "test/"
+            "Mhor\\MediaInfo\\Tests\\": "tests/"
         }
     },
     "extra": {

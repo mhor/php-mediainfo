@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Parser;
+namespace Mhor\MediaInfo\Tests\Parser;
 
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Exception\MediainfoOutputParsingException;

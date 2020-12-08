@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Parser;
+namespace Mhor\MediaInfo\Tests\Parser;
 
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
 use PHPUnit\Framework\TestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Factory;
+namespace Mhor\MediaInfo\Tests\Factory;
 
 use Mhor\MediaInfo\Factory\AttributeFactory;
 use PHPUnit\Framework\TestCase;

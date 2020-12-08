@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhor\MediaInfo\Test\Container;
+namespace Mhor\MediaInfo\Tests\Container;
 
 use Mhor\MediaInfo\Attribute\Duration;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
