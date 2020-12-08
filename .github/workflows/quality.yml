@@ -5,6 +5,8 @@ on:
     push:
         branches:
             - master
+env:
+  LANG: "en_US.UTF-8"
 jobs:            
     test_coverage:
         runs-on: ubuntu-latest
