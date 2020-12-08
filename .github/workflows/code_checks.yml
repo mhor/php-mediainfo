@@ -98,9 +98,3 @@ jobs:
             -   run: composer install
             -   run: composer require --no-interaction --prefer-source symfony/process:~5.0 symfony/filesystem:~5.0
             -   run: vendor/bin/phpunit
-    php-cs-fixer:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: PHP-CS-Fixer
-          uses: docker://oskarstark/php-cs-fixer-ga
