@@ -19,6 +19,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]]);
 
     $services->set(BinaryOperatorSpacesFixer::class)->call('configure', [[
-        ['operators' => ['=>' => 'align']],
+        'operators' => ['=>' => 'align'],
     ]]);
 };
