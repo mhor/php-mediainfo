@@ -17,7 +17,7 @@ jobs:
         name: PHP ${{ matrix.php }} tests
         steps:
             -   uses: actions/checkout@v2
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: none # disable xdebug, pcov
@@ -31,7 +31,7 @@ jobs:
             -   run: git fetch --depth=100000 origin
 
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 7.2
                     coverage: none
@@ -45,7 +45,7 @@ jobs:
             -   run: git fetch --depth=100000 origin
 
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 7.2
                     coverage: none
@@ -60,7 +60,7 @@ jobs:
             -   run: git fetch --depth=100000 origin
 
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 7.3
                     coverage: none
@@ -75,7 +75,7 @@ jobs:
             -   run: git fetch --depth=100000 origin
 
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 7.4
                     coverage: none
@@ -90,7 +90,7 @@ jobs:
             -   run: git fetch --depth=100000 origin
 
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 7.4
                     coverage: none
@@ -105,7 +105,7 @@ jobs:
             -   run: git fetch --depth=100000 origin
 
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 8.0
                     coverage: none
@@ -119,7 +119,7 @@ jobs:
         steps:
             -   uses: actions/checkout@v2
             # see https://github.com/shivammathur/setup-php
-            -   uses: shivammathur/setup-php@v1
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: 7.3
                     coverage: none
