@@ -19,7 +19,10 @@ class ModeChecker extends AbstractAttributeChecker
             $rateMode[1] = $rateMode[0];
         }
 
-        return new Mode($rateMode[0], $rateMode[1]);
+        return new Mode(
+            is_array($rateMode[0]) ? implode(' ', $rateMode[0]) : $rateMode[0], 
+            is_array($rateMode[1]) ? implode(' ', $rateMode[1]) : $rateMode[1]
+        );
     }
 
     /**
