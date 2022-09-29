@@ -1,4 +1,4 @@
-# Php-MediaInfo [![Coverage Status](https://coveralls.io/repos/github/mhor/php-mediainfo/badge.svg?branch=master)](https://coveralls.io/github/mhor/php-mediainfo?branch=master) [![Packagist](https://img.shields.io/packagist/v/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![Packagist](https://img.shields.io/packagist/dt/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo)
+# Php-MediaInfo [![Coverage Status](https://coveralls.io/repos/github/mhor/php-mediainfo/badge.svg?branch=master)](https://coveralls.io/github/mhor/php-mediainfo?branch=master) [![Packagist](https://img.shields.io/packagist/v/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![Packagist](https://img.shields.io/packagist/dt/mhor/php-mediainfo.svg)](https://packagist.org/packages/mhor/php-mediainfo) [![Code Checks](https://github.com/mhor/php-mediainfo/actions/workflows/code_checks.yml/badge.svg)](https://github.com/mhor/php-mediainfo/actions/workflows/code_checks.yml)
 
 ## Introduction
 
