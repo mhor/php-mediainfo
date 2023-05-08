@@ -9,7 +9,7 @@ class Rate implements AttributeInterface
     use DumpTrait;
 
     /**
-     * @var int
+     * @var float
      */
     private $absoluteValue;
 
@@ -24,14 +24,14 @@ class Rate implements AttributeInterface
      */
     public function __construct($absoluteValue, string $textValue)
     {
-        $this->absoluteValue = (int) $absoluteValue;
+        $this->absoluteValue = (float) $absoluteValue;
         $this->textValue = $textValue;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getAbsoluteValue(): int
+    public function getAbsoluteValue(): float
     {
         return $this->absoluteValue;
     }
