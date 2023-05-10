@@ -29,7 +29,6 @@ class RateChecker extends AbstractAttributeChecker
             'bit_depth',
             'width',
             'nominal_bit_rate',
-            'frame_rate',
             'format_settings_reframes',
             'height',
             'resolution',

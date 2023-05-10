@@ -4,6 +4,7 @@ namespace Mhor\MediaInfo\Tests\Attribute;
 
 use Mhor\MediaInfo\Attribute\Cover;
 use Mhor\MediaInfo\Attribute\Duration;
+use Mhor\MediaInfo\Attribute\FloatRate;
 use Mhor\MediaInfo\Attribute\Mode;
 use Mhor\MediaInfo\Attribute\Rate;
 use Mhor\MediaInfo\Attribute\Ratio;
@@ -51,6 +52,17 @@ class AttributeTest extends TestCase
         $this->assertTrue(is_int($rate->getAbsoluteValue()));
         $this->assertEquals('720p', $rate->getTextValue());
         $this->assertSame('720p', (string) $rate);
+    }
+
+    public function testFloatRate(): void
+    {
+        $rate = new FloatRate('46.875', '46.875 FPS (1024 SPF)');
+        $this->assertSame(47, $rate->getAbsoluteValue());
+        $this->assertSame(46.875, $rate->getFloatAbsoluteValue());
+        $this->assertTrue(is_int($rate->getAbsoluteValue()));
+        $this->assertTrue(is_float($rate->getFloatAbsoluteValue()));
+        $this->assertEquals('46.875 FPS (1024 SPF)', $rate->getTextValue());
+        $this->assertSame('46.875 FPS (1024 SPF)', (string) $rate);
     }
 
     public function testSize(): void

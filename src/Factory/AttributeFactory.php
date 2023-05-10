@@ -6,6 +6,7 @@ use Mhor\MediaInfo\Checker\AbstractAttributeChecker;
 use Mhor\MediaInfo\Checker\CoverChecker;
 use Mhor\MediaInfo\Checker\DateTimeChecker;
 use Mhor\MediaInfo\Checker\DurationChecker;
+use Mhor\MediaInfo\Checker\FloatRateChecker;
 use Mhor\MediaInfo\Checker\ModeChecker;
 use Mhor\MediaInfo\Checker\RateChecker;
 use Mhor\MediaInfo\Checker\RatioChecker;
@@ -41,6 +42,7 @@ class AttributeFactory
             new DurationChecker(),
             new ModeChecker(),
             new RateChecker(),
+            new FloatRateChecker(),
             new RatioChecker(),
             new SizeChecker(),
             new DateTimeChecker(),
