@@ -2,6 +2,7 @@
 
 namespace Mhor\MediaInfo\Tests\Factory;
 
+use Mhor\MediaInfo\Attribute as Attribute;
 use Mhor\MediaInfo\Factory\AttributeFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -17,7 +18,7 @@ class AttributeFactoryTest extends TestCase
             ]
         );
 
-        $this->assertEquals('Mhor\MediaInfo\Attribute\Ratio', get_class($ratio));
+        $this->assertInstanceOf(Attribute\Ratio::class, $ratio);
     }
 
     public function testCreateRate(): void
@@ -30,7 +31,20 @@ class AttributeFactoryTest extends TestCase
             ]
         );
 
-        $this->assertEquals('Mhor\MediaInfo\Attribute\Rate', get_class($rate));
+        $this->assertInstanceOf(Attribute\Rate::class, $rate);
+    }
+
+    public function testCreateFloatRate(): void
+    {
+        $floatRate = AttributeFactory::create(
+            'frame_rate',
+            [
+                '46.875',
+                '46.875 FPS (1024 SPF)'
+            ]
+        );
+
+        $this->assertInstanceOf(Attribute\FloatRate::class, $floatRate);
     }
 
     public function testCreateSize(): void
@@ -43,7 +57,7 @@ class AttributeFactoryTest extends TestCase
             ]
         );
 
-        $this->assertEquals('Mhor\MediaInfo\Attribute\Size', get_class($size));
+        $this->assertInstanceOf(Attribute\Size::class, $size);
     }
 
     public function testCreateMode(): void
@@ -56,7 +70,7 @@ class AttributeFactoryTest extends TestCase
             ]
         );
 
-        $this->assertEquals('Mhor\MediaInfo\Attribute\Mode', get_class($mode));
+        $this->assertInstanceOf(Attribute\Mode::class, $mode);
     }
 
     public function testCreateDuration(): void
@@ -68,13 +82,13 @@ class AttributeFactoryTest extends TestCase
             ]
         );
 
-        $this->assertEquals('Mhor\MediaInfo\Attribute\Duration', get_class($duration));
+        $this->assertInstanceOf(Attribute\Duration::class, $duration);
     }
 
     public function testCreateCover(): void
     {
         $cover = AttributeFactory::create('cover_data', '01010101');
 
-        $this->assertEquals('Mhor\MediaInfo\Attribute\Cover', get_class($cover));
+        $this->assertInstanceOf(Attribute\Cover::class, $cover);
     }
 }

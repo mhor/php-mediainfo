@@ -39,6 +39,7 @@ $ composer require mhor/php-mediainfo
 ## How to use
 
 ### Retrieve media information container
+
 ```php
 <?php
 //...
@@ -144,7 +145,7 @@ foreach ($mediaInfoContainer->getAudios() as $audio) {
 
 ### Ignore unknown types
 
-By default unknown type throw an error this, to avoid this behavior, you can do:
+By default, unknown type throw an error this, to avoid this behavior, you can do:
 
 ```php
 $mediaInfo = new MediaInfo();
@@ -194,6 +195,7 @@ foreach ($availableInfo as $key) {
 ### Specials types
 
 #### Cover
+
 For field:
 
 - cover_data
@@ -201,6 +203,7 @@ For field:
 [Cover](src/Attribute/Cover.php) type will be applied
 
 #### Duration
+
 For fields:
 
 - duration
@@ -211,6 +214,7 @@ For fields:
 [Duration](src/Attribute/Duration.php) type will be applied
 
 #### Mode
+
 For fields:
 
 - overall_bit_rate_mode
@@ -237,6 +241,7 @@ For fields:
 [Mode](src/Attribute/Mode.php) type will be applied
 
 #### Rate
+
 For fields:
 
 - channel_s
@@ -245,7 +250,6 @@ For fields:
 - bit_depth
 - width
 - nominal_bit_rate
-- frame_rate
 - format_settings_reframes
 - height
 - resolution
@@ -253,7 +257,17 @@ For fields:
 
 [Rate](src/Attribute/Rate.php) type will be applied
 
+#### FloatRate
+
+For fields:
+
+- frame_rate
+
+[FloatRate](src/Attribute/FloatRate.php) type will be applied
+
+
 #### Ratio
+
 For fields:
 
 - display_aspect_ratio
@@ -262,6 +276,7 @@ For fields:
 [Ratio](src/Attribute/Ratio.php) type will be applied
 
 #### Size
+
 For fields:
 
 - file_size
@@ -271,7 +286,6 @@ For fields:
 
 #### Others
 - All date fields will be transformed into `Datetime` php object
-
 
 ## Extra
 
@@ -300,6 +314,7 @@ $mediaInfoContainer = $mediaInfo->getInfo('http://example.org/music/test.mp3');
 
 
 ### MediaInfoContainer to JSON, Array or XML
+
 ```php
 $mediaInfo = new MediaInfo();
 $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
@@ -321,7 +336,7 @@ $mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 
 ### Urlencode Config
 
-By default MediaInfo tries to detect if a URL is already percent-encode and encodes the URL when it's not.
+By default, MediaInfo tries to detect if a URL is already percent-encode and encodes the URL when it's not.
 Setting the `'urlencode'` config setting to `true` forces MediaInfo to encode the URL despite the presence of percentage signs in the URL.
 This is for example required when using pre-signed URLs for AWS S3 objects.
 
