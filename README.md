@@ -149,7 +149,9 @@ By default, unknown type throw an error this, to avoid this behavior, you can do
 
 ```php
 $mediaInfo = new MediaInfo();
-$mediaInfoContainer = $mediaInfo->getInfo('music.mp3', false);
+$mediaInfo->setConfig('ignore_unknown_track_types', true);
+
+$mediaInfoContainer = $mediaInfo->getInfo('music.mp3');
 
 $others = $mediaInfoContainer->getOthers();
 foreach ($others as $other) {
@@ -312,7 +314,6 @@ $mediaInfo = new MediaInfo();
 $mediaInfoContainer = $mediaInfo->getInfo('http://example.org/music/test.mp3');
 ```
 
-
 ### MediaInfoContainer to JSON, Array or XML
 
 ```php
@@ -371,6 +372,55 @@ if ($general->has('cover_data')) {
 ```bash
 $ mediainfo ./music.mp3 -f --OUTPUT=OLDXML --Cover_Data=base64
 Option not known
+```
+
+### Override attribute checkers/types
+
+This configuration allows you to customize the return values of attributes in php-mediainfo by creating custom checker and attribute classes. You can extend existing classes, override methods, and add additional functionality to provide more comprehensive or specialized information in the attribute objects returned by php-mediainfo.
+
+1. Create a new class that implements the ``AttributeCheckerInterface``
+
+```php
+class CustomDurationChecker extends \Mhor\MediaInfo\Checker\DurationChecker
+{
+    public function create($durations): \Mhor\MediaInfo\Attribute\Duration
+    {
+        return new CustomDuration($durations[0]);
+    }
+
+    public function getMembersFields(): array
+    {
+        return [
+            'duration',
+        ];
+    }
+}
+```
+
+2. Create a new class that implements the ``AttributeInterface``
+
+```php
+class CustomDuration extends \Mhor\MediaInfo\Attribute\Duration
+{
+    public function getSeconds()
+    {
+        return $this->getMilliseconds() / 1000;
+    }
+}
+```
+
+3. Set the new list of attribute checkers into the config
+
+```php
+$mediaInfo = new MediaInfo();
+$mediaInfo->setConfig('attribute_checkers', [new CustomDurationChecker()]);
+$mediaInfoContainer = $mediaInfo->getInfo(
+    './SampleVideo_1280x720_5mb.mkv'
+);
+
+foreach ($mediaInfoContainer->getAudios() as $audio) {
+    echo $audio->get('duration')->getSeconds();
+}
 ```
 
 ### Symfony integration

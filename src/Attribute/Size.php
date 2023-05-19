@@ -11,7 +11,7 @@ class Size implements AttributeInterface
     /**
      * @var int
      */
-    private $bit;
+    protected $bit;
 
     /**
      * @param string|int $size

@@ -22,18 +22,21 @@ class MediaInfo
         'use_oldxml_mediainfo_output_format' => true,
         'urlencode'                          => false,
         'include_cover_data'                 => false,
+        'ignore_unknown_track_types'         => false,
+        'attribute_checkers'                 => null,
     ];
 
     /**
-     * @param $filePath
-     * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
-     *                                      default behavior (false) is throw an exception on unknown track types.
+     * @param string $filePath
+     * @param bool   $ignoreUnknownTrackTypes   Optional parameter used to skip unknown track types by passing true. The
+     *                                          default behavior (false) is throw an exception on unknown track types.
+     *                                          This parameter is deprecated use self::setConfig('ignore_unknown_track_types', true)
      *
      * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      *
      * @return MediaInfoContainer
      */
-    public function getInfo($filePath, $ignoreUnknownTrackTypes = false): MediaInfoContainer
+    public function getInfo(string $filePath, bool $ignoreUnknownTrackTypes = false): MediaInfoContainer
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath, $this->configuration)->run();
@@ -41,7 +44,11 @@ class MediaInfo
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
 
-        return $mediaInfoOutputParser->getMediaInfoContainer($ignoreUnknownTrackTypes);
+        if (true === $ignoreUnknownTrackTypes) {
+            $this->setConfig('ignore_unknown_track_types', true);
+        }
+
+        return $mediaInfoOutputParser->getMediaInfoContainer($this->configuration);
     }
 
     /**
@@ -49,9 +56,9 @@ class MediaInfo
      *
      * Make call to MediaInfo::getInfoWaitAsync() afterwards to received MediaInfoContainer object.
      *
-     * @param $filePath
+     * @param string $filePath
      */
-    public function getInfoStartAsync($filePath): void
+    public function getInfoStartAsync(string $filePath): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $this->mediaInfoCommandRunnerAsync = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
@@ -64,13 +71,14 @@ class MediaInfo
     /**
      * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
      *                                      default behavior (false) is throw an exception on unknown track types.
+     *                                      This parameter is deprecated use self::setConfig('ignore_unknown_track_types', true)
      *
-     * @throws \Exception                                          If this function is called before getInfoStartAsync()
+     * @throws \Exception                   If this function is called before getInfoStartAsync()
      * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      *
      * @return MediaInfoContainer
      */
-    public function getInfoWaitAsync($ignoreUnknownTrackTypes = false): MediaInfoContainer
+    public function getInfoWaitAsync(bool $ignoreUnknownTrackTypes = false): MediaInfoContainer
     {
         if ($this->mediaInfoCommandRunnerAsync == null) {
             throw new \Exception('You must run `getInfoStartAsync` before running `getInfoWaitAsync`');
@@ -82,16 +90,20 @@ class MediaInfo
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
 
-        return $mediaInfoOutputParser->getMediaInfoContainer($ignoreUnknownTrackTypes);
+        if (true === $ignoreUnknownTrackTypes) {
+            $this->setConfig('ignore_unknown_track_types', true);
+        }
+
+        return $mediaInfoOutputParser->getMediaInfoContainer($this->configuration);
     }
 
     /**
      * @param string $key
-     * @param string $value
+     * @param mixed $value
      *
      * @throws \Exception
      */
-    public function setConfig($key, $value)
+    public function setConfig(string $key, $value)
     {
         if (!array_key_exists($key, $this->configuration)) {
             throw new \Exception(
@@ -103,13 +115,13 @@ class MediaInfo
     }
 
     /**
-     * @param $key
+     * @param string $key
      *
      * @throws \Exception
      *
      * @return mixed
      */
-    public function getConfig($key)
+    public function getConfig(string $key)
     {
         if (!array_key_exists($key, $this->configuration)) {
             throw new \Exception(

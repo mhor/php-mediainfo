@@ -19,10 +19,19 @@ class MediaInfoContainerBuilder
      */
     private $typeFactory;
 
-    public function __construct()
+    /**
+     * @var AttributeFactory
+     */
+    private $attributesFactory;
+
+    /**
+     * @param array|null $attributesCheckers
+     */
+    public function __construct(array $attributesCheckers = null)
     {
         $this->mediaInfoContainer = new MediaInfoContainer();
         $this->typeFactory = new TypeFactory();
+        $this->attributesFactory = new AttributeFactory($attributesCheckers);
     }
 
     /**
@@ -68,7 +77,7 @@ class MediaInfoContainerBuilder
 
             $trackType->set(
                 $attribute,
-                AttributeFactory::create($attribute, $value)
+                $this->attributesFactory->create($attribute, $value)
             );
         }
     }

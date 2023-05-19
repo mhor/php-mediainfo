@@ -23,18 +23,17 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
     }
 
     /**
-     * @param bool $ignoreUnknownTrackTypes Optional parameter used to skip unknown track types by passing true. The
-     *                                      default behavior (false) is throw an exception on unknown track types.
+     * @param array $configuration
      *
      * @return MediaInfoContainer
      */
-    public function getMediaInfoContainer(bool $ignoreUnknownTrackTypes = false): \Mhor\MediaInfo\Container\MediaInfoContainer
+    public function getMediaInfoContainer(array $configuration): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         if ($this->parsedOutput === null) {
             throw new \Exception('You must run `parse` before running `getMediaInfoContainer`');
         }
 
-        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();
+        $mediaInfoContainerBuilder = new MediaInfoContainerBuilder($configuration['attribute_checkers']);
         $mediaInfoContainerBuilder->setVersion($this->parsedOutput['@attributes']['version']);
 
         if (!array_key_exists('File', $this->parsedOutput)) {
@@ -49,7 +48,7 @@ class MediaInfoOutputParser extends AbstractXmlOutputParser
                     $mediaInfoContainerBuilder->addTrackType($trackType['@attributes']['type'], $trackType);
                 }
             } catch (UnknownTrackTypeException $ex) {
-                if (!$ignoreUnknownTrackTypes) {
+                if (!$configuration['ignore_unknown_track_types']) {
                     // rethrow exception
                     throw $ex;
                 }

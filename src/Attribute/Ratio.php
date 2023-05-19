@@ -11,12 +11,12 @@ class Ratio implements AttributeInterface
     /**
      * @var float
      */
-    private $absoluteValue;
+    protected $absoluteValue;
 
     /**
      * @var string
      */
-    private $textValue;
+    protected $textValue;
 
     /**
      * @param string|float $absoluteValue

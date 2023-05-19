@@ -10,7 +10,7 @@ class AttributeFactoryTest extends TestCase
 {
     public function testCreateRatio(): void
     {
-        $ratio = AttributeFactory::create(
+        $ratio = (new AttributeFactory())->create(
             'display_aspect_ratio',
             [
                 '15.55',
@@ -23,7 +23,7 @@ class AttributeFactoryTest extends TestCase
 
     public function testCreateRate(): void
     {
-        $rate = AttributeFactory::create(
+        $rate = (new AttributeFactory())->create(
             'height',
             [
                 '720',
@@ -36,7 +36,7 @@ class AttributeFactoryTest extends TestCase
 
     public function testCreateFloatRate(): void
     {
-        $floatRate = AttributeFactory::create(
+        $floatRate = (new AttributeFactory())->create(
             'frame_rate',
             [
                 '46.875',
@@ -49,7 +49,7 @@ class AttributeFactoryTest extends TestCase
 
     public function testCreateSize(): void
     {
-        $size = AttributeFactory::create(
+        $size = (new AttributeFactory())->create(
             'file_size',
             [
                 '19316079',
@@ -62,7 +62,7 @@ class AttributeFactoryTest extends TestCase
 
     public function testCreateMode(): void
     {
-        $mode = AttributeFactory::create(
+        $mode = (new AttributeFactory())->create(
             'overall_bit_rate',
             [
                 'CBR',
@@ -75,7 +75,7 @@ class AttributeFactoryTest extends TestCase
 
     public function testCreateDuration(): void
     {
-        $duration = AttributeFactory::create(
+        $duration = (new AttributeFactory())->create(
             'duration',
             [
                 '475193',
@@ -87,7 +87,7 @@ class AttributeFactoryTest extends TestCase
 
     public function testCreateCover(): void
     {
-        $cover = AttributeFactory::create('cover_data', '01010101');
+        $cover = (new AttributeFactory())->create('cover_data', '01010101');
 
         $this->assertInstanceOf(Attribute\Cover::class, $cover);
     }

@@ -11,12 +11,12 @@ class Mode implements AttributeInterface
     /**
      * @var string
      */
-    private $shortName;
+    protected $shortName;
 
     /**
      * @var string
      */
-    private $fullName;
+    protected $fullName;
 
     /**
      * @param string $shortName
