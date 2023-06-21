@@ -11,7 +11,7 @@ class Duration implements AttributeInterface
     /**
      * @var int
      */
-    private $milliseconds;
+    protected $milliseconds;
 
     /**
      * @param string|int $duration

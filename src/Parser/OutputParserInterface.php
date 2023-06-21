@@ -14,5 +14,5 @@ interface OutputParserInterface
     /**
      * @return MediaInfoContainer
      */
-    public function getMediaInfoContainer(): \Mhor\MediaInfo\Container\MediaInfoContainer;
+    public function getMediaInfoContainer(array $configuration): \Mhor\MediaInfo\Container\MediaInfoContainer;
 }

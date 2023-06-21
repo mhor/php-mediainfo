@@ -3,6 +3,7 @@
 namespace Mhor\MediaInfo\Factory;
 
 use Mhor\MediaInfo\Checker\AbstractAttributeChecker;
+use Mhor\MediaInfo\Checker\AttributeCheckerInterface;
 use Mhor\MediaInfo\Checker\CoverChecker;
 use Mhor\MediaInfo\Checker\DateTimeChecker;
 use Mhor\MediaInfo\Checker\DurationChecker;
@@ -15,17 +16,33 @@ use Mhor\MediaInfo\Checker\SizeChecker;
 class AttributeFactory
 {
     /**
+     * @var AttributeCheckerInterface[]
+     */
+    private $attributeCheckers;
+
+    /**
+     * @param array|null $attributeCheckers
+     */
+    public function __construct(array $attributeCheckers = null)
+    {
+        if (null === $attributeCheckers) {
+            $attributeCheckers = $this->getDefaultAttributeCheckers();
+        }
+
+        $this->attributeCheckers = $attributeCheckers;
+    }
+
+    /**
      * @param $attribute
      * @param $value
      *
      * @return mixed
      */
-    public static function create($attribute, $value)
+    public function create($attribute, $value)
     {
-        $attributesType = self::getAllAttributeType();
-        foreach ($attributesType as $attributeType) {
-            if ($attributeType->isMember($attribute)) {
-                return $attributeType->create($value);
+        foreach ($this->attributeCheckers as $attributeChecker) {
+            if ($attributeChecker->isMember($attribute)) {
+                return $attributeChecker->create($value);
             }
         }
 
@@ -35,7 +52,7 @@ class AttributeFactory
     /**
      * @return AbstractAttributeChecker[]
      */
-    private static function getAllAttributeType(): array
+    private function getDefaultAttributeCheckers(): array
     {
         return [
             new CoverChecker(),

@@ -36,14 +36,20 @@ class MediaInfoOutputParserTest extends TestCase
     {
         $this->expectException(\Exception::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->getMediaInfoContainer();
+        $mediaInfoOutputParser->getMediaInfoContainer([
+            'ignore_unknown_track_types'    => false,
+            'attribute_checkers'            => null,
+        ]);
     }
 
     public function testGetMediaInfoContainer(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->outputPath));
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
+            'ignore_unknown_track_types'    => false,
+            'attribute_checkers'            => null,
+        ]);
 
         $this->assertEquals('Mhor\MediaInfo\Container\MediaInfoContainer', get_class($mediaInfoContainer));
 
@@ -77,7 +83,10 @@ class MediaInfoOutputParserTest extends TestCase
         $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
         // the xml specifically has an unknown type in it
         // when passing true we want to ignore/skip unknown track types
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer(true);
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
+            'ignore_unknown_track_types'    => true,
+            'attribute_checkers'            => null,
+        ]);
         $this->assertInstanceOf(MediaInfoContainer::class, $mediaInfoContainer);
     }
 
@@ -87,7 +96,10 @@ class MediaInfoOutputParserTest extends TestCase
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->outputMediainfo1710Path));
         // will throw exception here as default behavior
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
+            'ignore_unknown_track_types'    => false,
+            'attribute_checkers'            => null,
+        ]);
     }
 
     public function testThrowInvalidTrackType(): void
@@ -96,6 +108,9 @@ class MediaInfoOutputParserTest extends TestCase
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
         // will throw exception here as default behavior
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer();
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
+            'ignore_unknown_track_types'    => false,
+            'attribute_checkers'            => null,
+        ]);
     }
 }
