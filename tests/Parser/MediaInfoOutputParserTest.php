@@ -2,10 +2,13 @@
 
 namespace Mhor\MediaInfo\Tests\Parser;
 
+use Mhor\MediaInfo\Configuration\Configuration;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Exception\MediainfoOutputParsingException;
 use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
+use Mhor\MediaInfo\Tests\Stub\Attribute\CustomDuration;
+use Mhor\MediaInfo\Tests\Stub\Checker\CustomDurationChecker;
 use PHPUnit\Framework\TestCase;
 
 class MediaInfoOutputParserTest extends TestCase
@@ -35,21 +38,16 @@ class MediaInfoOutputParserTest extends TestCase
     public function testGetMediaInfoContainerBeforeCallParse(): void
     {
         $this->expectException(\Exception::class);
+
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->getMediaInfoContainer([
-            'ignore_unknown_track_types'    => false,
-            'attribute_checkers'            => null,
-        ]);
+        $mediaInfoOutputParser->getMediaInfoContainer(new Configuration(), null);
     }
 
     public function testGetMediaInfoContainer(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->parse(file_get_contents($this->outputPath));
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
-            'ignore_unknown_track_types'    => false,
-            'attribute_checkers'            => null,
-        ]);
+        $parsedOutput = $mediaInfoOutputParser->parse(file_get_contents($this->outputPath));
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer(new Configuration(), $parsedOutput);
 
         $this->assertEquals('Mhor\MediaInfo\Container\MediaInfoContainer', get_class($mediaInfoContainer));
 
@@ -80,37 +78,39 @@ class MediaInfoOutputParserTest extends TestCase
     public function testIgnoreInvalidTrackType(): void
     {
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
+        $parsedOutput = $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
+
+        $config = (new Configuration())
+            ->setIgnoreUnknownTrackTypes(true)
+            ->setAttributeCheckers([new CustomDurationChecker()]);
+
         // the xml specifically has an unknown type in it
         // when passing true we want to ignore/skip unknown track types
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
-            'ignore_unknown_track_types'    => true,
-            'attribute_checkers'            => null,
-        ]);
+        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer($config, $parsedOutput);
         $this->assertInstanceOf(MediaInfoContainer::class, $mediaInfoContainer);
+
+        $this->assertInstanceOf(CustomDuration::class, $mediaInfoContainer->getGeneral()->get('duration'));
+        $this->assertEquals(475.193, $mediaInfoContainer->getGeneral()->get('duration')->getSeconds());
     }
 
     public function testThrowMediaInfoOutputParsingException(): void
     {
         $this->expectException(MediainfoOutputParsingException::class);
+
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->parse(file_get_contents($this->outputMediainfo1710Path));
+        $parsedOutput = $mediaInfoOutputParser->parse(file_get_contents($this->outputMediainfo1710Path));
+
         // will throw exception here as default behavior
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
-            'ignore_unknown_track_types'    => false,
-            'attribute_checkers'            => null,
-        ]);
+        $mediaInfoOutputParser->getMediaInfoContainer(new Configuration(), $parsedOutput);
     }
 
     public function testThrowInvalidTrackType(): void
     {
         $this->expectException(UnknownTrackTypeException::class);
         $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
+        $parsedOutput = $mediaInfoOutputParser->parse(file_get_contents($this->invalidOutputPath));
+
         // will throw exception here as default behavior
-        $mediaInfoContainer = $mediaInfoOutputParser->getMediaInfoContainer([
-            'ignore_unknown_track_types'    => false,
-            'attribute_checkers'            => null,
-        ]);
+        $mediaInfoOutputParser->getMediaInfoContainer(new Configuration(), $parsedOutput);
     }
 }

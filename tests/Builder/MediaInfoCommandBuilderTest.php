@@ -3,7 +3,9 @@
 namespace Mhor\MediaInfo\Tests\Builder;
 
 use Mhor\MediaInfo\Builder\MediaInfoCommandBuilder;
+use Mhor\MediaInfo\Configuration\Configuration;
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
+use phpDocumentor\Reflection\Types\False_;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Process;
 
@@ -19,7 +21,7 @@ class MediaInfoCommandBuilderTest extends TestCase
     public function testBuilderCommandWithHttpsUrl(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('https://example.org/');
+        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('https://example.org/', new Configuration());
 
         $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
             [
@@ -43,7 +45,7 @@ class MediaInfoCommandBuilderTest extends TestCase
     public function testBuilderCommandWithHttpUrl(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('http://example.org/');
+        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('http://example.org/', new Configuration());
 
         $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
             [
@@ -69,7 +71,7 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('File "non existing path" does not exist');
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('non existing path');
+        $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('non existing path', new Configuration());
     }
 
     public function testExceptionWithDirectory(): void
@@ -77,13 +79,16 @@ class MediaInfoCommandBuilderTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Expected a filename, got ".", which is a directory');
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('.');
+        $mediaInfoCommandBuilder->buildMediaInfoCommandRunner('.', new Configuration());
     }
 
     public function testBuilderCommand(): void
     {
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($this->filePath);
+        $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
+            $this->filePath,
+            new Configuration()
+        );
 
         $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(
             [
@@ -106,15 +111,17 @@ class MediaInfoCommandBuilderTest extends TestCase
 
     public function testConfiguredCommand(): void
     {
+        $config = new Configuration();
+        $config
+            ->setCommand('/usr/bin/local/mediainfo')
+            ->setIncludeCoverData(true)
+            ->setUrlencode(true)
+            ->setUseOldXmlMediainfoOutputFormat(false);
+
         $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
         $mediaInfoCommandRunner = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner(
             $this->filePath,
-            [
-                'command'                            => '/usr/bin/local/mediainfo',
-                'use_oldxml_mediainfo_output_format' => false,
-                'urlencode'                          => true,
-                'include_cover_data'                 => true,
-            ]
+            $config
         );
 
         $equalsMediaInfoCommandRunner = new MediaInfoCommandRunner(new Process(

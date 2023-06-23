@@ -2,6 +2,7 @@
 
 namespace Mhor\MediaInfo\Parser;
 
+use Mhor\MediaInfo\Configuration\Configuration;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 
 interface OutputParserInterface
@@ -12,7 +13,8 @@ interface OutputParserInterface
     public function parse(string $output);
 
     /**
+     * @param Configuration $configuration
      * @return MediaInfoContainer
      */
-    public function getMediaInfoContainer(array $configuration): \Mhor\MediaInfo\Container\MediaInfoContainer;
+    public function getMediaInfoContainer(Configuration $configuration): \Mhor\MediaInfo\Container\MediaInfoContainer;
 }

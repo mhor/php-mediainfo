@@ -3,9 +3,11 @@
 namespace Mhor\MediaInfo;
 
 use Mhor\MediaInfo\Builder\MediaInfoCommandBuilder;
+use Mhor\MediaInfo\Configuration\Configuration;
 use Mhor\MediaInfo\Container\MediaInfoContainer;
 use Mhor\MediaInfo\Parser\MediaInfoOutputParser;
 use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class MediaInfo
 {
@@ -15,16 +17,20 @@ class MediaInfo
     private $mediaInfoCommandRunnerAsync = null;
 
     /**
-     * @var array
+     * @var Configuration|null
      */
-    private $configuration = [
-        'command'                            => null,
-        'use_oldxml_mediainfo_output_format' => true,
-        'urlencode'                          => false,
-        'include_cover_data'                 => false,
-        'ignore_unknown_track_types'         => false,
-        'attribute_checkers'                 => null,
-    ];
+    private $configuration = null;
+
+    /**
+     * @param Configuration|null $configuration
+     */
+    public function __construct(?Configuration $configuration = null)
+    {
+        $this->configuration = $configuration;
+        if (null === $this->configuration) {
+            $this->configuration = new Configuration();
+        }
+    }
 
     /**
      * @param string $filePath
@@ -38,17 +44,25 @@ class MediaInfo
      */
     public function getInfo(string $filePath, bool $ignoreUnknownTrackTypes = false): MediaInfoContainer
     {
-        $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
-        $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath, $this->configuration)->run();
-
-        $mediaInfoOutputParser = new MediaInfoOutputParser();
-        $mediaInfoOutputParser->parse($output);
-
         if (true === $ignoreUnknownTrackTypes) {
             $this->setConfig('ignore_unknown_track_types', true);
         }
 
-        return $mediaInfoOutputParser->getMediaInfoContainer($this->configuration);
+        $mediaInfoCommandBuilder = $this->configuration->getMediaInfoCommandBuilder();
+        if (null === $mediaInfoCommandBuilder) {
+            $mediaInfoCommandBuilder = new MediaInfoCommandBuilder();
+        }
+
+        $output = $mediaInfoCommandBuilder->buildMediaInfoCommandRunner($filePath, $this->configuration)->run();
+
+        $mediaInfoOutputParser = $this->configuration->getMediaInfoOutputParser();
+        if (null === $mediaInfoOutputParser) {
+            $mediaInfoOutputParser = new MediaInfoOutputParser();
+        }
+
+        $parsedOutput = $mediaInfoOutputParser->parse($output);
+
+        return $mediaInfoOutputParser->getMediaInfoContainer($this->configuration, $parsedOutput);
     }
 
     /**
@@ -80,6 +94,10 @@ class MediaInfo
      */
     public function getInfoWaitAsync(bool $ignoreUnknownTrackTypes = false): MediaInfoContainer
     {
+        if (true === $ignoreUnknownTrackTypes) {
+            $this->setConfig('ignore_unknown_track_types', true);
+        }
+
         if ($this->mediaInfoCommandRunnerAsync == null) {
             throw new \Exception('You must run `getInfoStartAsync` before running `getInfoWaitAsync`');
         }
@@ -89,10 +107,6 @@ class MediaInfo
 
         $mediaInfoOutputParser = new MediaInfoOutputParser();
         $mediaInfoOutputParser->parse($output);
-
-        if (true === $ignoreUnknownTrackTypes) {
-            $this->setConfig('ignore_unknown_track_types', true);
-        }
 
         return $mediaInfoOutputParser->getMediaInfoContainer($this->configuration);
     }
@@ -105,13 +119,30 @@ class MediaInfo
      */
     public function setConfig(string $key, $value)
     {
-        if (!array_key_exists($key, $this->configuration)) {
-            throw new \Exception(
-                sprintf('key "%s" does\'t exist', $key)
-            );
+        switch ($key) {
+            case 'command':
+                $this->configuration->setCommand($value);
+                break;
+            case 'use_oldxml_mediainfo_output_format':
+                $this->configuration->setUseOldXmlMediainfoOutputFormat($value);
+                break;
+            case 'urlencode':
+                $this->configuration->setUrlencode($value);
+                break;
+            case 'include_cover_data':
+                $this->configuration->setIncludeCoverData($value);
+                break;
+            case 'ignore_unknown_track_types':
+                $this->configuration->setIgnoreUnknownTrackTypes($value);
+                break;
+            case 'attribute_checkers':
+                $this->configuration->setAttributeCheckers($value);
+                break;
+            default:
+                throw new \Exception(
+                    sprintf('key "%s" does\'t exist', $key)
+                );
         }
-
-        $this->configuration[$key] = $value;
     }
 
     /**
@@ -123,12 +154,23 @@ class MediaInfo
      */
     public function getConfig(string $key)
     {
-        if (!array_key_exists($key, $this->configuration)) {
-            throw new \Exception(
-                sprintf('key "%s" does\'t exist', $key)
-            );
+        switch ($key) {
+            case 'command':
+                return $this->configuration->getCommand();
+            case 'use_oldxml_mediainfo_output_format':
+                return $this->configuration->isUseOldXmlMediainfoOutputFormat();
+            case 'urlencode':
+                return $this->configuration->isUrlencode();
+            case 'include_cover_data':
+                return $this->configuration->isIncludeCoverData();
+            case 'ignore_unknown_track_types':
+                return $this->configuration->isIgnoreUnknownTrackTypes();
+            case 'attribute_checkers':
+                return $this->configuration->getAttributeCheckers();
+            default:
+                throw new \Exception(
+                    sprintf('key "%s" does\'t exist', $key)
+                );
         }
-
-        return $this->configuration[$key];
     }
 }
