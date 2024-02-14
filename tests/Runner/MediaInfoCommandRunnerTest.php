@@ -77,8 +77,7 @@ class MediaInfoCommandRunnerTest extends TestCase
         $process = $this->prophesize(Process::class);
         $process
             ->start()
-            ->shouldBeCalled()
-            ->willReturn($process);
+            ->shouldBeCalled();
 
         $process
             ->wait()
@@ -119,8 +118,7 @@ class MediaInfoCommandRunnerTest extends TestCase
         $process = $this->prophesize(Process::class);
         $process
             ->start()
-            ->shouldBeCalled()
-            ->willReturn($process);
+            ->shouldBeCalled();
 
         $process
             ->wait()
