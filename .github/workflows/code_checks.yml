@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                php: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]
+                php: ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
 
         name: PHP ${{ matrix.php }} tests
         steps:
@@ -33,7 +33,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 7.2
+                  php-version: 7.4
                   coverage: none
 
             - run: composer update --no-progress --prefer-lowest
@@ -47,7 +47,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 7.2
+                  php-version: 7.4
                   coverage: none
 
             - run: composer install
@@ -62,7 +62,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 7.3
+                  php-version: 7.4
                   coverage: none
 
             - run: composer install
@@ -92,7 +92,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 7.4
+                  php-version: 8.2
                   coverage: none
 
             - run: composer install
@@ -107,7 +107,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.2
+                  php-version: 8.3
                   coverage: none
 
             - run: composer install
@@ -122,7 +122,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.2
+                  php-version: 8.4
                   coverage: none
 
             - run: composer install
@@ -136,7 +136,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.0
+                  php-version: 8.4
                   coverage: none
 
             - run: composer install --no-progress

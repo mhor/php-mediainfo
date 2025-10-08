@@ -24,49 +24,40 @@ class MediaInfoContainer implements \JsonSerializable
     public const MENU_CLASS = 'Mhor\MediaInfo\Type\Menu';
     public const OTHER_CLASS = 'Mhor\MediaInfo\Type\Other';
 
-    /**
-     * @var string
-     */
-    private $version;
+    private ?string $version = null;
 
-    /**
-     * @var General
-     */
-    private $general;
+    private ?General $general = null;
 
     /**
      * @var Audio[]
      */
-    private $audios = [];
+    private array $audios = [];
 
     /**
      * @var Video[]
      */
-    private $videos = [];
+    private array $videos = [];
 
     /**
      * @var Subtitle[]
      */
-    private $subtitles = [];
+    private array $subtitles = [];
 
     /**
      * @var Image[]
      */
-    private $images = [];
+    private array $images = [];
 
     /**
      * @var Menu[]
      */
-    private $menus = [];
+    private array $menus = [];
 
     /**
      * @var Other[]
      */
-    private $others = [];
+    private array $others = [];
 
-    /**
-     * @return General|null
-     */
     public function getGeneral(): ?General
     {
         return $this->general;
@@ -107,14 +98,11 @@ class MediaInfoContainer implements \JsonSerializable
     /**
      * @param string $version
      */
-    public function setVersion($version): void
+    public function setVersion(?string $version): void
     {
         $this->version = $version;
     }
 
-    /**
-     * @return string|null
-     */
     public function getVersion(): ?string
     {
         return $this->version;
@@ -136,17 +124,12 @@ class MediaInfoContainer implements \JsonSerializable
         return $this->subtitles;
     }
 
-    /**
-     * @param General $general
-     */
-    public function setGeneral($general): void
+    public function setGeneral(General $general): void
     {
         $this->general = $general;
     }
 
     /**
-     * @param AbstractType $trackType
-     *
      * @throws \Exception
      */
     public function add(AbstractType $trackType): void
@@ -178,49 +161,31 @@ class MediaInfoContainer implements \JsonSerializable
         }
     }
 
-    /**
-     * @param Audio $audio
-     */
     private function addAudio(Audio $audio): void
     {
         $this->audios[] = $audio;
     }
 
-    /**
-     * @param Video $video
-     */
     private function addVideo(Video $video): void
     {
         $this->videos[] = $video;
     }
 
-    /**
-     * @param Image $image
-     */
     private function addImage(Image $image): void
     {
         $this->images[] = $image;
     }
 
-    /**
-     * @param Subtitle $subtitle
-     */
     private function addSubtitle(Subtitle $subtitle): void
     {
         $this->subtitles[] = $subtitle;
     }
 
-    /**
-     * @param Menu $menu
-     */
     private function addMenu(Menu $menu): void
     {
         $this->menus[] = $menu;
     }
 
-    /**
-     * @param Other $other
-     */
     private function addOther(Other $other): void
     {
         $this->others[] = $other;

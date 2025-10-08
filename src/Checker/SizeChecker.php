@@ -8,8 +8,6 @@ class SizeChecker extends AbstractAttributeChecker
 {
     /**
      * @param array $sizes
-     *
-     * @return Size
      */
     public function create($sizes): \Mhor\MediaInfo\Attribute\Size
     {

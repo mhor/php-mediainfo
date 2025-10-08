@@ -8,8 +8,6 @@ class RatioChecker extends AbstractAttributeChecker
 {
     /**
      * @param array $value
-     *
-     * @return Ratio
      */
     public function create($value): \Mhor\MediaInfo\Attribute\Ratio
     {

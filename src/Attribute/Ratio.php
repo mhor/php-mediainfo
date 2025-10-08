@@ -8,19 +8,12 @@ class Ratio implements AttributeInterface
 {
     use DumpTrait;
 
-    /**
-     * @var float
-     */
-    protected $absoluteValue;
+    protected float $absoluteValue;
 
-    /**
-     * @var string
-     */
-    protected $textValue;
+    protected string $textValue;
 
     /**
      * @param string|float $absoluteValue
-     * @param string       $textValue
      */
     public function __construct($absoluteValue, string $textValue)
     {
@@ -28,25 +21,16 @@ class Ratio implements AttributeInterface
         $this->textValue = $textValue;
     }
 
-    /**
-     * @return float
-     */
     public function getAbsoluteValue(): float
     {
         return $this->absoluteValue;
     }
 
-    /**
-     * @return string
-     */
     public function getTextValue(): string
     {
         return $this->textValue;
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->textValue;

@@ -9,15 +9,9 @@ use Mhor\MediaInfo\Runner\MediaInfoCommandRunner;
 
 class MediaInfo
 {
-    /**
-     * @var MediaInfoCommandRunner|null
-     */
-    private $mediaInfoCommandRunnerAsync = null;
+    private ?MediaInfoCommandRunner $mediaInfoCommandRunnerAsync = null;
 
-    /**
-     * @var array
-     */
-    private $configuration = [
+    private array $configuration = [
         'command'                            => null,
         'use_oldxml_mediainfo_output_format' => true,
         'urlencode'                          => false,
@@ -55,8 +49,6 @@ class MediaInfo
      * Call to start asynchronous process.
      *
      * Make call to MediaInfo::getInfoWaitAsync() afterwards to received MediaInfoContainer object.
-     *
-     * @param string $filePath
      */
     public function getInfoStartAsync(string $filePath): void
     {
@@ -98,12 +90,11 @@ class MediaInfo
     }
 
     /**
-     * @param string $key
      * @param mixed $value
      *
      * @throws \Exception
      */
-    public function setConfig(string $key, $value)
+    public function setConfig(string $key, $value): void
     {
         if (!array_key_exists($key, $this->configuration)) {
             throw new \Exception(
@@ -115,11 +106,9 @@ class MediaInfo
     }
 
     /**
-     * @param string $key
+     * @return mixed
      *
      * @throws \Exception
-     *
-     * @return mixed
      */
     public function getConfig(string $key)
     {

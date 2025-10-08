@@ -6,19 +6,11 @@ use Mhor\MediaInfo\Attribute\Duration;
 
 class DurationChecker extends AbstractAttributeChecker
 {
-    /**
-     * @param array $durations
-     *
-     * @return Duration
-     */
     public function create($durations): \Mhor\MediaInfo\Attribute\Duration
     {
         return new Duration($durations[0]);
     }
 
-    /**
-     * @return array
-     */
     public function getMembersFields(): array
     {
         return [

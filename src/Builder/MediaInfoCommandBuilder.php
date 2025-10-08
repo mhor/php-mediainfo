@@ -9,12 +9,7 @@ use Symfony\Component\Process\Process;
 class MediaInfoCommandBuilder
 {
     /**
-     * @param string $filePath
-     * @param array  $configuration
-     *
      * @throws \Exception
-     *
-     * @return MediaInfoCommandRunner
      */
     public function buildMediaInfoCommandRunner(string $filePath, array $configuration = []): MediaInfoCommandRunner
     {
@@ -49,15 +44,7 @@ class MediaInfoCommandBuilder
         ));
     }
 
-    /**
-     * @param string      $filePath
-     * @param string|null $command
-     * @param bool        $forceOldXmlOutput
-     * @param bool        $urlencode
-     *
-     * @return Process
-     */
-    private function buildMediaInfoProcess(string $filePath, string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false, bool $includeCoverData = false): Process
+    private function buildMediaInfoProcess(string $filePath, ?string $command = null, bool $forceOldXmlOutput = true, bool $urlencode = false, bool $includeCoverData = false): Process
     {
         if ($command === null) {
             $command = MediaInfoCommandRunner::MEDIAINFO_COMMAND;
