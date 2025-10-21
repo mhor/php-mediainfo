@@ -18,12 +18,9 @@ class AttributeFactory
     /**
      * @var AttributeCheckerInterface[]
      */
-    private $attributeCheckers;
+    private array $attributeCheckers;
 
-    /**
-     * @param array|null $attributeCheckers
-     */
-    public function __construct(array $attributeCheckers = null)
+    public function __construct(?array $attributeCheckers = null)
     {
         if (null === $attributeCheckers) {
             $attributeCheckers = $this->getDefaultAttributeCheckers();
@@ -33,8 +30,8 @@ class AttributeFactory
     }
 
     /**
-     * @param $attribute
-     * @param $value
+     * @param mixed $attribute
+     * @param mixed $value
      *
      * @return mixed
      */

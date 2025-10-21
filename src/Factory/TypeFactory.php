@@ -16,13 +16,9 @@ class TypeFactory
     public const OTHER = 'Other';
 
     /**
-     * @param string $type
-     *
      * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
-     *
-     * @return Type\AbstractType
      */
-    public function create($type): Type\AbstractType
+    public function create(string $type): Type\AbstractType
     {
         switch ($type) {
             case self::AUDIO:

@@ -8,28 +8,18 @@ abstract class AbstractType implements \JsonSerializable
 {
     use DumpTrait;
 
-    /**
-     * @var array
-     */
-    protected $attributes = [];
+    protected array $attributes = [];
 
     /**
      * @param $attribute
      * @param string|object $value
-     *
-     * @return string
      */
     public function set($attribute, $value): void
     {
         $this->attributes[$attribute] = $value;
     }
 
-    /**
-     * @param string $attribute
-     *
-     * @return mixed
-     */
-    public function get(string $attribute = null)
+    public function get(?string $attribute = null)
     {
         if ($attribute === null) {
             return $this->attributes;
@@ -42,11 +32,6 @@ abstract class AbstractType implements \JsonSerializable
         return null;
     }
 
-    /**
-     * @param string $attribute
-     *
-     * @return bool
-     */
     public function has(string $attribute): bool
     {
         if (isset($this->attributes[$attribute])) {
@@ -56,9 +41,6 @@ abstract class AbstractType implements \JsonSerializable
         return false;
     }
 
-    /**
-     * @return array
-     */
     public function list(): array
     {
         return array_keys($this->attributes);
@@ -66,8 +48,6 @@ abstract class AbstractType implements \JsonSerializable
 
     /**
      * Convert the object into json.
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {
@@ -82,8 +62,6 @@ abstract class AbstractType implements \JsonSerializable
 
     /**
      * Convert the object into array.
-     *
-     * @return array
      */
     public function __toArray(): array
     {

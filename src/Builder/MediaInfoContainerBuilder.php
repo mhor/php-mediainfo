@@ -9,51 +9,30 @@ use Mhor\MediaInfo\Type\AbstractType;
 
 class MediaInfoContainerBuilder
 {
-    /**
-     * @var MediaInfoContainer
-     */
-    private $mediaInfoContainer;
+    private MediaInfoContainer $mediaInfoContainer;
 
-    /**
-     * @var TypeFactory
-     */
-    private $typeFactory;
+    private TypeFactory $typeFactory;
 
-    /**
-     * @var AttributeFactory
-     */
-    private $attributesFactory;
+    private AttributeFactory $attributesFactory;
 
-    /**
-     * @param array|null $attributesCheckers
-     */
-    public function __construct(array $attributesCheckers = null)
+    public function __construct(?array $attributesCheckers = null)
     {
         $this->mediaInfoContainer = new MediaInfoContainer();
         $this->typeFactory = new TypeFactory();
         $this->attributesFactory = new AttributeFactory($attributesCheckers);
     }
 
-    /**
-     * @return MediaInfoContainer
-     */
     public function build(): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         return $this->mediaInfoContainer;
     }
 
-    /**
-     * @param string $version
-     */
     public function setVersion($version): void
     {
         $this->mediaInfoContainer->setVersion($version);
     }
 
     /**
-     * @param $typeName
-     * @param array $attributes
-     *
      * @throws \Mhor\MediaInfo\Exception\UnknownTrackTypeException
      */
     public function addTrackType($typeName, array $attributes): void
@@ -64,10 +43,6 @@ class MediaInfoContainerBuilder
         $this->mediaInfoContainer->add($trackType);
     }
 
-    /**
-     * @param AbstractType $trackType
-     * @param array        $attributes
-     */
     private function addAttributes(AbstractType $trackType, array $attributes): void
     {
         foreach ($this->sanitizeAttributes($attributes) as $attribute => $value) {
@@ -82,11 +57,6 @@ class MediaInfoContainerBuilder
         }
     }
 
-    /**
-     * @param array $attributes
-     *
-     * @return array
-     */
     private function sanitizeAttributes(array $attributes): array
     {
         $sanitizeAttributes = [];
@@ -110,11 +80,6 @@ class MediaInfoContainerBuilder
         return $sanitizeAttributes;
     }
 
-    /**
-     * @param string $attribute
-     *
-     * @return string
-     */
     private function formatAttribute(string $attribute): string
     {
         return trim(str_replace('__', '_', str_replace(' ', '_', strtolower($attribute))), '_');

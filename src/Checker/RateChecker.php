@@ -8,8 +8,6 @@ class RateChecker extends AbstractAttributeChecker
 {
     /**
      * @param array $value
-     *
-     * @return Rate
      */
     public function create($value): \Mhor\MediaInfo\Attribute\Rate
     {

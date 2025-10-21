@@ -13,14 +13,8 @@ class MediaInfoCommandRunner
     public const MEDIAINFO_URLENCODE = '--urlencode';
     public const MEDIAINFO_INCLUDE_COVER_DATA = '--Cover_Data=base64';
 
-    /**
-     * @var Process
-     */
-    protected $process;
+    protected Process $process;
 
-    /**
-     * @param Process $process
-     */
     public function __construct(Process $process)
     {
         $this->process = $process;
@@ -28,8 +22,6 @@ class MediaInfoCommandRunner
 
     /**
      * @throws \RuntimeException
-     *
-     * @return string
      */
     public function run(): string
     {

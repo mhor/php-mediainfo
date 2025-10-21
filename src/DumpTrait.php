@@ -6,8 +6,6 @@ trait DumpTrait
 {
     /**
      * Convert the object into json.
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {
@@ -16,8 +14,6 @@ trait DumpTrait
 
     /**
      * Dump object to array.
-     *
-     * @return array
      */
     public function __toArray(): array
     {

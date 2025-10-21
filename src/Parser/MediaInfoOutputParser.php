@@ -9,24 +9,13 @@ use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 
 class MediaInfoOutputParser extends AbstractXmlOutputParser
 {
-    /**
-     * @var array
-     */
-    private $parsedOutput;
+    private ?array $parsedOutput = null;
 
-    /**
-     * @param string $output
-     */
     public function parse(string $output): void
     {
         $this->parsedOutput = $this->transformXmlToArray($output);
     }
 
-    /**
-     * @param array $configuration
-     *
-     * @return MediaInfoContainer
-     */
     public function getMediaInfoContainer(array $configuration): \Mhor\MediaInfo\Container\MediaInfoContainer
     {
         if ($this->parsedOutput === null) {
