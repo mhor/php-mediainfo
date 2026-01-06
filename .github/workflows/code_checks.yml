@@ -38,51 +38,6 @@ jobs:
 
             - run: composer update --no-progress --prefer-lowest
             - run: vendor/bin/phpunit
-    test_symfony_34:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: git fetch --depth=100000 origin
-
-            # see https://github.com/shivammathur/setup-php
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: 7.4
-                  coverage: none
-
-            - run: composer install
-            - run: composer require --no-interaction --prefer-source symfony/process:3.4.* symfony/filesystem:3.4.*
-            - run: vendor/bin/phpunit
-    test_symfony_40:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: git fetch --depth=100000 origin
-
-            # see https://github.com/shivammathur/setup-php
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: 7.4
-                  coverage: none
-
-            - run: composer install
-            - run: composer require --no-interaction --prefer-source symfony/process:4.0.* symfony/filesystem:4.0.*
-            - run: vendor/bin/phpunit
-    test_symfony_44:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: git fetch --depth=100000 origin
-
-            # see https://github.com/shivammathur/setup-php
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: 7.4
-                  coverage: none
-
-            - run: composer install
-            - run: composer require --no-interaction --prefer-source symfony/process:4.4.* symfony/filesystem:4.4.*
-            - run: vendor/bin/phpunit
     test_symfony_5:
         runs-on: ubuntu-latest
         steps:
@@ -128,6 +83,21 @@ jobs:
             - run: composer install
             - run: composer require --no-interaction --prefer-source symfony/process:~7.0 symfony/filesystem:~7.0
             - run: vendor/bin/phpunit
+    test_symfony_80:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: git fetch --depth=100000 origin
+
+            # see https://github.com/shivammathur/setup-php
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.5
+                  coverage: none
+
+            - run: composer install
+            - run: composer require --no-interaction --prefer-source symfony/process:~8.0 symfony/filesystem:~8.0
+            - run: vendor/bin/phpunit
     ecs:
         runs-on: ubuntu-latest
 
@@ -136,7 +106,7 @@ jobs:
             # see https://github.com/shivammathur/setup-php
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.4
+                  php-version: 8.5
                   coverage: none
 
             - run: composer install --no-progress
