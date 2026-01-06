@@ -128,6 +128,21 @@ jobs:
             - run: composer install
             - run: composer require --no-interaction --prefer-source symfony/process:~7.0 symfony/filesystem:~7.0
             - run: vendor/bin/phpunit
+    test_symfony_80:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: git fetch --depth=100000 origin
+
+            # see https://github.com/shivammathur/setup-php
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.4
+                  coverage: none
+
+            - run: composer install
+            - run: composer require --no-interaction --prefer-source symfony/process:~8.0 symfony/filesystem:~8.0
+            - run: vendor/bin/phpunit
     ecs:
         runs-on: ubuntu-latest
 
