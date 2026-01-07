@@ -35,7 +35,7 @@ class MediaInfoContainerTest extends TestCase
 
         $data = json_encode($mediaInfoContainer);
 
-        $this->assertRegExp('/^\{.+\}$/', $data);
+        $this->assertMatchesRegularExpression('/^\{.+\}$/', $data);
     }
 
     public function testToJsonType(): void
@@ -44,7 +44,7 @@ class MediaInfoContainerTest extends TestCase
 
         $data = json_encode($mediaInfoContainer->getGeneral());
 
-        $this->assertRegExp('/^\{.+\}$/', $data);
+        $this->assertMatchesRegularExpression('/^\{.+\}$/', $data);
     }
 
     public function testToArray(): void
