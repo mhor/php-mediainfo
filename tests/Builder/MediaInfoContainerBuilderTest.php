@@ -7,6 +7,7 @@ use Mhor\MediaInfo\Builder\MediaInfoContainerBuilder;
 use Mhor\MediaInfo\Exception\UnknownTrackTypeException;
 use Mhor\MediaInfo\Factory\TypeFactory;
 use Mhor\MediaInfo\Tests\Stub\TrackTestType;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class MediaInfoContainerBuilderTest extends TestCase
@@ -79,7 +80,7 @@ class MediaInfoContainerBuilderTest extends TestCase
         $mediaInfoContainer->add(new TrackTestType());
     }
 
-    public function attributesProvider(): array
+    public static function attributesProvider(): array
     {
         return [
             [
@@ -109,6 +110,7 @@ class MediaInfoContainerBuilderTest extends TestCase
     /**
      * @dataProvider attributesProvider
      */
+    #[DataProvider('attributesProvider')]
     public function testSanitizeAttributes(array $attributes): void
     {
         $mediaInfoContainerBuilder = new MediaInfoContainerBuilder();

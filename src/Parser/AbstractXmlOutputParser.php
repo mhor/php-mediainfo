@@ -4,11 +4,6 @@ namespace Mhor\MediaInfo\Parser;
 
 abstract class AbstractXmlOutputParser implements OutputParserInterface
 {
-    /**
-     * @param string $xmlString
-     *
-     * @return array
-     */
     protected function transformXmlToArray(string $xmlString): array
     {
         if (mb_detect_encoding($xmlString, 'UTF-8', true) === false) {

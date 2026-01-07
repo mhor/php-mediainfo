@@ -26,23 +26,21 @@ class MediaInfoCommandRunnerTest extends TestCase
 
     public function testRun()
     {
-        $process = $this->prophesize(Process::class);
-        $process
-            ->run()
-            ->shouldBeCalled()
+        $process = $this->createMock(Process::class);
+
+        $process->expects($this->once())
+            ->method('run')
             ->willReturn(1);
 
-        $process
-            ->getOutput()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('getOutput')
             ->willReturn(file_get_contents($this->outputPath));
 
-        $process
-            ->isSuccessful()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('isSuccessful')
             ->willReturn(true);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process);
 
         $this->assertEquals(file_get_contents($this->outputPath), $mediaInfoCommandRunner->run());
     }
@@ -51,50 +49,43 @@ class MediaInfoCommandRunnerTest extends TestCase
     {
         $this->expectException(\RuntimeException::class);
 
-        $process = $this->prophesize(Process::class);
-        $process
-            ->run()
-            ->shouldBeCalled()
+        $process = $this->createMock(Process::class);
+        $process->expects($this->once())
+            ->method('run')
             ->willReturn(0);
 
-        $process
-            ->getErrorOutput()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('getErrorOutput')
             ->willReturn('Error');
 
-        $process
-            ->isSuccessful()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('isSuccessful')
             ->willReturn(false);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process);
 
         $mediaInfoCommandRunner->run();
     }
 
     public function testRunAsync()
     {
-        $process = $this->prophesize(Process::class);
-        $process
-            ->start()
-            ->shouldBeCalled();
+        $process = $this->createMock(Process::class);
+        $process->expects($this->once())
+            ->method('start');
 
-        $process
-            ->wait()
-            ->shouldBeCalled()
-            ->willReturn(true);
+        $process->expects($this->once())
+            ->method('wait')
+            ->willReturn(0);
 
-        $process
-            ->getOutput()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('getOutput')
             ->willReturn(file_get_contents($this->outputPath));
 
-        $process
-            ->isSuccessful()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('isSuccessful')
             ->willReturn(true);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process);
 
         $mediaInfoCommandRunner->start();
 
@@ -115,27 +106,24 @@ class MediaInfoCommandRunnerTest extends TestCase
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Error');
 
-        $process = $this->prophesize(Process::class);
-        $process
-            ->start()
-            ->shouldBeCalled();
+        $process = $this->createMock(Process::class);
+        $process->expects($this->once())
+            ->method('start');
 
-        $process
-            ->wait()
-            ->shouldBeCalled()
-            ->willReturn(true);
+        $process->expects($this->once())
+            ->method('wait')
+            ->willReturn(1);
 
-        $process
-            ->getErrorOutput()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('getErrorOutput')
             ->willReturn('Error');
 
-        $process
-            ->isSuccessful()
-            ->shouldBeCalled()
+        $process->expects($this->once())
+            ->method('isSuccessful')
             ->willReturn(false);
 
-        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process->reveal());
+
+        $mediaInfoCommandRunner = new MediaInfoCommandRunner($process);
 
         $mediaInfoCommandRunner->start();
 
