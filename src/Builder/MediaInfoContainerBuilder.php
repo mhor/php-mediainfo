@@ -46,7 +46,7 @@ class MediaInfoContainerBuilder
     private function addAttributes(AbstractType $trackType, array $attributes): void
     {
         foreach ($this->sanitizeAttributes($attributes) as $attribute => $value) {
-            if ($attribute[0] === '@') {
+            if ($attribute === '' || $attribute[0] === '@') {
                 continue;
             }
 
